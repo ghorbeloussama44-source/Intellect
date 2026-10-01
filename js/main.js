@@ -22,7 +22,8 @@
       ct_eyebrow:"Contact", ct_title:"Ask for free advice", ct_text:"Tell us where you stand and we will reply quickly with a tailored action plan.",
       f_name:"Full name", f_email:"Email", f_phone:"Phone / WhatsApp", f_topic:"I am interested in", f_msg:"Message",
       o1:"German courses (A1–C1)", o2:"Medicine in Germany", o3:"Studying in Russia", o4:"Full support",
-      f_send:"Send", backtop:"Back to top",
+      f_send:"Send", backtop:"Back to top", skip:"Skip to content",
+      lv_eyebrow:"Our courses", lv_title:"German courses from A1 to B1 and C1", lv_text:"Master German with programmes tailored to your level and goals.", lv_link:"See all courses",
       ok:"Thank you! We will contact you shortly.", err:"Please fill in your name and a valid email."
     },
     de: {
@@ -46,11 +47,12 @@
       ct_eyebrow:"Kontakt", ct_title:"Kostenlose Beratung anfragen", ct_text:"Erzählen Sie uns, wo Sie stehen – wir melden uns schnell mit einem passenden Plan.",
       f_name:"Vollständiger Name", f_email:"E-Mail", f_phone:"Telefon / WhatsApp", f_topic:"Ich interessiere mich für", f_msg:"Nachricht",
       o1:"Deutschkurse (A1–C1)", o2:"Medizin in Deutschland", o3:"Studium in Russland", o4:"Rundum-Begleitung",
-      f_send:"Senden", backtop:"Nach oben",
+      f_send:"Senden", backtop:"Nach oben", skip:"Zum Inhalt springen",
+      lv_eyebrow:"Unsere Kurse", lv_title:"Deutschkurse von A1 bis B1 und C1", lv_text:"Meistern Sie Deutsch mit Programmen, die zu Ihrem Niveau und Ihren Zielen passen.", lv_link:"Alle Kurse ansehen",
       ok:"Danke! Wir melden uns in Kürze.", err:"Bitte Namen und gültige E-Mail angeben."
     }
   };
-  T.fr = { ok:"Merci ! Nous vous contactons très bientôt.", err:"Merci d’indiquer votre nom et un e-mail valide." };
+  T.fr = {  ok:"Merci ! Nous vous contactons très bientôt.", err:"Merci d’indiquer votre nom et un e-mail valide." };
 
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const FLAGS = { fr:"🇫🇷", en:"🇬🇧", de:"🇩🇪" };
@@ -104,6 +106,18 @@
   // photo hero optionnelle : sans assets/hero.jpg, on garde l'illustration
   const hp = $(".hero-photo img");
   if (hp) { const drop = () => hp.remove(); hp.complete && !hp.naturalWidth ? drop() : hp.addEventListener("error", drop); }
+
+  // ombre du header au scroll
+  const hd = $(".site-header");
+  addEventListener("scroll", () => hd.classList.toggle("scrolled", scrollY > 8), { passive: true });
+
+  // vidéo d'ambiance (assets/hero-bg.mp4), ignorée si mouvement réduit / économie de données
+  const vid = $("#heroVideo"), conn = navigator.connection || {};
+  if (vid && !matchMedia("(prefers-reduced-motion: reduce)").matches && !conn.saveData) {
+    vid.addEventListener("canplay", () => { vid.classList.add("show"); vid.play().catch(() => {}); }, { once: true });
+    vid.addEventListener("error", () => vid.remove(), { once: true });
+    vid.src = "assets/hero-bg.mp4"; vid.load();
+  }
 
   $("#year").textContent = new Date().getFullYear();
   let saved; try { saved = localStorage.getItem("lang"); } catch {}

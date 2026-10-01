@@ -3,16 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Intellect — Cours d’allemand, médecine et études en Allemagne & Russie</title>
+<title>Intellect — Cours d’allemand A1–C1, médecine et études en Allemagne & Russie</title>
 <meta name="description" content="Intellect, agence d’accompagnement étudiant : cours d’allemand A1 à C1, préparation médecine en Allemagne, études et accompagnement en Russie et en Allemagne.">
 <meta name="theme-color" content="#003865">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.intellect.example/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intellect">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Intellect — Apprenez l’allemand, étudiez en Europe">
+<meta property="og:description" content="Cours d’allemand A1 à C1, préparation médecine en Allemagne, études et accompagnement en Russie et en Allemagne.">
+<meta property="og:url" content="https://www.intellect.example/">
+<meta property="og:image" content="https://www.intellect.example/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Intellect","slogan":"Votre avenir, notre engagement","description":"Agence d’accompagnement étudiant : cours d’allemand A1 à C1, préparation médecine en Allemagne, études en Russie et en Allemagne.","url":"https://www.intellect.example/","logo":"https://www.intellect.example/assets/logo-mark.svg","areaServed":["DE","RU"],"knowsLanguage":["fr","en","de"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Course","name":"Cours d’allemand A1, A2, B1, C1","provider":{"@type":"Organization","name":"Intellect"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Préparation médecine en Allemagne"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Études et accompagnement en Russie"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Accompagnement complet des étudiants"}}]}}
+</script>
 <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></symbol>
@@ -66,10 +81,12 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
+    <canvas class="hero-gl" id="heroGL"></canvas>
+    <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" poster=""></video>
     <svg class="skyline" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMax slice">
       <g fill="#fff" opacity=".16">
         <rect x="260" y="150" width="280" height="14"/><rect x="270" y="130" width="260" height="20"/>
@@ -94,7 +111,7 @@
     <div class="hero-visual">
       <!-- Remplacez par une vraie photo : assets/hero.jpg -->
       <picture class="hero-photo">
-        <img src="assets/hero.jpg" alt="Étudiante devant la porte de Brandebourg">
+        <img src="assets/hero.jpg" width="1000" height="1250" fetchpriority="high" alt="Étudiante souriante devant la porte de Brandebourg à Berlin">
         <svg class="hero-fallback" viewBox="0 0 400 420" aria-hidden="true">
           <circle cx="200" cy="140" r="60" fill="#e8b48c"/>
           <path d="M130 130c0-60 140-70 140 0 0 30-8 70-20 90l-10-60c-30 10-70 10-90-10l-10 60c-8-20-10-50-10-80z" fill="#2a1a14"/>
@@ -103,6 +120,22 @@
         </svg>
       </picture>
       <p class="script hero-script" data-i18n-html="script_hero">Allemagne<br>Russie<br>Votre réussite,<br>notre mission</p>
+    </div>
+  </div>
+</section>
+
+<!-- NIVEAUX -->
+<section class="levels-band" id="formations">
+  <div class="container levels-grid">
+    <div>
+      <p class="eyebrow" data-i18n="lv_eyebrow">Nos formations</p>
+      <h2 data-i18n="lv_title">Cours d’allemand de A1 à B1 et C1</h2>
+      <p class="muted" data-i18n="lv_text">Maîtrisez la langue allemande avec nos programmes adaptés à votre niveau et à vos objectifs.</p>
+      <a class="more" href="#contact"><span data-i18n="lv_link">Voir tous les cours</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="stairs" role="list" aria-label="Niveaux A1, A2, B1, C1">
+      <span class="lvl l1" role="listitem">A1</span><span class="lvl l2" role="listitem">A2</span><span class="lvl l3" role="listitem">B1</span><span class="lvl l4" role="listitem">C1</span>
+      <p class="script bubble">Deutsch lernen,<br>Zukunft bauen !</p>
     </div>
   </div>
 </section>
@@ -117,7 +150,7 @@
     </div>
 
     <div class="cards">
-      <article class="card" id="formations">
+      <article class="card">
         <div class="thumb t-de"><span class="levels">A1 A2 B1 C1</span></div>
         <h3><span data-i18n="c1_t">Cours d’allemand</span><small>A1 – B1 – C1</small></h3>
         <ul class="checks">
@@ -217,6 +250,7 @@
   </div>
 </footer>
 
+<script src="js/hero-gl.js" defer></script>
 <script src="js/main.js"></script>
 </body>
 </html>
