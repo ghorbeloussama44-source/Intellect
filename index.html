@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intellect — Cours d’allemand, médecine et études en Allemagne & Russie</title>
+<meta name="description" content="Intellect, agence d’accompagnement étudiant : cours d’allemand A1 à C1, préparation médecine en Allemagne, études et accompagnement en Russie et en Allemagne.">
+<meta name="theme-color" content="#003865">
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 008 0V3"/><path d="M5 3h2M13 3h2"/><path d="M10 13v2a5 5 0 0010 0v-2"/><circle cx="20" cy="11" r="2"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 3L3 10.5l6.5 2.5L12 20z"/><path d="M9.5 13L21 3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/><path d="M6.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M1.5 18c0-2 1.5-3.5 3.5-3.5M22.5 18c0-2-1.5-3.5-3.5-3.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="container nav">
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+
+    <a class="brand" href="#top" aria-label="Intellect — accueil">
+      <img src="assets/logo-mark.svg" alt="" width="52" height="52">
+      <span class="brand-text">
+        <span class="brand-name">intellect</span>
+        <span class="brand-tag" data-i18n="tagline">Votre avenir, notre engagement</span>
+        <span class="brand-sub" data-i18n="agency">Agence d’accompagnement étudiant</span>
+      </span>
+    </a>
+
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#top" class="active" data-i18n="nav_home">Accueil</a>
+      <a href="#formations" data-i18n="nav_courses">Nos formations</a>
+      <a href="#medecine" data-i18n="nav_med">Médecine en Allemagne</a>
+      <a href="#russie" data-i18n="nav_ru">Étudier en Russie</a>
+      <a href="#apropos" data-i18n="nav_about">À propos</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-orange"><svg class="ic"><use href="#i-cap"/></svg><span data-i18n="cta_advice">Demander un conseil</span></a>
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Langue">
+          <span class="flag" id="langFlag">🇫🇷</span><svg class="ic sm"><use href="#i-chev"/></svg>
+        </button>
+        <ul class="lang-list" role="listbox">
+          <li role="option" data-lang="fr"><span class="flag">🇫🇷</span> Français</li>
+          <li role="option" data-lang="en"><span class="flag">🇬🇧</span> English</li>
+          <li role="option" data-lang="de"><span class="flag">🇩🇪</span> Deutsch</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="skyline" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMax slice">
+      <g fill="#fff" opacity=".16">
+        <rect x="260" y="150" width="280" height="14"/><rect x="270" y="130" width="260" height="20"/>
+        <g><rect x="285" y="164" width="22" height="136"/><rect x="335" y="164" width="22" height="136"/><rect x="385" y="164" width="22" height="136"/><rect x="435" y="164" width="22" height="136"/><rect x="485" y="164" width="22" height="136"/></g>
+        <rect x="370" y="96" width="60" height="34"/><rect x="385" y="70" width="30" height="26"/>
+        <rect x="620" y="120" width="10" height="180"/><circle cx="625" cy="120" r="16"/>
+      </g>
+    </svg>
+    <div class="flag-de"><i></i><i></i><i></i></div>
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1><span data-i18n="h1a">Apprenez</span> <em data-i18n="h1b">l’allemand,</em> <span data-i18n="h1c">réalisez vos études et votre avenir en Europe</span></h1>
+      <p class="lead" data-i18n="hero_lead">Intellect vous accompagne dans votre parcours vers l’Allemagne et la Russie, avec des formations adaptées et un suivi personnalisé.</p>
+      <ul class="hero-points">
+        <li><svg class="ic xl"><use href="#i-cap"/></svg><span data-i18n="pt1">Formation en allemand de A1 à B1 et C1</span></li>
+        <li><svg class="ic xl"><use href="#i-steth"/></svg><span data-i18n="pt2">Préparation médecine en Allemagne</span></li>
+        <li><svg class="ic xl"><use href="#i-plane"/></svg><span data-i18n="pt3">Accompagnement en Russie et en Allemagne</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-orange btn-lg"><span data-i18n="cta_start">Commencer maintenant</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="hero-visual">
+      <!-- Remplacez par une vraie photo : assets/hero.jpg -->
+      <picture class="hero-photo">
+        <img src="assets/hero.jpg" alt="Étudiante devant la porte de Brandebourg">
+        <svg class="hero-fallback" viewBox="0 0 400 420" aria-hidden="true">
+          <circle cx="200" cy="140" r="60" fill="#e8b48c"/>
+          <path d="M130 130c0-60 140-70 140 0 0 30-8 70-20 90l-10-60c-30 10-70 10-90-10l-10 60c-8-20-10-50-10-80z" fill="#2a1a14"/>
+          <path d="M70 420c0-110 50-170 130-170s130 60 130 170z" fill="#1d2430"/>
+          <rect x="190" y="280" width="140" height="100" rx="6" fill="#003865" transform="rotate(-8 190 280)"/>
+        </svg>
+      </picture>
+      <p class="script hero-script" data-i18n-html="script_hero">Allemagne<br>Russie<br>Votre réussite,<br>notre mission</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="svc_eyebrow">Nos services</p>
+      <h2 data-i18n="svc_title">Des solutions complètes pour chaque étape de votre projet</h2>
+      <p class="muted" data-i18n="svc_text">De l’apprentissage de la langue à l’intégration dans votre pays d’études, nous vous accompagnons à chaque étape pour faire de votre rêve une réalité.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card" id="formations">
+        <div class="thumb t-de"><span class="levels">A1 A2 B1 C1</span></div>
+        <h3><span data-i18n="c1_t">Cours d’allemand</span><small>A1 – B1 – C1</small></h3>
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c1_a">Cours intensifs et flexibles</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c1_b">Préparation aux examens (Goethe, telc, etc.)</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c1_c">Suivi pédagogique personnalisé</span></li>
+        </ul>
+        <a class="more" href="#contact"><span data-i18n="more">En savoir plus</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="card" id="medecine">
+        <div class="thumb t-med"><svg class="ic thumb-ic"><use href="#i-steth"/></svg></div>
+        <h3><span data-i18n="c2_t">Préparation médecine</span><small data-i18n="c2_s">en Allemagne</small></h3>
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c2_a">Conseils et orientation</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c2_b">Dossier et inscription université</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c2_c">Préparation aux examens d’admission</span></li>
+        </ul>
+        <a class="more" href="#contact"><span data-i18n="more">En savoir plus</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="card" id="russie">
+        <div class="thumb t-ru"><svg class="ic thumb-ic"><use href="#i-plane"/></svg></div>
+        <h3><span data-i18n="c3_t">Étudier en Russie</span><small>&nbsp;</small></h3>
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c3_a">Inscription universitaire</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c3_b">Logement (dortoirs / appartements)</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c3_c">Accompagnement sur place</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c3_d">Aide aux démarches administratives</span></li>
+        </ul>
+        <a class="more" href="#contact"><span data-i18n="more">En savoir plus</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="card">
+        <div class="thumb t-all"><svg class="ic thumb-ic"><use href="#i-user"/></svg></div>
+        <h3><span data-i18n="c4_t">Accompagnement complet</span><small>&nbsp;</small></h3>
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c4_a">Conseil personnalisé</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c4_b">Suivi avant et après l’arrivée</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c4_c">Aide au visa et aux documents</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c4_d">Intégration et vie étudiante</span></li>
+        </ul>
+        <a class="more" href="#contact"><span data-i18n="more">En savoir plus</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="apropos">
+  <div class="container why-grid">
+    <div>
+      <p class="eyebrow" data-i18n="why_eyebrow">Pourquoi choisir Intellect ?</p>
+      <h2 data-i18n="why_title">Une équipe engagée à vos côtés</h2>
+    </div>
+    <ul class="why-items">
+      <li><span class="ring"><svg class="ic xl"><use href="#i-shield"/></svg></span><span data-i18n="w1">Accompagnement personnalisé</span></li>
+      <li><span class="ring"><svg class="ic xl"><use href="#i-people"/></svg></span><span data-i18n="w2">Partenariats universitaires</span></li>
+      <li><span class="ring"><svg class="ic xl"><use href="#i-pin"/></svg></span><span data-i18n="w3">Présence en Russie et en Allemagne</span></li>
+      <li><span class="ring"><svg class="ic xl"><use href="#i-star"/></svg></span><span data-i18n="w4">Taux de réussite élevé</span></li>
+    </ul>
+    <p class="script why-script" data-i18n-html="script_why">Plus qu’une agence,<br>un partenaire pour la vie</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow" data-i18n="ct_eyebrow">Contact</p>
+      <h2 data-i18n="ct_title">Demandez un conseil gratuit</h2>
+      <p class="muted" data-i18n="ct_text">Dites-nous où vous en êtes, nous vous répondons rapidement avec un plan d’action adapté.</p>
+    </div>
+    <form class="form" id="form" novalidate>
+      <label><span data-i18n="f_name">Nom complet</span><input name="name" required autocomplete="name"></label>
+      <label><span data-i18n="f_email">E-mail</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span data-i18n="f_phone">Téléphone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel"></label>
+      <label><span data-i18n="f_topic">Je suis intéressé(e) par</span>
+        <select name="topic">
+          <option value="de" data-i18n="o1">Cours d’allemand (A1–C1)</option>
+          <option value="med" data-i18n="o2">Médecine en Allemagne</option>
+          <option value="ru" data-i18n="o3">Études en Russie</option>
+          <option value="all" data-i18n="o4">Accompagnement complet</option>
+        </select></label>
+      <label class="full"><span data-i18n="f_msg">Message</span><textarea name="message" rows="3"></textarea></label>
+      <button class="btn btn-orange btn-lg full" type="submit"><span data-i18n="f_send">Envoyer</span><svg class="ic"><use href="#i-arrow"/></svg></button>
+      <p class="form-note full" id="formNote" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container foot">
+    <span>© <span id="year"></span> Intellect — <span data-i18n="tagline">Votre avenir, notre engagement</span></span>
+    <a href="#top" data-i18n="backtop">Retour en haut</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
