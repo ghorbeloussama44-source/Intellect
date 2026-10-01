@@ -17,9 +17,11 @@
 <meta property="og:image" content="https://www.intellect.example/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Intellect","slogan":"Votre avenir, notre engagement","description":"Agence d’accompagnement étudiant : cours d’allemand A1 à C1, préparation médecine en Allemagne, études en Russie et en Allemagne.","url":"https://www.intellect.example/","logo":"https://www.intellect.example/assets/logo-mark.svg","areaServed":["DE","RU"],"knowsLanguage":["fr","en","de"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Course","name":"Cours d’allemand A1, A2, B1, C1","provider":{"@type":"Organization","name":"Intellect"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Préparation médecine en Allemagne"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Études et accompagnement en Russie"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Accompagnement complet des étudiants"}}]}}
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Intellect","slogan":"Votre avenir, notre engagement","description":"Agence d’accompagnement étudiant : cours d’allemand A1 à C1, préparation médecine en Allemagne, études en Russie et en Allemagne.","url":"https://www.intellect.example/","logo":"https://www.intellect.example/assets/logo.png","areaServed":["DE","RU"],"knowsLanguage":["fr","en","de"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Course","name":"Cours d’allemand A1, A2, B1, C1","provider":{"@type":"Organization","name":"Intellect"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Préparation médecine en Allemagne"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Études et accompagnement en Russie"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Accompagnement complet des étudiants"}}]}}
 </script>
+<link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,14 +49,7 @@
   <div class="container nav">
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
 
-    <a class="brand" href="#top" aria-label="Intellect — accueil">
-      <img src="assets/logo-mark.svg" alt="" width="52" height="52">
-      <span class="brand-text">
-        <span class="brand-name">intellect</span>
-        <span class="brand-tag" data-i18n="tagline">Votre avenir, notre engagement</span>
-        <span class="brand-sub" data-i18n="agency">Agence d’accompagnement étudiant</span>
-      </span>
-    </a>
+    <a class="brand" href="#top" aria-label="Intellect — accueil"><img src="assets/logo@1x.png" srcset="assets/logo@1x.png 1x, assets/logo.png 2x" width="162" height="55" alt="Intellect — Votre avenir, notre engagement. Agence d’accompagnement étudiant"></a>
 
     <nav class="menu" id="menu" aria-label="Navigation principale">
       <a href="#top" class="active" data-i18n="nav_home">Accueil</a>
@@ -201,6 +196,7 @@
 
 <!-- WHY -->
 <section class="why" id="apropos">
+  <img class="why-glow" src="assets/logo-glow.jpg" alt="" aria-hidden="true" width="900" height="846" loading="lazy">
   <div class="container why-grid">
     <div>
       <p class="eyebrow" data-i18n="why_eyebrow">Pourquoi choisir Intellect ?</p>
