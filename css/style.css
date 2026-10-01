@@ -75,10 +75,10 @@ h2{font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.2;color:var(--blue);margin:1
 .card:hover{transform:translateY(-4px)}
 .thumb{height:130px;border-radius:12px;display:grid;place-items:center;color:#fff;margin-bottom:14px;position:relative;overflow:hidden}
 .thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 55%)}
-.t-de{background:linear-gradient(135deg,#111 0 33%,#dd0000 33% 66%,#ffce00 66%)}
-.t-med{background:linear-gradient(135deg,#2FB7F3,#003865)}
-.t-ru{background:linear-gradient(135deg,#c8102e,#7a0a1d)}
-.t-all{background:linear-gradient(135deg,#003865,#2FB7F3)}
+.t-de{background:url(../assets/card-de.jpg) center/cover no-repeat,linear-gradient(135deg,#111 0 33%,#dd0000 33% 66%,#ffce00 66%)}
+.t-med{background:url(../assets/card-med.jpg) center/cover no-repeat,linear-gradient(135deg,#2FB7F3,#003865)}
+.t-ru{background:url(../assets/card-ru.jpg) center/cover no-repeat,linear-gradient(135deg,#c8102e,#7a0a1d)}
+.t-all{background:url(../assets/card-all.jpg) center/cover no-repeat,linear-gradient(135deg,#003865,#2FB7F3)}
 .thumb-ic{width:54px;height:54px;stroke-width:1.5;position:relative;z-index:1}
 .levels{position:relative;z-index:1;font-weight:800;font-size:1.5rem;background:rgba(0,56,101,.85);padding:6px 16px;border-radius:12px;letter-spacing:.06em}
 .card h3{font-size:1.05rem;color:var(--blue);padding:0 6px;line-height:1.25}
