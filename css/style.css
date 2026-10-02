@@ -56,9 +56,10 @@ h1 em{font-style:normal;color:var(--orange)}
 .hero-points li:first-child{padding-left:0;border:0}
 .hero-visual{position:relative;align-self:end;height:100%;min-height:380px}
 .hero-photo{position:absolute;inset:auto 0 0 0;display:block}
-.hero-photo img{width:100%;height:520px;object-fit:cover;object-position:top;mask-image:linear-gradient(to left,#000 70%,transparent)}
+.hero-photo img{width:100%;height:min(560px,100%);object-fit:contain;object-position:center bottom;position:relative;z-index:2;filter:drop-shadow(0 18px 30px rgba(0,20,40,.45))}
+.hero-photo img.jpg{object-fit:cover;object-position:top;height:520px;filter:none;mask-image:linear-gradient(to left,#000 70%,transparent)}
 .hero-fallback{width:min(420px,100%);margin:0 auto}
-.hero-script{position:absolute;right:0;bottom:40px;font-size:1.7rem;line-height:1.1;text-align:left;transform:rotate(-8deg);text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero-script{z-index:3;position:absolute;right:0;bottom:40px;font-size:1.7rem;line-height:1.1;text-align:left;transform:rotate(-8deg);text-shadow:0 2px 8px rgba(0,0,0,.4)}
 
 /* sections */
 section{padding:80px 0}
@@ -184,3 +185,34 @@ input.bad{border-color:#d33}
 .why-glow{position:absolute;right:-6%;top:50%;width:min(520px,60%);transform:translateY(-50%);mix-blend-mode:screen;opacity:.55;pointer-events:none}
 .why-grid{position:relative}
 @media (max-width:640px){.brand img{height:44px}.why-glow{opacity:.3;right:-20%}}
+
+/* globe */
+.hero-visual{min-height:520px}
+.globe-wrap{position:absolute;inset:2% -4% -4% -34%;pointer-events:none}
+.globe{width:100%;height:100%;display:block}
+.globe-label{position:absolute;left:0;top:0;z-index:3;display:flex;flex-direction:row-reverse;align-items:center;gap:8px;opacity:0;will-change:transform;margin:-6px 0 0 -6px;transform-origin:0 0}
+.globe-label[data-city=moscow]{flex-direction:row}
+.globe-label i{width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(255,138,0,.28),0 0 18px var(--orange)}
+.globe-label b{font-size:.78rem;font-weight:600;letter-spacing:.04em;background:rgba(0,40,74,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.no-gl .globe-label{display:none}
+/* entrée du hero (se termine toujours visible) */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero h1,.hero .lead,.hero-points,.hero-copy .btn{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .lead{animation-delay:.12s}.hero-points{animation-delay:.22s}.hero-copy .btn{animation-delay:.32s}
+.hero-photo img{animation:rise 1s .25s cubic-bezier(.2,.7,.2,1) both}
+/* progression + CTA mobile */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--sky),var(--orange));transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.sticky-cta{display:none}
+@media (max-width:960px){
+  .sticky-cta{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--orange);color:#fff;font-weight:600;padding:14px 20px;border-radius:999px;box-shadow:0 12px 28px rgba(255,138,0,.45)}
+  .site-footer{padding-bottom:84px}
+  .globe-wrap{inset:-4% -30% 0 -30%}
+}
+/* cartes : inclinaison 3D douce */
+.card{transform-style:preserve-3d;transition:transform .25s,box-shadow .25s;will-change:transform}
+.card:hover{box-shadow:0 18px 40px rgba(0,56,101,.2)}
+@media (prefers-reduced-motion:reduce){.hero h1,.hero .lead,.hero-points,.hero-copy .btn,.hero-photo img{animation:none}}
+
+.flag-de{display:none}
+@media (max-width:960px){.globe-wrap{inset:-4% -30% 0 -30%}}
+.globe-label:not([data-city=moscow]){translate:calc(-100% + 12px) 0}

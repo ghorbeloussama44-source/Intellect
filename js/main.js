@@ -23,6 +23,7 @@
       f_name:"Full name", f_email:"Email", f_phone:"Phone / WhatsApp", f_topic:"I am interested in", f_msg:"Message",
       o1:"German courses (A1–C1)", o2:"Medicine in Germany", o3:"Studying in Russia", o4:"Full support",
       f_send:"Send", backtop:"Back to top", skip:"Skip to content",
+      gl_de:"Germany", gl_ru:"Russia",
       lv_eyebrow:"Our courses", lv_title:"German courses from A1 to B1 and C1", lv_text:"Master German with programmes tailored to your level and goals.", lv_link:"See all courses",
       ok:"Thank you! We will contact you shortly.", err:"Please fill in your name and a valid email."
     },
@@ -48,6 +49,7 @@
       f_name:"Vollständiger Name", f_email:"E-Mail", f_phone:"Telefon / WhatsApp", f_topic:"Ich interessiere mich für", f_msg:"Nachricht",
       o1:"Deutschkurse (A1–C1)", o2:"Medizin in Deutschland", o3:"Studium in Russland", o4:"Rundum-Begleitung",
       f_send:"Senden", backtop:"Nach oben", skip:"Zum Inhalt springen",
+      gl_de:"Deutschland", gl_ru:"Russland",
       lv_eyebrow:"Unsere Kurse", lv_title:"Deutschkurse von A1 bis B1 und C1", lv_text:"Meistern Sie Deutsch mit Programmen, die zu Ihrem Niveau und Ihren Zielen passen.", lv_link:"Alle Kurse ansehen",
       ok:"Danke! Wir melden uns in Kürze.", err:"Bitte Namen und gültige E-Mail angeben."
     }
@@ -103,13 +105,28 @@
     if (ok) f.reset();
   });
 
-  // photo hero optionnelle : sans assets/hero.jpg, on garde l'illustration
-  const hp = $(".hero-photo img");
-  if (hp) { const drop = () => hp.remove(); hp.complete && !hp.naturalWidth ? drop() : hp.addEventListener("error", drop); }
+  // photo du hero : détourée (png) > jpg > rien (le globe seul reste)
+  const hp = $("#heroImg");
+  if (hp) hp.addEventListener("error", () => {
+    if (!hp.src.endsWith("hero.jpg")) { hp.classList.add("jpg"); hp.src = "assets/hero.jpg"; } else hp.remove();
+  });
 
   // ombre du header au scroll
   const hd = $(".site-header");
-  addEventListener("scroll", () => hd.classList.toggle("scrolled", scrollY > 8), { passive: true });
+  const bar = $("#progress");
+  const onScroll = () => {
+    hd.classList.toggle("scrolled", scrollY > 8);
+    const h = document.documentElement; bar.style.transform = `scaleX(${scrollY / Math.max(1, h.scrollHeight - innerHeight)})`;
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // inclinaison douce des cartes (souris uniquement, pas en mouvement réduit)
+  if (matchMedia("(hover:hover) and (pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches)
+    $$(".card").forEach(c => {
+      c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`; });
+      c.addEventListener("pointerleave", () => { c.style.transform = ""; });
+    });
 
   // vidéo d'ambiance (assets/hero-bg.mp4), ignorée si mouvement réduit / économie de données
   const vid = $("#heroVideo"), conn = navigator.connection || {};

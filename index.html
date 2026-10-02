@@ -22,7 +22,6 @@
 <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -45,6 +44,7 @@
   <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
 </svg>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="site-header" id="top">
   <div class="container nav">
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
@@ -90,7 +90,7 @@
         <rect x="620" y="120" width="10" height="180"/><circle cx="625" cy="120" r="16"/>
       </g>
     </svg>
-    <div class="flag-de"><i></i><i></i><i></i></div>
+    
   </div>
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -104,16 +104,13 @@
       <a href="#contact" class="btn btn-orange btn-lg"><span data-i18n="cta_start">Commencer maintenant</span><svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="hero-visual">
-      <!-- Remplacez par une vraie photo : assets/hero.jpg -->
-      <picture class="hero-photo">
-        <img src="assets/hero.jpg" width="1000" height="1250" fetchpriority="high" alt="Étudiante souriante devant la porte de Brandebourg à Berlin">
-        <svg class="hero-fallback" viewBox="0 0 400 420" aria-hidden="true">
-          <circle cx="200" cy="140" r="60" fill="#e8b48c"/>
-          <path d="M130 130c0-60 140-70 140 0 0 30-8 70-20 90l-10-60c-30 10-70 10-90-10l-10 60c-8-20-10-50-10-80z" fill="#2a1a14"/>
-          <path d="M70 420c0-110 50-170 130-170s130 60 130 170z" fill="#1d2430"/>
-          <rect x="190" y="280" width="140" height="100" rx="6" fill="#003865" transform="rotate(-8 190 280)"/>
-        </svg>
-      </picture>
+      <div class="globe-wrap">
+        <canvas class="globe" id="globeGL" role="img" aria-label="Globe animé reliant l’Allemagne et la Russie"></canvas>
+        <span class="globe-label" data-city="berlin"><i></i><b data-i18n="gl_de">Allemagne</b></span>
+        <span class="globe-label" data-city="moscow"><i></i><b data-i18n="gl_ru">Russie</b></span>
+      </div>
+      <!-- Photo détourée (assets/hero-cutout.png) ou à défaut assets/hero.jpg : voir npm run media -->
+      <picture class="hero-photo"><img id="heroImg" src="assets/hero-cutout.png" width="430" height="447" fetchpriority="high" alt="Étudiante souriante devant la porte de Brandebourg à Berlin"></picture>
       <p class="script hero-script" data-i18n-html="script_hero">Allemagne<br>Russie<br>Votre réussite,<br>notre mission</p>
     </div>
   </div>
@@ -239,6 +236,8 @@
 </section>
 </main>
 
+<a class="sticky-cta" href="#contact"><svg class="ic"><use href="#i-cap"/></svg><span data-i18n="cta_advice">Demander un conseil</span></a>
+
 <footer class="site-footer">
   <div class="container foot">
     <span>© <span id="year"></span> Intellect — <span data-i18n="tagline">Votre avenir, notre engagement</span></span>
@@ -246,6 +245,8 @@
   </div>
 </footer>
 
+<script src="js/globe-data.js" defer></script>
+<script src="js/globe.js" defer></script>
 <script src="js/hero-gl.js" defer></script>
 <script src="js/main.js"></script>
 </body>

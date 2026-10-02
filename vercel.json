@@ -1,5 +1,7 @@
 {
   "cleanUrls": true,
+  "installCommand": "echo no-install",
+  "buildCommand": null,
   "headers": [
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },

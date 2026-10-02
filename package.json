@@ -1,0 +1,19 @@
+{
+  "name": "intellect-site",
+  "private": true,
+  "type": "module",
+  "description": "Site statique Intellect. Les dépendances ne servent qu'aux outils de développement (scripts/).",
+  "scripts": {
+    "build:globe": "node scripts/build-globe-data.mjs",
+    "media": "node scripts/fetch-media.mjs",
+    "images": "node scripts/prep-images.mjs",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "@imgly/background-removal-node": "^1.4.5",
+    "d3-geo": "^3.1.1",
+    "sharp": "^0.33.5",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}
