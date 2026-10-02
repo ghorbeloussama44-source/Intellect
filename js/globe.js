@@ -88,7 +88,7 @@
     const t = reduced ? 2.2 : (now - t0) / 1000;
     mouse.x += (mouse.tx - mouse.x) * .05; mouse.y += (mouse.ty - mouse.y) * .05;
     const intro = Math.min(1, t / 1.6), ease = 1 - Math.pow(1 - intro, 3);
-    const yaw = (-40 - 10 * Math.sin(t * .16) + mouse.x * 14) * RAD, pitch = (32 - mouse.y * 10) * RAD;
+    const yaw = (-40 - 10 * Math.sin(t * .16) + mouse.x * 14 + Math.min(scrollY, 1400) * .045) * RAD, pitch = (32 - mouse.y * 10 - Math.min(scrollY, 1400) * .006) * RAD;
     const M = new Float32Array(rot(yaw, pitch));
     const sc = [R / (W / 2) * (.8 + .2 * ease), R / (H / 2) * (.8 + .2 * ease)];
 

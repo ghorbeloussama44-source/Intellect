@@ -120,10 +120,44 @@
   };
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
+  // ---- effets au scroll (désactivés si mouvement réduit) ----
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches, root = document.documentElement;
+  if (!calm) {
+    // 1) apparitions échelonnées, uniquement pour ce qui est sous la ligne de flottaison
+    const groups = [".levels-grid > div:first-child > *", ".stairs .lvl", ".stairs .bubble", ".section-head > *", ".cards .card",
+      ".why-grid > div:first-child > *", ".why-items li", ".contact-grid > div:first-child > *", ".form"];
+    const items = [];
+    groups.forEach(sel => $$(sel).forEach((el, i) => {
+      el.classList.add("rv"); el.style.setProperty("--i", i % 6);
+      if (sel.includes("first-child") && sel.includes("levels") === false && sel.includes("contact") === false) el.classList.add("rv-l");
+      if (sel === ".form") el.classList.add("rv-r");
+      items.push(el);
+    }));
+    const show = el => { el.classList.add("in"); setTimeout(() => el.classList.remove("rv", "in", "rv-l", "rv-r"), 1500 + (+el.style.getPropertyValue("--i") || 0) * 90); };
+    const io2 = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { show(en.target); io2.unobserve(en.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+    items.forEach(el => (el.getBoundingClientRect().top < innerHeight * .92 ? (el.classList.remove("rv"), el.classList.remove("rv-l", "rv-r")) : io2.observe(el)));
+    root.classList.add("rv-on");
+
+    // 2) parallaxe du hero + 3) inclinaison du bandeau selon la vitesse + 4) en-tête qui se range
+    const hero = $(".hero"), mq = $(".marquee"); let last = scrollY, skew = 0, ticking = false;
+    const tick = () => {
+      ticking = false;
+      const y = scrollY, dy = y - last; last = y;
+      root.style.setProperty("--hp", Math.min(1, Math.max(0, y / (hero.offsetHeight * .9))).toFixed(3));
+      skew += (Math.max(-9, Math.min(9, dy * .35)) - skew) * .25;
+      if (mq) mq.style.setProperty("--skew", skew.toFixed(2) + "deg");
+      if (dy > 2 && y > 420 && !menu.classList.contains("open")) hd.classList.add("hide");   // on descend : l'en-tête se range
+      else if (dy < -2 || y < 420) hd.classList.remove("hide");                              // on remonte : il revient
+      if (Math.abs(skew) > .05) requestAnimationFrame(() => { if (!ticking) { ticking = true; tick(); } });
+    };
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }, { passive: true });
+  }
+
   // inclinaison douce des cartes (souris uniquement, pas en mouvement réduit)
   if (matchMedia("(hover:hover) and (pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches)
     $$(".card").forEach(c => {
       c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.setProperty('--mx', (x + .5) * r.width + 'px'); c.style.setProperty('--my', (y + .5) * r.height + 'px');
         c.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`; });
       c.addEventListener("pointerleave", () => { c.style.transform = ""; });
     });

@@ -80,7 +80,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <canvas class="hero-gl" id="heroGL"></canvas>
+    <canvas class="hero-gl" id="heroGL" data-gl="hero"></canvas>
     <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" poster=""></video>
     <svg class="skyline" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMax slice">
       <g fill="#fff" opacity=".16">
@@ -115,6 +115,12 @@
     </div>
   </div>
 </section>
+
+<!-- BANDEAU DÉFILANT -->
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Deutsch A1 · A2 · B1 · C1</span><i></i><span class="o">Goethe</span><i></i><span>telc</span><i></i><span class="o">TestDaF</span><i></i><span>Médecine</span><i></i><span class="o">Berlin</span><i></i><span>Moscou</span><i></i><span class="o">Visa</span><i></i><span>Université</span><i></i>
+  <span>Deutsch A1 · A2 · B1 · C1</span><i></i><span class="o">Goethe</span><i></i><span>telc</span><i></i><span class="o">TestDaF</span><i></i><span>Médecine</span><i></i><span class="o">Berlin</span><i></i><span>Moscou</span><i></i><span class="o">Visa</span><i></i><span>Université</span><i></i>
+</div></div>
 
 <!-- NIVEAUX -->
 <section class="levels-band" id="formations">
@@ -193,6 +199,7 @@
 
 <!-- WHY -->
 <section class="why" id="apropos">
+  <canvas class="why-gl" data-gl="why" aria-hidden="true"></canvas>
   <img class="why-glow" src="assets/logo-glow.jpg" alt="" aria-hidden="true" width="900" height="846" loading="lazy">
   <div class="container why-grid">
     <div>

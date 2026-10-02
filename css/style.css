@@ -228,3 +228,34 @@ input.bad{border-color:#d33}
   .hero-script{bottom:28px;right:4px}
 }
 @media (max-width:640px){.globe-label{display:none}}
+
+/* ---------- effets au scroll ---------- */
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+html.rv-on .rv:not(.in){opacity:0;transform:translate3d(0,38px,0) scale(.97)}
+html.rv-on .rv.rv-l:not(.in){transform:translate3d(-46px,0,0)}
+html.rv-on .rv.rv-r:not(.in){transform:translate3d(46px,0,0)}
+html.rv-on .lvl.rv:not(.in){transform:translate3d(0,60px,0) rotate(-8deg) scale(.8)}
+/* parallaxe du hero (variable --hp = progression 0→1 pendant le premier écran) */
+.hero-photo{transform:translate3d(0,calc(var(--hp,0)*80px),0)}
+.globe-wrap{transform:translate3d(0,calc(var(--hp,0)*-50px),0) scale(calc(1 + var(--hp,0)*.14))}
+.hero-copy{transform:translate3d(0,calc(var(--hp,0)*-36px),0);opacity:calc(1 - var(--hp,0)*.75)}
+.hero-script{translate:0 calc(var(--hp,0)*-30px)}
+/* en-tête qui se range en descendant, revient en remontant */
+.site-header{transition:transform .35s ease,box-shadow .25s}
+.site-header.hide{transform:translateY(-110%)}
+/* bandeau défilant, incliné par la vitesse du scroll */
+.marquee{overflow:hidden;background:linear-gradient(90deg,#00284a,#003865);padding:22px 0;transform:skewX(var(--skew,0deg));transform-origin:center;margin:-1px -20px;position:relative;z-index:2}
+.marquee .track{display:flex;align-items:center;gap:34px;width:max-content;animation:marq 38s linear infinite}
+.marquee span{font-weight:800;font-size:clamp(1.5rem,4vw,2.8rem);text-transform:uppercase;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);white-space:nowrap}
+.marquee span.o{color:var(--orange);-webkit-text-stroke:0}
+.marquee i{width:12px;height:12px;border-radius:50%;background:var(--sky);box-shadow:0 0 14px var(--sky);flex:none}
+@keyframes marq{to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+/* second fond WebGL */
+.why-gl{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.why .why-glow{z-index:0}
+.why-grid{z-index:1}
+/* halo qui suit la souris sur les cartes */
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(47,183,243,.16),transparent 62%)}
+.card{position:relative}.card:hover::before{opacity:1}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none}.marquee{transform:none}.hero-photo,.globe-wrap,.hero-copy,.hero-script{transform:none;translate:none;opacity:1}}
