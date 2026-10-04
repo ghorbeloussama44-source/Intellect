@@ -45,13 +45,13 @@ export const PAGES: PageDef[] = [
     status: 'published', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
 
   { id: 'medicine-germany', layout: 'article', schema: 'Service', slugs: { fr: 'medecine-allemagne', en: 'medicine-in-germany', ar: 'medicine-in-germany' },
-    status: 'draft', updated: D, priority: 0.9, navOrder: 2, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.9, navOrder: 2, footerGroup: 'study' },
   { id: 'study-germany', layout: 'article', schema: 'Service', slugs: { fr: 'etudier-en-allemagne', en: 'study-in-germany', ar: 'study-in-germany' },
-    status: 'draft', updated: D, priority: 0.9, navOrder: 3, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.9, navOrder: 3, footerGroup: 'study' },
   { id: 'study-russia', layout: 'article', schema: 'Service', slugs: { fr: 'etudier-en-russie', en: 'study-in-russia', ar: 'study-in-russia' },
-    status: 'draft', updated: D, priority: 0.9, navOrder: 4, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.9, navOrder: 4, footerGroup: 'study' },
   { id: 'student-support', layout: 'article', schema: 'Service', slugs: { fr: 'accompagnement-etudiant', en: 'student-support', ar: 'student-support' },
-    status: 'draft', updated: D, priority: 0.8, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.8, footerGroup: 'study' },
 
   { id: 'student-visa-germany', layout: 'article', schema: 'Article', slugs: { fr: 'guide/visa-etudiant-allemagne', en: 'guides/german-student-visa', ar: 'guides/german-student-visa' },
     status: 'draft', updated: D, priority: 0.7, parent: 'study-germany', footerGroup: 'learn' },
