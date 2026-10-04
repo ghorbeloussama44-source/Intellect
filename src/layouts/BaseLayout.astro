@@ -30,7 +30,7 @@ const og = absoluteUrl(ogImage);
 const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale) ?? `${pagePath(page ?? { slugs: { fr: '', en: '', ar: '' } } as PageDef, locale)}#contact`);
 ---
 <!doctype html>
-<html lang={meta.htmlLang} dir={meta.dir} data-detect={page?.id === 'home' ? '1' : undefined}>
+<html lang={meta.htmlLang} dir={meta.dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -60,29 +60,6 @@ const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale)
     {preloadFonts(locale).map((f) => <link rel="preload" as="font" type="font/woff2" href={`/fonts/${f}`} crossorigin />)}
     <style set:html={fontCss(locale)} is:inline></style>
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
-    <!-- Détection de langue à la première visite : humains seulement, jamais les robots (ils reçoivent toujours la version par défaut en 200). -->
-    <script is:inline>
-      (() => {
-        const h = document.documentElement;
-        if (h.dataset.detect !== '1') return;
-        try {
-          if (/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|lighthouse|headless|pagespeed|gtmetrix|prerender/i.test(navigator.userAgent || '')) return;
-          const key = 'intellect-lang';
-          let want = localStorage.getItem(key);
-          if (!want) {
-            const l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
-            want = ['fr', 'en', 'ar'].includes(l) ? l : 'fr';
-            localStorage.setItem(key, want);
-          }
-          if (want !== h.lang) {
-            const a = document.querySelector('link[rel=alternate][hreflang="' + want + '"]');
-            if (a) location.replace(new URL(a.href).pathname);
-          }
-        } catch {
-          /* stockage indisponible : on reste sur la version par défaut */
-        }
-      })();
-    </script>
   </head>
   <body class={bodyClass}>
     <a class="skip" href="#main">{ui.skip}</a>

@@ -9,7 +9,8 @@ const target = page ?? (getPage('home') as PageDef);
 ---
 <details class="lang">
   <summary>
-    <span lang={LOCALE_META[locale].htmlLang}>{LOCALE_META[locale].label}</span>
+    <span class="lang-full" lang={LOCALE_META[locale].htmlLang}>{LOCALE_META[locale].label}</span>
+    <span class="lang-short" lang={LOCALE_META[locale].htmlLang} title={LOCALE_META[locale].label}>{LOCALE_META[locale].short}</span>
     <svg class="ic sm" aria-hidden="true"><use href="#i-chev" /></svg>
   </summary>
   <ul>
