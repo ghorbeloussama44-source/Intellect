@@ -1,0 +1,16 @@
+---
+import { hrefTo, pagePath, getPage, type PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import { useUi } from '../locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const ui = useUi(locale);
+const href = hrefTo('contact', locale) ?? `${pagePath(getPage('home') as PageDef, locale)}#contact`;
+---
+<aside class="cta-band">
+  <div>
+    <h2>{ui.ctaBand.title}</h2>
+    <p>{ui.ctaBand.text}</p>
+  </div>
+  <a class="btn btn-orange btn-lg" href={href}><span>{ui.ctaBand.button}</span><svg class="ic ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+</aside>

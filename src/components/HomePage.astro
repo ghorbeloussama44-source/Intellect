@@ -1,0 +1,140 @@
+---
+import { existsSync } from 'node:fs';
+import { Image } from 'astro:assets';
+import glow from '../assets/brand/logo-glow.jpg';
+import ContactForm from './ContactForm.astro';
+import Prose from './Prose.astro';
+import { hrefTo } from '../config/pages';
+import type { Locale } from '../config/site';
+import { getHomeContent } from '../copy';
+import { useUi } from '../locales';
+import { CARD_PHOTOS, getMedia } from '../utils/media';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = getHomeContent(locale);
+const ui = useUi(locale);
+const contactHref = hrefTo('contact', locale) ?? '#contact';
+const hero = getMedia('hero-cutout.png') ?? getMedia('hero.jpg');
+const hasVideo = existsSync('public/hero-bg.mp4');
+const ICONS: Record<string, string> = { 'medicine-germany': 'i-steth', 'study-russia': 'i-plane', 'student-support': 'i-user' };
+const whyIcons = ['i-shield', 'i-people', 'i-pin', 'i-star'];
+const marquee = [...ui.marquee, ...ui.marquee];
+---
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <canvas class="hero-gl" data-gl="hero"></canvas>
+    {hasVideo && <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" data-src="/hero-bg.mp4"></video>}
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>{c.hero.h1a} <em>{c.hero.h1b}</em> {c.hero.h1c}</h1>
+      <p class="lead">{c.hero.lead}</p>
+      <ul class="hero-points">
+        {c.hero.points.map((p, i) => (
+          <li><svg class="ic xl" aria-hidden="true"><use href={['#i-cap', '#i-steth', '#i-plane'][i]} /></svg><span>{p}</span></li>
+        ))}
+      </ul>
+      <a href={contactHref} class="btn btn-orange btn-lg"><span>{ui.ctaStart}</span><svg class="ic ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    </div>
+    <div class="hero-visual">
+      <div class="globe-wrap">
+        <canvas class="globe" id="globeGL" role="img" aria-label={ui.globeLabel}></canvas>
+      </div>
+      {hero && (
+        <div class="hero-photo">
+          <Image src={hero} alt={ui.heroAlt} width={hero.width} height={hero.height} widths={[430, 860]} sizes="(max-width: 960px) 86vw, 460px" loading="eager" fetchpriority="high" />
+        </div>
+      )}
+      <div class="globe-wrap globe-labels" aria-hidden="true">
+        <span class="globe-label" data-city="berlin"><i></i><b>{ui.globe.germany}</b></span>
+        <span class="globe-label" data-city="moscow"><i></i><b>{ui.globe.russia}</b></span>
+      </div>
+      <p class="script hero-script" aria-hidden="true">{c.hero.script.map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true"><div class="marquee">
+  <div class="track">
+    {marquee.map((m, i) => <><span class={i % 2 ? 'o' : undefined}>{m}</span><i></i></>)}
+  </div>
+</div></div>
+
+<section class="levels-band" id="formations">
+  <div class="container levels-grid">
+    <div>
+      <p class="eyebrow">{c.levels.eyebrow}</p>
+      <h2>{c.levels.title}</h2>
+      <p class="muted">{c.levels.text}</p>
+      <a class="more" href={hrefTo('german-courses', locale) ?? contactHref}><span>{c.levels.link}</span><svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    </div>
+    <div class="stairs" role="list" aria-label="A1, A2, B1, C1">
+      <span class="lvl l1" role="listitem">A1</span><span class="lvl l2" role="listitem">A2</span><span class="lvl l3" role="listitem">B1</span><span class="lvl l4" role="listitem">C1</span>
+      <p class="script bubble" lang="de">Deutsch lernen,<br />Zukunft bauen !</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{c.services.eyebrow}</p>
+      <h2>{c.services.title}</h2>
+      <p class="muted">{c.services.text}</p>
+    </div>
+    <div class="cards">
+      {c.services.cards.map((card) => {
+        const photo = CARD_PHOTOS[card.id] ? getMedia(CARD_PHOTOS[card.id]) : undefined;
+        return (
+          <article class="card">
+            <div class={`thumb t-${card.id}`}>
+              {photo && <Image src={photo} alt="" widths={[300, 600]} sizes="(max-width: 640px) 90vw, 300px" loading="lazy" />}
+              {card.id === 'german-courses' ? <span class="levels">A1 A2 B1 C1</span> : <svg class="ic thumb-ic" aria-hidden="true"><use href={`#${ICONS[card.id] ?? 'i-user'}`} /></svg>}
+            </div>
+            <h3><a href={hrefTo(card.id, locale) ?? contactHref}>{card.title}</a>{card.sub ? <small>{card.sub}</small> : null}</h3>
+            <ul class="checks">{card.items.map((it) => <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg><span>{it}</span></li>)}</ul>
+            <a class="more" href={hrefTo(card.id, locale) ?? contactHref}><span>{ui.more}<span class="visually-hidden"> — {card.title}</span></span><svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<section class="why" id="apropos">
+  <canvas class="why-gl" data-gl="why" aria-hidden="true"></canvas>
+  <Image class="why-glow" src={glow} alt="" aria-hidden="true" widths={[520, 900]} sizes="520px" loading="lazy" />
+  <div class="container why-grid">
+    <div>
+      <p class="eyebrow">{c.why.eyebrow}</p>
+      <h2>{c.why.title}</h2>
+    </div>
+    <ul class="why-items">
+      {c.why.items.map((t, i) => <li><span class="ring"><svg class="ic xl" aria-hidden="true"><use href={`#${whyIcons[i]}`} /></svg></span><span>{t}</span></li>)}
+    </ul>
+    <p class="script why-script" aria-hidden="true">{c.why.script.map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>
+  </div>
+</section>
+
+<div class="prose-band">
+  <div class="container"><div class="prose"><Prose sections={c.sections} /></div></div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow">{c.contact.eyebrow}</p>
+      <h2>{c.contact.title}</h2>
+      <p class="muted">{c.contact.text}</p>
+    </div>
+    <ContactForm locale={locale} />
+  </div>
+</section>
+
+<script>
+  import { initGlobe } from '../scripts/globe';
+  import { startWhenReady } from '../scripts/gate';
+  const cv = document.getElementById('globeGL');
+  if (cv instanceof HTMLCanvasElement) startWhenReady(() => initGlobe(cv));
+</script>

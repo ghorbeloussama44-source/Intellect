@@ -1,0 +1,26 @@
+---
+import { getPage, pagePath } from '../config/pages';
+import type { Locale } from '../config/site';
+import { getContent } from '../copy';
+import { useUi } from '../locales';
+interface Props { locale: Locale; ids: string[] }
+const { locale, ids } = Astro.props;
+const ui = useUi(locale);
+const items = ids.map((id) => ({ page: getPage(id), content: getContent(id, locale) })).filter((x) => x.page?.status === 'published' && x.content);
+---
+{items.length > 0 && (
+  <section class="related">
+    <div class="container">
+      <h2>{ui.related}</h2>
+      <div class="cards">
+        {items.map(({ page, content }) => (
+          <a class="card rel-card" href={pagePath(page!, locale)}>
+            <h3>{content!.nav}</h3>
+            <p>{content!.description}</p>
+            <span class="more">{ui.more}<svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -12,7 +12,7 @@ if (existsSync(join(root, ".env")))
     const m = l.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
   }
 const PEXELS = process.env.PEXELS_API_KEY, PIXABAY = process.env.PIXABAY_API_KEY;
-const out = join(root, "assets", "src"); mkdirSync(out, { recursive: true });   // originaux ; npm run images produit les versions optimisées
+const out = join(root, "media-src"); mkdirSync(out, { recursive: true });   // originaux (hors git) ; npm run images produit les versions optimisées
 
 // slot -> requêtes essayées dans l'ordre, format Pexels, fichier
 const SLOTS = [
@@ -54,7 +54,7 @@ async function pixabayVideo() {
     if (!v) continue;
     const f = v.videos.small?.size < 8e6 ? v.videos.small : v.videos.tiny;
     const res = await fetch(f.url); if (!res.ok) continue;
-    writeFileSync(join(root, "assets", "hero-bg.mp4"), Buffer.from(await res.arrayBuffer()));
+    writeFileSync(join(root, "public", "hero-bg.mp4"), Buffer.from(await res.arrayBuffer()));
     credits.push(`- \`hero-bg.mp4\` — « ${q} » — ${v.user} via Pixabay : ${v.pageURL}`);
     console.log(`✔ hero-bg.mp4  (${q}, ${(f.size / 1e6).toFixed(1)} Mo)`); return;
   }
@@ -62,6 +62,6 @@ async function pixabayVideo() {
 }
 
 await pexels(); await pixabayVideo();
-writeFileSync(join(root, "assets", "CREDITS.md"), credits.join("\n") + "\n");
+writeFileSync(join(root, "CREDITS.md"), credits.join("\n") + "\n");
 if (!process.argv.includes("--no-prep")) { const { run } = await import("./prep-images.mjs"); await run(); }
-console.log("Terminé. Vérifiez assets/ puis : git add assets && git commit -m 'Add media' && git push");
+console.log("Terminé. Vérifiez src/assets/media, public/hero-bg.mp4 et CREDITS.md puis : git add src/assets public CREDITS.md && git commit -m 'Add media' && git push");

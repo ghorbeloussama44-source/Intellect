@@ -1,0 +1,61 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import ContactForm from './ContactForm.astro';
+import CtaBand from './CtaBand.astro';
+import FaqList from './FaqList.astro';
+import Prose from './Prose.astro';
+import Related from './Related.astro';
+import type { PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { CONTACT } from '../config/contact';
+import { useUi } from '../locales';
+import { breadcrumbTrail } from '../seo/schema';
+
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const ui = useUi(locale);
+const trail = breadcrumbTrail(page, locale, content);
+const updated = new Intl.DateTimeFormat(locale === 'ar' ? 'ar-u-nu-latn' : locale, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(page.updated));
+const toc = content.sections.length >= 3;
+const address = CONTACT.address?.[locale];
+const hasContact = Boolean(CONTACT.email || CONTACT.phone || CONTACT.whatsapp || address);
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={trail} />
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+  </div>
+</section>
+
+<div class="container article-wrap">
+  {toc ? (
+    <nav class="toc" aria-label={ui.toc}>
+      <b>{ui.toc}</b>
+      <ol>
+        {content.sections.map((s) => <li><a href={`#${s.id}`}>{s.h2}</a></li>)}
+        {content.faq && content.faq.length > 0 && <li><a href="#faq">{ui.faqTitle}</a></li>}
+      </ol>
+    </nav>
+  ) : <div></div>}
+  <article class="prose" style="margin:0;max-width:760px">
+    <p class="meta">{ui.updatedOn} <time datetime={page.updated}>{updated}</time></p>
+    <Prose sections={content.sections} />
+    {content.faq && content.faq.length > 0 && <FaqList items={content.faq} title={ui.faqTitle} />}
+    {page.layout === 'contact' ? (
+      <section id="contact" style="padding:0;margin-block-start:40px">
+        {hasContact && (
+          <ul class="bullets" style="margin-block-end:24px">
+            {CONTACT.email && <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>}
+            {CONTACT.phone && <li><a href={`tel:${CONTACT.phone.replace(/[^+\d]/g, '')}`} dir="ltr">{CONTACT.phone}</a></li>}
+            {CONTACT.whatsapp && <li><a href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener">WhatsApp</a></li>}
+            {address && <li>{address}</li>}
+          </ul>
+        )}
+        <ContactForm locale={locale} />
+      </section>
+    ) : <CtaBand locale={locale} />}
+  </article>
+</div>
+<Related locale={locale} ids={content.related ?? []} />

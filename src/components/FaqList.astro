@@ -1,0 +1,9 @@
+---
+import type { Faq } from '../copy/types';
+interface Props { items: Faq[]; title: string }
+const { items, title } = Astro.props;
+---
+<section class="faq" id="faq" style="padding:0">
+  <h2>{title}</h2>
+  {items.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+</section>

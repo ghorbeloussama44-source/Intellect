@@ -1,0 +1,30 @@
+---
+import ArticlePage from '../components/ArticlePage.astro';
+import HomePage from '../components/HomePage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { allLocalizedPaths, type PageDef } from '../config/pages';
+import { LOCALES, type Locale } from '../config/site';
+import { getContent, hasContentInAllLocales } from '../copy';
+import { buildGraph } from '../seo/schema';
+
+/**
+ * Une seule route pour toutes les pages et toutes les langues, générée depuis le registre.
+ * Une page publiée sans contenu dans les trois langues fait échouer le build : pas de page à moitié traduite.
+ */
+export function getStaticPaths() {
+  return allLocalizedPaths().map(({ page, locale, path }) => {
+    if (!hasContentInAllLocales(page.id)) {
+      throw new Error(`La page « ${page.id} » est publiée mais n'a pas de contenu dans les trois langues (${LOCALES.join(', ')}).`);
+    }
+    return { params: { slug: path === '/' ? undefined : path.replace(/^\/|\/$/g, '') }, props: { page, locale } };
+  });
+}
+
+interface Props { page: PageDef; locale: Locale }
+const { page, locale } = Astro.props;
+const content = getContent(page.id, locale)!;
+const jsonLd = buildGraph(page, locale, content, '/og-default.jpg');
+---
+<BaseLayout locale={locale} page={page} title={content.title} description={content.description} jsonLd={jsonLd}>
+  {page.layout === 'home' ? <HomePage locale={locale} /> : <ArticlePage locale={locale} page={page} content={content} />}
+</BaseLayout>

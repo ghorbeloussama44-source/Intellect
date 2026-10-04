@@ -1,0 +1,25 @@
+---
+import type { Section } from '../copy/types';
+interface Props { sections: Section[] }
+const { sections } = Astro.props;
+---
+{sections.map((s) => (
+  <section class="prose-sec" id={s.id} style="padding:0">
+    <h2>{s.h2}</h2>
+    {s.paragraphs?.map((p) => <p>{p}</p>)}
+    {s.steps && (
+      <ol class="steps">
+        {s.steps.map((st) => <li><div><b>{st.title}</b><p>{st.text}</p></div></li>)}
+      </ol>
+    )}
+    {s.bullets && <ul class="bullets">{s.bullets.map((b) => <li>{b}</li>)}</ul>}
+    {s.blocks?.map((b) => (
+      <>
+        <h3>{b.h3}</h3>
+        {b.paragraphs?.map((p) => <p>{p}</p>)}
+        {b.bullets && <ul class="bullets">{b.bullets.map((x) => <li>{x}</li>)}</ul>}
+      </>
+    ))}
+    {s.after?.map((p) => <p>{p}</p>)}
+  </section>
+))}

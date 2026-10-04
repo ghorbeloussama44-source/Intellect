@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useUi } from '../locales';
+const ui = useUi('fr');
+---
+<BaseLayout locale="fr" title={`${ui.notFound.title} — Intellect`} description={ui.notFound.text} noindex>
+  <section class="notfound">
+    <div class="container">
+      <h1 style="color:var(--blue)">{ui.notFound.title}</h1>
+      <p class="muted" style="margin-block:12px 24px">{ui.notFound.text}</p>
+      <a class="btn btn-orange btn-lg" href="/">{ui.notFound.back}</a>
+    </div>
+  </section>
+</BaseLayout>
