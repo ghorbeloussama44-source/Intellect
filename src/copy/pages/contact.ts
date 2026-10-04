@@ -97,6 +97,13 @@ const fr: PageContent = {
         'Les démarches d’études à l’étranger prennent du temps, et certaines dates limites sont fixes. Plus vous nous contactez tôt, plus vous avez de choix. Si votre calendrier est déjà serré, indiquez-le clairement dans votre message afin que nous puissions prioriser et vous dire sans détour ce qui reste possible.',
       ],
     },
+    {
+      id: 'exemple', h2: 'Un exemple de premier message',
+      paragraphs: [
+        'À titre d’exemple, voici un message qui nous suffit pour vous répondre utilement : « Bonjour, je suis titulaire d’une licence en biologie obtenue en 2024. Mon niveau d’allemand est A2. Je souhaite poursuivre un master en Allemagne à la rentrée prochaine. Mon budget est limité et je voudrais savoir quelles universités sont réalistes pour mon profil, quel examen de langue passer et dans quel ordre faire les démarches. Pouvez-vous me proposer un premier plan ? »',
+        'Ce profil est fictif : il illustre simplement le niveau de précision utile.',
+      ],
+    },
   ],
 };
 
@@ -195,6 +202,13 @@ const en: PageContent = {
       id: 'timing', h2: 'A word on timing',
       paragraphs: [
         'Study procedures abroad take time, and some deadlines are fixed. The earlier you contact us, the more choices you have. If your calendar is already tight, say so clearly in your message so that we can prioritise and tell you frankly what is still possible.',
+      ],
+    },
+    {
+      id: 'example', h2: 'An example of a first message',
+      paragraphs: [
+        'As an example, here is a message that is enough for us to reply usefully: “Hello, I hold a bachelor’s degree in biology obtained in 2024. My level of German is A2. I would like to pursue a master’s in Germany next autumn. My budget is limited and I would like to know which universities are realistic for my profile, which language exam to take and in what order to do the procedures. Can you suggest a first plan?”',
+        'This profile is fictional: it simply illustrates the useful level of detail.',
       ],
     },
   ],
@@ -296,6 +310,13 @@ const ar: PageContent = {
       id: 'timing', h2: 'كلمة عن الآجال',
       paragraphs: [
         'تستغرق إجراءات الدراسة في الخارج وقتًا، وبعض المواعيد النهائية ثابتة. وكلما تواصلت معنا مبكرًا كانت خياراتك أوسع. وإذا كان جدولك الزمني ضيقًا بالفعل فاذكر ذلك بوضوح في رسالتك حتى نتمكن من تحديد الأولويات ونقول لك بصراحة ما يزال ممكنًا.',
+      ],
+    },
+    {
+      id: 'example', h2: 'مثال على رسالة أولى',
+      paragraphs: [
+        'على سبيل المثال، إليك رسالة تكفينا لنرد عليك بشكل مفيد: «مرحبًا، أحمل إجازة في علم الأحياء حصلت عليها سنة 2024. مستواي في الألمانية A2. أرغب في متابعة الماجستير في ألمانيا في الدخول المقبل. ميزانيتي محدودة وأود أن أعرف أي الجامعات واقعية لملفي، وأي امتحان لغوي يجب أن أجتازه، وبأي ترتيب أقوم بالإجراءات. هل تستطيعون اقتراح خطة أولى؟»',
+        'هذا الملف خيالي: وهو يوضح فقط درجة الدقة المفيدة في الرسالة.',
       ],
     },
   ],

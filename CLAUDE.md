@@ -72,23 +72,29 @@ sur `vercel.app`. C'est volontaire : le contenu commence à vieillir et à
 
 Les 15 pages (identifiants du registre `src/config/pages.ts`, contenus dans `src/copy/pages/<id>.ts`) :
 
-| # | Identifiant | Rôle |
-|---|---|---|
-| 1 | `home` | Accueil |
-| 2 | `german-courses` | Cours d'allemand (page pivot A1–C1) |
-| 3 | `german-a1-a2` | Allemand A1 et A2 |
-| 4 | `german-b1` | Allemand B1 |
-| 5 | `german-c1` | Allemand C1 (TestDaF, DSH) |
-| 6 | `medicine-germany` | Préparation à la médecine en Allemagne |
-| 7 | `study-germany` | Étudier en Allemagne |
-| 8 | `study-russia` | Étudier en Russie |
-| 9 | `student-support` | Accompagnement complet |
-| 10 | `student-visa-germany` | Guide : visa étudiant Allemagne |
-| 11 | `student-life` | Guide : logement et vie étudiante |
-| 12 | `germany-or-russia` | Guide : Allemagne ou Russie |
-| 13 | `about` | À propos |
-| 14 | `faq` | Questions fréquentes |
-| 15 | `contact` | Contact |
+| # | Identifiant | URL (français) | Rôle |
+|---|---|---|---|
+| 1 | `home` | `/` | Accueil |
+| 2 | `german-courses` | `/formations/allemand/` | Cours d'allemand (page pivot A1–C1) |
+| 3 | `german-a1` | `/formations/allemand-a1/` | Allemand A1 |
+| 4 | `german-a2` | `/formations/allemand-a2/` | Allemand A2 |
+| 5 | `german-b1` | `/formations/allemand-b1/` | Allemand B1 |
+| 6 | `german-c1` | `/formations/allemand-c1/` | Allemand C1 (TestDaF, DSH, santé) |
+| 7 | `medicine-germany` | `/etudes/medecine-allemagne/` | Médecine en Allemagne (médecins diplômés : reconnaissance, FSP, KP) |
+| 8 | `study-germany` | `/etudes/allemagne/` | Étudier en Allemagne (public large, dont la faculté de médecine) |
+| 9 | `study-russia` | `/etudes/russie/` | Étudier en Russie |
+| 10 | `student-support` | `/accompagnement/` | Accompagnement étudiant |
+| 11 | `visa-procedures` | `/visa-demarches/` | Visa et démarches |
+| 12 | `exam-preparation` | `/preparation-examens/` | Préparation aux examens et aux étapes professionnelles |
+| 13 | `about` | `/a-propos/` | À propos |
+| 14 | `faq` | `/faq/` | Questions fréquentes |
+| 15 | `contact` | `/contact/` | Contact |
+
+Hiérarchie du maillage : Accueil → Cours d'allemand → A1 → A2 → B1 → C1 ; Accueil → Étudier en Allemagne → Médecine en Allemagne → Préparation aux examens. Les URL anglaises et arabes sont parallèles (`/en/courses/german/`, `/ar/studies/medicine-germany/`…). Les dossiers parents `/formations`, `/etudes` redirigent en 301 (voir `vercel.json`).
+
+Contenus rédigés mais hors lancement (statut `draft`) : `student-life` (logement et vie étudiante) et `germany-or-russia` (comparatif). Ils pourront devenir des articles de blog.
+
+Évolutions futures (blog, e-learning, espace étudiant) : voir `docs/FUTURE.md`. Aucune route ni lien visible aujourd'hui.
 
 Pages légales (mentions légales, confidentialité) : à ajouter en `noindex`, hors des 45 URL du sitemap, dès que le client a fourni les informations de l'entreprise. Ne rien inventer.
 

@@ -2,205 +2,244 @@ import type { ContentSet, PageContent } from '../types';
 
 const fr: PageContent = {
   nav: 'Médecine en Allemagne',
-  title: 'Étudier la médecine en Allemagne : admission, langue et préparation | Intellect',
-  description: 'Préparez vos études de médecine en Allemagne avec Intellect : orientation, niveau d’allemand, dossier et inscription à l’université, préparation aux examens d’admission.',
-  h1: 'Étudier la médecine en Allemagne : préparer une admission exigeante',
-  lead: 'La médecine allemande est réputée et très demandée. Réussir l’admission demande de l’anticipation, un excellent niveau d’allemand et un dossier irréprochable. Nous vous accompagnons à chaque étape.',
-  related: ['german-c1', 'study-germany', 'student-visa-germany', 'student-support'],
+  title: 'Médecine en Allemagne : reconnaissance, langue, FSP et KP | Intellect',
+  description: 'Médecin diplômé et projet en Allemagne ? Étapes de la reconnaissance, niveau d’allemand, Fachsprachprüfung (FSP), Kenntnisprüfung (KP) et accompagnement Intellect.',
+  h1: 'Médecine en Allemagne : construire son projet professionnel',
+  lead: 'Exercer comme médecin en Allemagne est un projet de plusieurs mois, parfois plus. Il demande une bonne préparation de la langue, un dossier rigoureux et une information fiable à chaque étape.',
+  related: ['exam-preparation', 'german-c1', 'visa-procedures', 'student-support'],
   sections: [
     {
-      id: 'realite', h2: 'La réalité de l’admission en médecine',
+      id: 'pourquoi', h2: 'Pourquoi des médecins envisagent l’Allemagne',
       paragraphs: [
-        'En Allemagne, les places en médecine sont limitées et fortement convoitées. Le nombre de candidats dépasse largement celui des places, ce qui rend l’admission sélective pour les candidats allemands comme pour les candidats internationaux. Nous préférons vous le dire dès le départ : personne ne peut garantir une place. Ce que nous pouvons faire, c’est maximiser vos chances en préparant chaque élément du dossier avec soin et en vous évitant les erreurs qui coûtent une année.',
-        'Les règles exactes dépendent de votre nationalité, de votre diplôme d’études secondaires et de l’université visée. Pour certains candidats, la demande passe par l’organisme central chargé de l’attribution des places ; pour d’autres, elle se fait directement auprès de l’université. Nous vérifions avec vous la voie qui s’applique à votre cas, puis nous construisons le calendrier.',
+        'De nombreux médecins formés hors d’Allemagne s’intéressent à ce pays : un système de santé structuré, des hôpitaux et des cabinets qui recrutent, des perspectives de formation continue et la possibilité de se spécialiser. Chaque parcours est personnel, et les motivations vont de la recherche d’un cadre de travail différent à la volonté d’élargir ses compétences.',
+        'Nous préférons être clairs dès le départ : travailler en Allemagne n’est pas une démarche rapide. Les règles sont précises, les autorités sont exigeantes et le calendrier dépend de nombreux éléments, dont certains ne sont pas entre vos mains. Notre rôle est de vous aider à comprendre le chemin, à vous préparer et à éviter les erreurs d’organisation.',
       ],
     },
     {
-      id: 'langue', h2: 'Le niveau d’allemand : le premier verrou',
+      id: 'langue', h2: 'La langue : la condition de tout le reste',
       paragraphs: [
-        'La médecine se déroule en allemand. Les universités demandent un niveau avancé, en général l’équivalent du C1, prouvé par un examen reconnu comme le TestDaF ou la DSH. Ce niveau est nécessaire pour comprendre les cours, communiquer avec les patients lors des stages cliniques et passer les examens oraux.',
-        'C’est pourquoi nos cours d’allemand sont le socle de la préparation. Lorsque votre niveau le permet, nous intégrons le vocabulaire médical de base et des situations typiques : anamnèse, description de symptômes, lecture de cas. Vous trouverez le détail de nos formations sur la page consacrée au niveau C1.',
+        'En Allemagne, la pratique médicale se fait en allemand. Il faut comprendre un patient, rédiger un dossier, présenter un cas à ses collègues et échanger avec les équipes. Pour demander l’autorisation d’exercer, un niveau général d’allemand est exigé, en pratique autour du B2, puis une épreuve de langue spécialisée dans le domaine médical.',
+        'C’est pourquoi nos cours d’allemand sont le socle du projet. Nous suivons un parcours progressif du niveau A1 au niveau C1, puis nous intégrons le vocabulaire médical et les situations professionnelles : l’anamnèse, la description des symptômes, la communication avec le patient, l’échange entre médecins. Vous trouverez le détail de nos formations sur les pages dédiées aux niveaux d’allemand.',
       ],
     },
     {
-      id: 'diplome', h2: 'Votre diplôme est-il reconnu ?',
+      id: 'reconnaissance', h2: 'La reconnaissance de votre qualification',
       paragraphs: [
-        'Pour être admis directement à l’université, votre diplôme du secondaire doit être reconnu comme équivalent au diplôme allemand donnant accès aux études supérieures. Les autorités publient des bases de données qui indiquent, pays par pays, si un diplôme suffit ou s’il faut passer par une année préparatoire dans un Studienkolleg.',
-        'Si une année préparatoire est exigée, il existe généralement une orientation scientifique adaptée aux filières médicales. Elle se termine par un examen d’évaluation dont dépend l’accès à l’université. Nous vous aidons à identifier votre situation, à vous inscrire dans les délais et à vous préparer à cet examen, qui est lui aussi en allemand.',
+        'Pour exercer en tant que médecin, il faut obtenir une autorisation officielle. Elle peut prendre la forme d’une autorisation complète d’exercer, l’Approbation, ou d’une autorisation temporaire et limitée, la Berufserlaubnis. La demande est examinée par l’autorité compétente du Land dans lequel vous souhaitez travailler : les procédures et les exigences peuvent donc varier d’un Land à l’autre.',
+        'L’autorité compare votre formation à la formation médicale allemande. Si elle conclut à une équivalence, la suite est plus simple. Si elle constate des différences importantes, ou si votre situation l’impose, une épreuve de connaissances peut être demandée. La décision appartient aux autorités, et nous ne pouvons ni la prédire ni la garantir.',
       ],
     },
     {
-      id: 'epreuves', h2: 'Les tests et épreuves d’admission',
-      paragraphs: [
-        'Certaines universités utilisent un test d’aptitude pour les filières médicales, comme le TMS (Test für medizinische Studiengänge), qui évalue le raisonnement logique, la mémorisation, la compréhension de textes et l’analyse de données. D’autres retiennent surtout la moyenne du diplôme, des entretiens ou des critères propres. Les modalités changent d’une année à l’autre : nous les vérifions pour chaque université que vous visez.',
-        'Quand un test existe, nous vous aidons à le préparer : présentation du format, entraînement chronométré, méthodes de mémorisation et gestion du stress. Nous insistons sur la régularité, car ces épreuves se préparent sur plusieurs mois et non sur quelques semaines.',
-      ],
-    },
-    {
-      id: 'etapes', h2: 'Notre accompagnement, étape par étape',
+      id: 'etapes', h2: 'Les grandes étapes du projet',
       steps: [
-        { title: 'Bilan et orientation', text: 'Nous analysons votre diplôme, vos notes, votre niveau d’allemand et votre calendrier. Nous vous disons franchement si votre objectif est réaliste cette année ou s’il faut prévoir une année de préparation.' },
-        { title: 'Remise à niveau linguistique', text: 'Parcours d’allemand jusqu’au niveau exigé, avec préparation à l’examen de langue reconnu par vos universités cibles.' },
-        { title: 'Constitution du dossier', text: 'Traductions assermentées, copies certifiées, lettre de motivation, curriculum vitae et formulaires, avec un contrôle avant chaque envoi.' },
-        { title: 'Candidatures', text: 'Suivi des dates limites, soumission des candidatures et gestion des échanges avec les universités.' },
-        { title: 'Visa et installation', text: 'Une fois l’admission obtenue : démarches de visa, assurance maladie, justificatif de ressources, logement et arrivée.' },
+        { title: 'Faire le point', text: 'Nous analysons votre diplôme, votre spécialité, votre expérience, votre niveau d’allemand et le Land visé, afin de déterminer un ordre réaliste pour vos démarches.' },
+        { title: 'Préparer la langue', text: 'Parcours d’allemand général jusqu’au niveau demandé, avec une préparation progressive à l’allemand médical.' },
+        { title: 'Constituer le dossier', text: 'Diplômes, relevés, attestations, curriculum vitae, documents d’identité, traductions assermentées et copies certifiées, selon la liste de l’autorité compétente.' },
+        { title: 'Déposer la demande de reconnaissance', text: 'La demande est adressée à l’autorité du Land choisi. Nous vous aidons à vérifier la complétude du dossier avant l’envoi.' },
+        { title: 'Passer les épreuves exigées', text: 'Selon votre situation : épreuve de langue médicale, épreuve de connaissances, ou autres mesures décidées par l’autorité.' },
+        { title: 'S’installer et travailler', text: 'Recherche de poste, visa ou titre de séjour adapté, logement, assurance, démarches d’arrivée.' },
       ],
     },
     {
-      id: 'plan-b', h2: 'Prévoir un plan B sans abandonner votre objectif',
+      id: 'fsp', h2: 'La Fachsprachprüfung (FSP) : l’épreuve de langue médicale',
       paragraphs: [
-        'Comme l’admission est sélective, nous vous conseillons de candidater à plusieurs universités et d’envisager des alternatives cohérentes avec votre projet : médecine dentaire, pharmacie, biologie, sciences biomédicales ou filières de santé. Ces options peuvent constituer un chemin direct vers vos objectifs, ou une base solide si vous souhaitez retenter la médecine plus tard.',
-        'Nous discutons ouvertement de ces scénarios avec vous et avec votre famille, pour que la décision soit prise en connaissance de cause.',
+        'La Fachsprachprüfung, souvent abrégée FSP, est une épreuve de langue spécialisée destinée aux professionnels de santé. Elle vérifie que vous pouvez communiquer efficacement dans un contexte médical. Elle est généralement organisée par l’ordre ou la chambre des médecins du Land concerné et comprend, en général, un entretien avec un patient simulé, la rédaction d’un compte rendu médical et un échange professionnel avec un médecin.',
+        'Les formats et les conditions d’inscription varient d’un Land à l’autre. Un certificat de langue générale est souvent demandé avant de pouvoir s’y inscrire. Nous détaillons la préparation à cette épreuve sur la page consacrée à la préparation aux examens, sans jamais promettre un résultat.',
       ],
     },
     {
-      id: 'budget', h2: 'Budget et durée des études',
+      id: 'kp', h2: 'La Kenntnisprüfung (KP) : l’épreuve de connaissances',
       paragraphs: [
-        'Les études de médecine durent plusieurs années et se terminent par un examen d’État. Prévoyez le coût de la vie, l’assurance maladie obligatoire, le logement et les frais liés au semestre. Les frais de scolarité varient selon les Länder et les établissements, et la preuve de ressources est exigée pour le visa. Nous vous aidons à établir un budget réaliste avant de vous engager.',
+        'Selon les situations, l’autorité peut orienter le candidat vers une Kenntnisprüfung, c’est-à-dire une épreuve de connaissances médicales, qui porte en général sur des domaines cliniques centraux et sur des questions de pratique professionnelle. Elle se déroule en allemand, avec des examinateurs spécialistes.',
+        'Toutes les personnes n’ont pas à la passer, et son contenu précis dépend du Land. Si elle est demandée dans votre cas, la préparation est double : réviser les connaissances cliniques et s’entraîner à les exprimer clairement en allemand, à l’oral comme à l’écrit.',
+      ],
+    },
+    {
+      id: 'accompagnement', h2: 'Ce que fait Intellect, et ce qu’Intellect ne fait pas',
+      bullets: [
+        'Nous vous aidons à comprendre les étapes et à les organiser dans le temps.',
+        'Nous préparons votre niveau d’allemand, général puis médical.',
+        'Nous vous aidons à constituer et à contrôler votre dossier avant l’envoi.',
+        'Nous vous accompagnons dans les démarches de visa et d’installation.',
+        'Nous ne remplaçons pas les autorités, qui décident de la reconnaissance et de l’autorisation d’exercer.',
+        'Nous ne garantissons ni l’équivalence, ni l’autorisation, ni un poste.',
+      ],
+      after: ['Vérifiez toujours les exigences officielles du Land concerné : elles font foi, et elles peuvent changer.'],
+    },
+    {
+      id: 'etudiants', h2: 'Et si vous souhaitez étudier la médecine ?',
+      paragraphs: [
+        'Cette page s’adresse aux médecins déjà diplômés. Si vous êtes bachelier ou étudiant et que vous voulez entrer en faculté de médecine, le chemin est différent : l’admission est très sélective et demande un excellent niveau d’allemand. Vous trouverez les informations correspondantes sur la page consacrée aux études en Allemagne.',
       ],
     },
   ],
   faq: [
-    { q: 'Garantissez-vous l’admission en médecine ?', a: 'Non, personne ne peut la garantir. Les décisions appartiennent aux universités et aux autorités. Nous maximisons vos chances par une préparation sérieuse et un dossier complet.' },
-    { q: 'Quel niveau d’allemand faut-il ?', a: 'En général un niveau avancé, équivalent au C1, prouvé par un examen reconnu. Chaque université précise ses exigences.' },
-    { q: 'Puis-je commencer sans parler allemand ?', a: 'Oui, mais prévoyez un parcours de langue complet avant l’admission. Nous établissons un calendrier réaliste après un test de positionnement.' },
-    { q: 'Existe-t-il des alternatives si je ne suis pas admis en médecine ?', a: 'Oui : médecine dentaire, pharmacie, biologie, sciences biomédicales, soins infirmiers. Nous étudions avec vous l’option la plus cohérente avec votre projet.' },
+    { q: 'Intellect garantit-il la reconnaissance de mon diplôme ?', a: 'Non. La reconnaissance est décidée par les autorités compétentes. Nous vous aidons à préparer le dossier et à comprendre les étapes.' },
+    { q: 'Quel niveau d’allemand faut-il pour exercer ?', a: 'En pratique, un niveau général autour du B2 est demandé avant l’épreuve de langue médicale. Les exigences exactes dépendent du Land et doivent être vérifiées.' },
+    { q: 'Tous les médecins doivent-ils passer la Kenntnisprüfung ?', a: 'Non. Cela dépend de la décision de l’autorité et de votre situation. Nous vous aidons à comprendre ce qui peut s’appliquer à votre cas.' },
+    { q: 'Combien de temps faut-il prévoir ?', a: 'Plusieurs mois au minimum, souvent davantage, car la langue, les documents et l’instruction par l’autorité prennent du temps. Nous établissons un calendrier réaliste avec vous.' },
   ],
 };
 
 const en: PageContent = {
   nav: 'Medicine in Germany',
-  title: 'Study medicine in Germany: admission, language and preparation | Intellect',
-  description: 'Prepare to study medicine in Germany with Intellect: guidance, German level, application and university enrolment, and preparation for admission tests.',
-  h1: 'Study medicine in Germany: preparing a demanding admission',
-  lead: 'German medicine is renowned and in high demand. Getting admitted takes planning, an excellent level of German and a flawless file. We support you at every stage.',
-  related: ['german-c1', 'study-germany', 'student-visa-germany', 'student-support'],
+  title: 'Medicine in Germany: recognition, language, FSP and KP | Intellect',
+  description: 'Qualified doctor planning a career in Germany? Recognition steps, German level, Fachsprachprüfung (FSP), Kenntnisprüfung (KP) and Intellect’s support.',
+  h1: 'Medicine in Germany: building your professional project',
+  lead: 'Practising as a doctor in Germany is a project of several months, sometimes more. It takes good language preparation, a rigorous file and reliable information at every stage.',
+  related: ['exam-preparation', 'german-c1', 'visa-procedures', 'student-support'],
   sections: [
     {
-      id: 'reality', h2: 'The reality of admission to medicine',
+      id: 'why', h2: 'Why doctors consider Germany',
       paragraphs: [
-        'In Germany, places in medicine are limited and highly sought after. The number of applicants far exceeds the number of places, which makes admission selective for German and international candidates alike. We prefer to tell you from the outset: nobody can guarantee a place. What we can do is maximise your chances by preparing every element of your file carefully and sparing you the mistakes that cost a year.',
-        'The exact rules depend on your nationality, your secondary school diploma and the university you target. For some applicants the request goes through the central body that allocates places; for others it is made directly to the university. We check with you which route applies to your case, then build the calendar.',
+        'Many doctors trained outside Germany are interested in the country: a structured healthcare system, hospitals and practices that recruit, prospects for continuing education and the possibility to specialise. Every path is personal, and motivations range from wanting a different working environment to wishing to broaden one’s skills.',
+        'We prefer to be clear from the start: working in Germany is not a quick process. The rules are precise, the authorities are demanding and the timeline depends on many factors, some of which are out of your hands. Our role is to help you understand the path, prepare and avoid organisational mistakes.',
       ],
     },
     {
-      id: 'language', h2: 'The level of German: the first lock',
+      id: 'language', h2: 'Language: the condition for everything else',
       paragraphs: [
-        'Medicine is taught in German. Universities ask for an advanced level, generally the equivalent of C1, proven by a recognised exam such as TestDaF or DSH. That level is needed to follow lectures, talk with patients during clinical placements and take oral exams.',
-        'This is why our German courses are the foundation of the preparation. When your level allows, we include basic medical vocabulary and typical situations: taking a history, describing symptoms, reading cases. You will find the details of our courses on the C1 page.',
+        'In Germany, medical practice is carried out in German. You must understand a patient, write up a record, present a case to colleagues and talk with teams. To apply for authorisation to practise, a general level of German is required, in practice around B2, followed by a specialised language test in the medical field.',
+        'This is why our German courses are the foundation of the project. We follow a progressive path from A1 to C1, then integrate medical vocabulary and professional situations: taking a history, describing symptoms, communicating with the patient, exchanging between doctors. You will find the details of our courses on the pages dedicated to German levels.',
       ],
     },
     {
-      id: 'diploma', h2: 'Is your diploma recognised?',
+      id: 'recognition', h2: 'Recognition of your qualification',
       paragraphs: [
-        'To be admitted directly to a university, your secondary school diploma must be recognised as equivalent to the German diploma giving access to higher education. The authorities publish databases showing, country by country, whether a diploma is enough or whether you must go through a preparatory year at a Studienkolleg.',
-        'If a preparatory year is required, there is generally a science stream suited to medical fields. It ends with an assessment exam on which access to university depends. We help you identify your situation, register on time and prepare for this exam, which is also in German.',
+        'To practise as a doctor you need official authorisation. It can take the form of a full licence to practise, the Approbation, or of a temporary and limited permit, the Berufserlaubnis. The application is examined by the competent authority of the federal state (Land) in which you wish to work: procedures and requirements can therefore vary from one state to another.',
+        'The authority compares your training with German medical training. If it concludes there is equivalence, the rest is simpler. If it finds significant differences, or if your situation requires it, a knowledge test may be requested. The decision belongs to the authorities, and we can neither predict nor guarantee it.',
       ],
     },
     {
-      id: 'tests', h2: 'Admission tests and procedures',
-      paragraphs: [
-        'Some universities use an aptitude test for medical fields, such as the TMS (Test für medizinische Studiengänge), which assesses logical reasoning, memory, text comprehension and data analysis. Others mainly look at the diploma average, interviews or their own criteria. Arrangements change from year to year: we check them for each university you target.',
-        'Where a test exists, we help you prepare: presentation of the format, timed training, memorisation methods and stress management. We stress regularity, because these tests are prepared over several months rather than a few weeks.',
-      ],
-    },
-    {
-      id: 'steps', h2: 'Our support, step by step',
+      id: 'steps', h2: 'The main steps of the project',
       steps: [
-        { title: 'Assessment and guidance', text: 'We analyse your diploma, your grades, your level of German and your timeline. We tell you frankly whether your goal is realistic this year or whether you should plan a preparation year.' },
-        { title: 'Language upgrade', text: 'A German path up to the required level, with preparation for the language exam your target universities recognise.' },
-        { title: 'Building the file', text: 'Sworn translations, certified copies, motivation letter, CV and forms, with a check before every submission.' },
-        { title: 'Applications', text: 'Tracking deadlines, submitting applications and handling exchanges with universities.' },
-        { title: 'Visa and settling in', text: 'Once admitted: visa procedures, health insurance, proof of funds, housing and arrival.' },
+        { title: 'Taking stock', text: 'We analyse your diploma, speciality, experience, level of German and the target state, to set a realistic order for your steps.' },
+        { title: 'Preparing the language', text: 'A general German path up to the required level, with progressive preparation for medical German.' },
+        { title: 'Building the file', text: 'Diplomas, transcripts, certificates, CV, identity documents, sworn translations and certified copies, according to the competent authority’s list.' },
+        { title: 'Submitting the recognition application', text: 'The application is sent to the authority of the chosen state. We help you check that the file is complete before sending.' },
+        { title: 'Taking the required tests', text: 'Depending on your situation: medical language test, knowledge test, or other measures decided by the authority.' },
+        { title: 'Settling in and working', text: 'Job search, suitable visa or residence permit, housing, insurance, arrival formalities.' },
       ],
     },
     {
-      id: 'plan-b', h2: 'Having a plan B without giving up your goal',
+      id: 'fsp', h2: 'The Fachsprachprüfung (FSP): the medical language test',
       paragraphs: [
-        'Because admission is selective, we advise you to apply to several universities and to consider alternatives consistent with your project: dentistry, pharmacy, biology, biomedical sciences or other health fields. These options can be a direct route to your goals, or a solid base if you want to try medicine again later.',
-        'We discuss these scenarios openly with you and your family so that the decision is made with full knowledge.',
+        'The Fachsprachprüfung, often abbreviated FSP, is a specialised language test for healthcare professionals. It checks that you can communicate effectively in a medical context. It is generally organised by the medical association or chamber of the state concerned and usually includes an interview with a simulated patient, writing a medical report and a professional exchange with a doctor.',
+        'Formats and registration conditions vary from state to state. A general language certificate is often required before you can register. We detail the preparation for this test on the exam preparation page, without ever promising a result.',
       ],
     },
     {
-      id: 'budget', h2: 'Budget and length of studies',
+      id: 'kp', h2: 'The Kenntnisprüfung (KP): the knowledge test',
       paragraphs: [
-        'Medical studies last several years and end with a state exam. Plan for the cost of living, compulsory health insurance, housing and semester fees. Tuition varies by federal state and institution, and proof of funds is required for the visa. We help you build a realistic budget before you commit.',
+        'Depending on the situation, the authority may direct the candidate to a Kenntnisprüfung, that is, a test of medical knowledge, which generally covers central clinical areas and questions of professional practice. It takes place in German, with specialist examiners.',
+        'Not everyone has to take it, and its precise content depends on the state. If it is requested in your case, the preparation is twofold: revising clinical knowledge and training to express it clearly in German, orally and in writing.',
+      ],
+    },
+    {
+      id: 'support', h2: 'What Intellect does, and what it does not',
+      bullets: [
+        'We help you understand the steps and organise them over time.',
+        'We prepare your level of German, general then medical.',
+        'We help you build and check your file before sending.',
+        'We support you with visa procedures and settling in.',
+        'We do not replace the authorities, which decide on recognition and authorisation to practise.',
+        'We guarantee neither equivalence, nor authorisation, nor a job.',
+      ],
+      after: ['Always check the official requirements of the state concerned: they are authoritative, and they may change.'],
+    },
+    {
+      id: 'students', h2: 'And if you want to study medicine?',
+      paragraphs: [
+        'This page is for doctors who already hold a qualification. If you are a school-leaver or student wanting to enter medical school, the path is different: admission is highly selective and requires an excellent level of German. You will find the relevant information on the page about studying in Germany.',
       ],
     },
   ],
   faq: [
-    { q: 'Do you guarantee admission to medicine?', a: 'No, nobody can. Decisions belong to universities and authorities. We maximise your chances through serious preparation and a complete file.' },
-    { q: 'What level of German is needed?', a: 'Generally an advanced level, equivalent to C1, proven by a recognised exam. Each university states its requirements.' },
-    { q: 'Can I start without speaking German?', a: 'Yes, but plan a full language path before admission. We set a realistic calendar after a placement test.' },
-    { q: 'Are there alternatives if I am not admitted to medicine?', a: 'Yes: dentistry, pharmacy, biology, biomedical sciences, nursing. We study with you the option most consistent with your project.' },
+    { q: 'Does Intellect guarantee recognition of my diploma?', a: 'No. Recognition is decided by the competent authorities. We help you prepare the file and understand the steps.' },
+    { q: 'What level of German is needed to practise?', a: 'In practice a general level around B2 is required before the medical language test. Exact requirements depend on the state and must be checked.' },
+    { q: 'Must every doctor take the Kenntnisprüfung?', a: 'No. It depends on the authority’s decision and your situation. We help you understand what may apply in your case.' },
+    { q: 'How long should I plan for?', a: 'Several months at least, often more, because language, documents and the authority’s examination take time. We set a realistic calendar with you.' },
   ],
 };
 
 const ar: PageContent = {
   nav: 'الطب في ألمانيا',
-  title: 'دراسة الطب في ألمانيا: القبول واللغة والتحضير | إنتلكت',
-  description: 'حضّر لدراسة الطب في ألمانيا مع إنتلكت: التوجيه، ومستوى الألمانية، وإعداد الملف والتسجيل في الجامعة، والتحضير لامتحانات القبول.',
-  h1: 'دراسة الطب في ألمانيا: تحضير لقبول صعب',
-  lead: 'الطب الألماني مشهود له وعليه إقبال كبير. والنجاح في القبول يتطلب تخطيطًا مسبقًا ومستوى ممتازًا في الألمانية وملفًا خاليًا من الأخطاء. نرافقك في كل مرحلة.',
-  related: ['german-c1', 'study-germany', 'student-visa-germany', 'student-support'],
+  title: 'الطب في ألمانيا: الاعتراف باللغة والمؤهل وامتحانا FSP وKP | إنتلكت',
+  description: 'طبيب حاصل على شهادة ويفكر في العمل بألمانيا؟ مراحل الاعتراف، ومستوى الألمانية، وامتحاني Fachsprachprüfung (FSP) وKenntnisprüfung (KP)، ومرافقة إنتلكت.',
+  h1: 'الطب في ألمانيا: بناء مشروعك المهني',
+  lead: 'ممارسة الطب في ألمانيا مشروع يستغرق عدة أشهر وأحيانًا أكثر. ويتطلب تحضيرًا جيدًا للغة وملفًا دقيقًا ومعلومات موثوقة في كل مرحلة.',
+  related: ['exam-preparation', 'german-c1', 'visa-procedures', 'student-support'],
   sections: [
     {
-      id: 'reality', h2: 'واقع القبول في كليات الطب',
+      id: 'why', h2: 'لماذا يفكر الأطباء في ألمانيا؟',
       paragraphs: [
-        'المقاعد في تخصص الطب بألمانيا محدودة وعليها طلب كبير. ويفوق عدد المتقدمين عدد المقاعد بكثير، مما يجعل القبول انتقائيًا للمرشحين الألمان والدوليين على حد سواء. ونفضّل أن نقول لك ذلك من البداية: لا أحد يستطيع أن يضمن لك مقعدًا. أما ما نستطيعه فهو رفع حظوظك بإعداد كل عنصر من عناصر الملف بعناية وتجنيبك الأخطاء التي تكلّف سنة كاملة.',
-        'تعتمد القواعد الدقيقة على جنسيتك وشهادة الثانوية التي تحملها والجامعة المستهدفة. فبالنسبة إلى بعض المرشحين يمر الطلب عبر الجهة المركزية المكلفة بتوزيع المقاعد، وبالنسبة إلى آخرين يُقدَّم مباشرة إلى الجامعة. ونتحقق معك من المسار المنطبق على حالتك، ثم نبني الجدول الزمني.',
+        'يهتم أطباء كثيرون تكوّنوا خارج ألمانيا بهذا البلد: نظام صحي منظم، ومستشفيات وعيادات توظّف، وآفاق للتكوين المستمر، وإمكانية التخصص. ولكل مسار طابعه الشخصي، وتتراوح الدوافع بين البحث عن إطار عمل مختلف والرغبة في توسيع الكفاءات.',
+        'نفضّل أن نكون واضحين من البداية: العمل في ألمانيا ليس إجراءً سريعًا. فالقواعد دقيقة، والسلطات متطلبة، والجدول الزمني يتوقف على عناصر كثيرة، بعضها ليس بيدك. ودورنا هو مساعدتك على فهم الطريق والتحضير وتجنب أخطاء التنظيم.',
       ],
     },
     {
-      id: 'language', h2: 'مستوى الألمانية: العقبة الأولى',
+      id: 'language', h2: 'اللغة: شرط كل ما بعدها',
       paragraphs: [
-        'تُدرَّس كلية الطب بالألمانية. وتطلب الجامعات مستوى متقدمًا، يعادل عمومًا C1، يثبته امتحان معترف به مثل TestDaF أو DSH. وهذا المستوى ضروري لفهم المحاضرات، والتواصل مع المرضى أثناء التدريب السريري، واجتياز الامتحانات الشفهية.',
-        'لهذا تشكل دوراتنا في الألمانية أساس التحضير. وعندما يسمح مستواك ندمج المفردات الطبية الأساسية والمواقف النموذجية: أخذ السوابق المرضية، ووصف الأعراض، وقراءة الحالات. وتجد تفاصيل دوراتنا في صفحة المستوى C1.',
+        'في ألمانيا تتم الممارسة الطبية بالألمانية. فعليك أن تفهم المريض، وتكتب ملفًا طبيًا، وتعرض حالة على زملائك، وتتحاور مع الفرق. ولطلب ترخيص الممارسة يُشترط مستوى عام في الألمانية، يقارب عمليًا B2، ثم اختبار لغوي متخصص في المجال الطبي.',
+        'لهذا تشكل دوراتنا في الألمانية أساس المشروع. فنتبع مسارًا متدرجًا من A1 إلى C1، ثم ندمج المفردات الطبية والمواقف المهنية: أخذ السوابق المرضية، ووصف الأعراض، والتواصل مع المريض، والتبادل بين الأطباء. وتجد تفاصيل دوراتنا في الصفحات المخصصة لمستويات الألمانية.',
       ],
     },
     {
-      id: 'diploma', h2: 'هل شهادتك معترف بها؟',
+      id: 'recognition', h2: 'الاعتراف بمؤهلك',
       paragraphs: [
-        'لكي تُقبل مباشرة في الجامعة يجب أن تُعتبر شهادة الثانوية التي تحملها معادلة للشهادة الألمانية التي تتيح الدراسة العليا. وتنشر السلطات قواعد بيانات توضح، بلدًا بلدًا، ما إذا كانت الشهادة كافية أو ما إذا كان لا بد من المرور بسنة تحضيرية في Studienkolleg.',
-        'وإذا طُلبت سنة تحضيرية فعادة ما يوجد مسار علمي مناسب للتخصصات الطبية. وتنتهي بامتحان تقييم يتوقف عليه الدخول إلى الجامعة. نساعدك على تحديد وضعك والتسجيل في الوقت المناسب والتحضير لهذا الامتحان الذي يجرى هو أيضًا بالألمانية.',
+        'لممارسة الطب يلزم الحصول على ترخيص رسمي. وقد يكون ترخيصًا كاملًا للممارسة يسمى Approbation، أو ترخيصًا مؤقتًا ومحدودًا يسمى Berufserlaubnis. ويدرس الطلب من السلطة المختصة في الولاية (Land) التي ترغب في العمل بها: فقد تختلف الإجراءات والشروط من ولاية إلى أخرى.',
+        'تقارن السلطة تكوينك بالتكوين الطبي الألماني. فإذا خلصت إلى وجود تكافؤ كان ما بعده أيسر. وإذا لاحظت فروقًا مهمة، أو كان وضعك يقتضي ذلك، فقد يُطلب اختبار معارف. والقرار بيد السلطات، ولا نستطيع التنبؤ به ولا ضمانه.',
       ],
     },
     {
-      id: 'tests', h2: 'اختبارات القبول وإجراءاته',
-      paragraphs: [
-        'تستعمل بعض الجامعات اختبار قدرات للتخصصات الطبية، مثل TMS (Test für medizinische Studiengänge) الذي يقيّم الاستدلال المنطقي والذاكرة وفهم النصوص وتحليل المعطيات. وتعتمد جامعات أخرى أساسًا على معدل الشهادة أو المقابلات أو معايير خاصة بها. وتتغير الإجراءات من سنة إلى أخرى، ونتحقق منها لكل جامعة تستهدفها.',
-        'وحيث يوجد اختبار نساعدك على التحضير له: عرض الصيغة، وتدريب بزمن محدد، وأساليب الحفظ، وإدارة التوتر. ونؤكد على الانتظام، لأن هذه الاختبارات تُحضَّر على مدى أشهر وليس أسابيع قليلة.',
-      ],
-    },
-    {
-      id: 'steps', h2: 'مرافقتنا خطوة بخطوة',
+      id: 'steps', h2: 'المراحل الكبرى للمشروع',
       steps: [
-        { title: 'التقييم والتوجيه', text: 'نحلل شهادتك ودرجاتك ومستواك في الألمانية وجدولك الزمني. ونقول لك بصراحة هل هدفك واقعي هذه السنة أم أن عليك التخطيط لسنة تحضيرية.' },
-        { title: 'رفع المستوى اللغوي', text: 'مسار في الألمانية حتى المستوى المطلوب، مع التحضير للامتحان اللغوي الذي تعترف به جامعاتك المستهدفة.' },
-        { title: 'إعداد الملف', text: 'ترجمات محلفة ونسخ مصدّقة ورسالة تحفيز وسيرة ذاتية واستمارات، مع مراجعة قبل كل إرسال.' },
-        { title: 'تقديم الطلبات', text: 'متابعة المواعيد النهائية وإرسال الطلبات وإدارة المراسلات مع الجامعات.' },
-        { title: 'التأشيرة والاستقرار', text: 'بعد الحصول على القبول: إجراءات التأشيرة والتأمين الصحي وإثبات الموارد والسكن والوصول.' },
+        { title: 'تقييم الوضع', text: 'نحلل شهادتك وتخصصك وخبرتك ومستواك في الألمانية والولاية المستهدفة، لتحديد ترتيب واقعي لإجراءاتك.' },
+        { title: 'تحضير اللغة', text: 'مسار في الألمانية العامة حتى المستوى المطلوب، مع تحضير تدريجي للألمانية الطبية.' },
+        { title: 'إعداد الملف', text: 'الشهادات وكشوف النقاط والإفادات والسيرة الذاتية ووثائق الهوية والترجمات المحلفة والنسخ المصدّقة، وفق قائمة السلطة المختصة.' },
+        { title: 'إيداع طلب الاعتراف', text: 'يُرسَل الطلب إلى سلطة الولاية المختارة. ونساعدك على التحقق من اكتمال الملف قبل الإرسال.' },
+        { title: 'اجتياز الاختبارات المطلوبة', text: 'بحسب وضعك: اختبار لغة طبية، أو اختبار معارف، أو إجراءات أخرى تقررها السلطة.' },
+        { title: 'الاستقرار والعمل', text: 'البحث عن منصب، وتأشيرة أو تصريح إقامة مناسب، والسكن، والتأمين، وإجراءات الوصول.' },
       ],
     },
     {
-      id: 'plan-b', h2: 'خطة بديلة دون التخلي عن هدفك',
+      id: 'fsp', h2: 'امتحان Fachsprachprüfung (FSP): اختبار اللغة الطبية',
       paragraphs: [
-        'لأن القبول انتقائي ننصحك بالتقدم إلى عدة جامعات وبالنظر في بدائل منسجمة مع مشروعك: طب الأسنان، والصيدلة، والأحياء، والعلوم الطبية الحيوية، أو مجالات صحية أخرى. وقد تكون هذه الخيارات طريقًا مباشرًا إلى أهدافك، أو قاعدة متينة إذا رغبت في إعادة محاولة الطب لاحقًا.',
-        'ونناقش هذه السيناريوهات بصراحة معك ومع أسرتك حتى يُتخذ القرار عن علم ودراية.',
+        'Fachsprachprüfung، ويختصر غالبًا إلى FSP، اختبار لغوي متخصص موجه إلى مهنيي الصحة. وهو يتحقق من قدرتك على التواصل بفعالية في سياق طبي. وتنظمه عادة نقابة الأطباء أو غرفتهم في الولاية المعنية، ويتضمن في الغالب مقابلة مع مريض محاكى، وكتابة تقرير طبي، وتبادلًا مهنيًا مع طبيب.',
+        'تختلف الصيغ وشروط التسجيل من ولاية إلى أخرى. وغالبًا ما تُطلب شهادة لغة عامة قبل أن تتمكن من التسجيل. ونفصّل التحضير لهذا الاختبار في صفحة التحضير للامتحانات، دون أن نعد أبدًا بنتيجة.',
       ],
     },
     {
-      id: 'budget', h2: 'الميزانية ومدة الدراسة',
+      id: 'kp', h2: 'امتحان Kenntnisprüfung (KP): اختبار المعارف',
       paragraphs: [
-        'تستغرق دراسة الطب عدة سنوات وتنتهي بامتحان حكومي. خطط لتكلفة المعيشة، والتأمين الصحي الإلزامي، والسكن، ورسوم الفصل الدراسي. وتختلف الرسوم الدراسية باختلاف الولايات والمؤسسات، ويُطلب إثبات الموارد المالية للحصول على التأشيرة. ونساعدك على وضع ميزانية واقعية قبل أن تلتزم، حتى لا تفاجأ بمصاريف لم تحسب حسابها.',
+        'بحسب الحالة، قد توجّه السلطة المرشح إلى Kenntnisprüfung، أي اختبار للمعارف الطبية، يتناول عمومًا مجالات سريرية أساسية ومسائل الممارسة المهنية. ويجري بالألمانية مع ممتحنين متخصصين.',
+        'ليس على الجميع اجتيازه، ويتوقف محتواه الدقيق على الولاية. وإذا طُلب في حالتك فإن التحضير مزدوج: مراجعة المعارف السريرية، والتدرب على التعبير عنها بوضوح بالألمانية، شفهيًا وكتابيًا.',
+      ],
+    },
+    {
+      id: 'support', h2: 'ما تفعله إنتلكت وما لا تفعله',
+      bullets: [
+        'نساعدك على فهم المراحل وتنظيمها في الزمن.',
+        'نحضّر مستواك في الألمانية، العامة ثم الطبية.',
+        'نساعدك على إعداد ملفك ومراجعته قبل الإرسال.',
+        'نرافقك في إجراءات التأشيرة والاستقرار.',
+        'لا نحل محل السلطات التي تقرر الاعتراف وترخيص الممارسة.',
+        'لا نضمن لا التكافؤ ولا الترخيص ولا وظيفة.',
+      ],
+      after: ['تحقق دائمًا من الشروط الرسمية للولاية المعنية: فهي المرجع، وقد تتغير.'],
+    },
+    {
+      id: 'students', h2: 'وإذا كنت تريد دراسة الطب؟',
+      paragraphs: [
+        'تُوجَّه هذه الصفحة إلى الأطباء الحاصلين على مؤهلهم. أما إذا كنت حاملًا للبكالوريا أو طالبًا وتريد دخول كلية الطب فالطريق مختلف: فالقبول انتقائي جدًا ويتطلب مستوى ممتازًا في الألمانية. وتجد المعلومات الخاصة بذلك في صفحة الدراسة في ألمانيا.',
       ],
     },
   ],
   faq: [
-    { q: 'هل تضمنون القبول في كلية الطب؟', a: 'لا، لا أحد يستطيع ذلك. القرارات بيد الجامعات والسلطات. ونرفع حظوظك بتحضير جاد وملف مكتمل.' },
-    { q: 'ما مستوى الألمانية المطلوب؟', a: 'عمومًا مستوى متقدم يعادل C1 يثبته امتحان معترف به. وتحدد كل جامعة شروطها.' },
-    { q: 'هل أستطيع البدء دون أن أتكلم الألمانية؟', a: 'نعم، لكن خطط لمسار لغوي كامل قبل القبول. ونضع جدولًا واقعيًا بعد اختبار تحديد المستوى.' },
-    { q: 'هل توجد بدائل إذا لم أُقبل في الطب؟', a: 'نعم: طب الأسنان والصيدلة والأحياء والعلوم الطبية الحيوية والتمريض. وندرس معك الخيار الأكثر انسجامًا مع مشروعك.' },
+    { q: 'هل تضمن إنتلكت الاعتراف بشهادتي؟', a: 'لا. الاعتراف تقرره السلطات المختصة. ونساعدك على إعداد الملف وفهم المراحل.' },
+    { q: 'ما مستوى الألمانية المطلوب للممارسة؟', a: 'عمليًا يُطلب مستوى عام يقارب B2 قبل اختبار اللغة الطبية. وتتوقف الشروط الدقيقة على الولاية ويجب التحقق منها.' },
+    { q: 'هل يجب على كل طبيب اجتياز Kenntnisprüfung؟', a: 'لا. يتوقف ذلك على قرار السلطة ووضعك. ونساعدك على فهم ما قد ينطبق على حالتك.' },
+    { q: 'كم من الوقت يجب أن أخصص؟', a: 'عدة أشهر على الأقل، وغالبًا أكثر، لأن اللغة والوثائق ودراسة السلطة للملف تستغرق وقتًا. ونضع معك جدولًا واقعيًا.' },
   ],
 };
 

@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Étudiez en Allemagne avec Intellect : choix de la filière et de l’université, reconnaissance du diplôme, Studienkolleg, candidature, visa, budget et installation.',
   h1: 'Étudier en Allemagne : de la candidature à l’installation',
   lead: 'L’Allemagne offre un enseignement supérieur de qualité, avec de nombreuses universités publiques. Nous vous aidons à choisir, à candidater et à vous installer sans mauvaise surprise.',
-  related: ['german-courses', 'medicine-germany', 'student-visa-germany', 'student-life'],
+  related: ['german-courses', 'medicine-germany', 'visa-procedures', 'study-russia'],
   sections: [
     {
       id: 'pourquoi', h2: 'Pourquoi choisir l’Allemagne',
@@ -69,6 +69,23 @@ const fr: PageContent = {
       ],
       after: ['Après votre arrivée, nous restons disponibles pour les premières démarches : inscription à la mairie, ouverture d’un compte, titre de séjour.'],
     },
+    {
+      id: 'calendrier', h2: 'Un calendrier type de candidature',
+      bullets: [
+        '12 à 18 mois avant : choix de la filière, début de la préparation linguistique, vérification de la reconnaissance du diplôme.',
+        '9 à 12 mois avant : examen de langue, collecte et traduction des documents.',
+        '6 à 9 mois avant : candidatures, selon les dates limites de chaque université.',
+        '3 à 6 mois avant : admission, visa, assurance, logement.',
+        'Dernier mois : voyage, arrivée, inscription et enregistrement.',
+      ],
+      after: ['Ce calendrier est indicatif : les dates limites réelles dépendent de chaque université.'],
+    },
+    {
+      id: 'medecine-etudiants', h2: 'Et si vous voulez étudier la médecine ?',
+      paragraphs: [
+        'Les places en faculté de médecine sont limitées et très demandées. L’admission est sélective pour les candidats allemands comme pour les candidats internationaux. Elle demande une reconnaissance du diplôme du secondaire, un excellent niveau d’allemand et, selon les universités, des tests ou des critères particuliers. La procédure peut passer par un organisme central ou par l’université elle-même, selon votre situation. Prévoyez aussi des alternatives, comme la médecine dentaire, la pharmacie, la biologie ou les sciences biomédicales. Si vous êtes déjà médecin diplômé et souhaitez exercer en Allemagne, la page consacrée à la médecine en Allemagne décrit un parcours différent.',
+      ],
+    },
   ],
   faq: [
     { q: 'Les études sont-elles gratuites en Allemagne ?', a: 'Beaucoup d’universités publiques ne demandent pas de frais de scolarité classiques, mais une contribution semestrielle. Certains Länder appliquent des frais pour les étudiants hors Union européenne. Nous vérifions pour chaque établissement.' },
@@ -84,7 +101,7 @@ const en: PageContent = {
   description: 'Study in Germany with Intellect: choosing the field and university, diploma recognition, Studienkolleg, application, visa, budget and settling in.',
   h1: 'Study in Germany: from application to settling in',
   lead: 'Germany offers quality higher education, with many public universities. We help you choose, apply and settle in without nasty surprises.',
-  related: ['german-courses', 'medicine-germany', 'student-visa-germany', 'student-life'],
+  related: ['german-courses', 'medicine-germany', 'visa-procedures', 'study-russia'],
   sections: [
     {
       id: 'why', h2: 'Why choose Germany',
@@ -147,6 +164,23 @@ const en: PageContent = {
       ],
       after: ['After you arrive, we remain available for the first formalities: registering at the town hall, opening a bank account, residence permit.'],
     },
+    {
+      id: 'calendar', h2: 'A typical application calendar',
+      bullets: [
+        '12 to 18 months before: choice of field, start of language preparation, checking diploma recognition.',
+        '9 to 12 months before: language exam, gathering and translating documents.',
+        '6 to 9 months before: applications, according to each university’s deadlines.',
+        '3 to 6 months before: admission, visa, insurance, housing.',
+        'Last month: travel, arrival, enrolment and registration.',
+      ],
+      after: ['This calendar is indicative: real deadlines depend on each university.'],
+    },
+    {
+      id: 'medicine-students', h2: 'What if you want to study medicine?',
+      paragraphs: [
+        'Places at medical school are limited and highly sought after. Admission is selective for German and international candidates alike. It requires recognition of your secondary diploma, an excellent level of German and, depending on the university, tests or particular criteria. The procedure may go through a central body or through the university itself, depending on your situation. Also plan alternatives, such as dentistry, pharmacy, biology or biomedical sciences. If you are already a qualified doctor and wish to practise in Germany, the page on medicine in Germany describes a different path.',
+      ],
+    },
   ],
   faq: [
     { q: 'Are studies free in Germany?', a: 'Many public universities do not charge conventional tuition, but a semester contribution. Some federal states charge fees to students from outside the European Union. We check each institution.' },
@@ -162,7 +196,7 @@ const ar: PageContent = {
   description: 'ادرس في ألمانيا مع إنتلكت: اختيار التخصص والجامعة، ومعادلة الشهادة، وStudienkolleg، وتقديم الطلب، والتأشيرة، والميزانية، والاستقرار.',
   h1: 'الدراسة في ألمانيا: من تقديم الطلب إلى الاستقرار',
   lead: 'تقدم ألمانيا تعليمًا عاليًا جيدًا وعددًا كبيرًا من الجامعات الحكومية. نساعدك على الاختيار والتقديم والاستقرار دون مفاجآت غير سارة.',
-  related: ['german-courses', 'medicine-germany', 'student-visa-germany', 'student-life'],
+  related: ['german-courses', 'medicine-germany', 'visa-procedures', 'study-russia'],
   sections: [
     {
       id: 'why', h2: 'لماذا تختار ألمانيا؟',
@@ -224,6 +258,23 @@ const ar: PageContent = {
         'مرافقة في التأشيرة والتأمين والسكن والوصول.',
       ],
       after: ['وبعد وصولك نبقى متاحين لأولى الإجراءات: التسجيل في البلدية، وفتح حساب بنكي، وتصريح الإقامة.'],
+    },
+    {
+      id: 'calendar', h2: 'جدول زمني نموذجي للتقديم',
+      bullets: [
+        'قبل 12 إلى 18 شهرًا: اختيار التخصص وبدء التحضير اللغوي والتحقق من معادلة الشهادة.',
+        'قبل 9 إلى 12 شهرًا: امتحان اللغة وجمع الوثائق وترجمتها.',
+        'قبل 6 إلى 9 أشهر: تقديم الطلبات بحسب المواعيد النهائية لكل جامعة.',
+        'قبل 3 إلى 6 أشهر: القبول والتأشيرة والتأمين والسكن.',
+        'الشهر الأخير: السفر والوصول والتسجيل.',
+      ],
+      after: ['هذا الجدول إرشادي: فالمواعيد النهائية الفعلية تتوقف على كل جامعة.'],
+    },
+    {
+      id: 'medicine-students', h2: 'وإذا كنت تريد دراسة الطب؟',
+      paragraphs: [
+        'المقاعد في كليات الطب محدودة وعليها طلب كبير. والقبول انتقائي للمرشحين الألمان والدوليين على حد سواء. ويتطلب معادلة شهادة الثانوية ومستوى ممتازًا في الألمانية، وبحسب الجامعات اختبارات أو معايير خاصة. وقد يمر الإجراء عبر جهة مركزية أو عبر الجامعة نفسها بحسب وضعك. وخطط أيضًا لبدائل مثل طب الأسنان والصيدلة والأحياء والعلوم الطبية الحيوية. وإذا كنت طبيبًا حاصلًا على مؤهله وترغب في الممارسة في ألمانيا فإن صفحة الطب في ألمانيا تصف مسارًا مختلفًا.',
+      ],
     },
   ],
   faq: [

@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Étudiez en Russie avec Intellect : choix de l’université, année préparatoire de russe, invitation et visa, logement en résidence, accompagnement sur place.',
   h1: 'Étudier en Russie : un parcours accessible, à préparer avec soin',
   lead: 'La Russie propose des programmes variés, souvent accessibles depuis l’étranger. Nous vous aidons à choisir sérieusement, à vous inscrire et à vous installer, en vous donnant aussi les points de vigilance.',
-  related: ['germany-or-russia', 'student-life', 'student-support', 'study-germany'],
+  related: ['visa-procedures', 'student-support', 'study-germany', 'german-courses'],
   sections: [
     {
       id: 'pourquoi', h2: 'Ce que la Russie offre aux étudiants étrangers',
@@ -68,6 +68,18 @@ const fr: PageContent = {
         'Intellect vous accompagne avant le départ pour le choix de l’université, le dossier et le visa, puis à l’arrivée pour le logement, l’enregistrement et les premières démarches. Nous restons joignables pendant vos premiers mois, quand les questions sont les plus nombreuses.',
       ],
     },
+    {
+      id: 'questions-universite', h2: 'Questions à poser à une université avant de s’inscrire',
+      bullets: [
+        'L’établissement et la filière sont-ils accrédités, et par quelle autorité ?',
+        'Quelle est la langue d’enseignement, et que comprend l’année préparatoire ?',
+        'Quels sont les frais de scolarité, les modalités de paiement et les conditions de remboursement ?',
+        'Où loge-t-on, dans quelles conditions et à quel prix ?',
+        'Le diplôme est-il reconnu dans mon pays, et comment le vérifier ?',
+        'Quel service accompagne les étudiants étrangers à l’arrivée ?',
+      ],
+      after: ['Faites répondre par écrit : une réponse écrite protège les deux parties.'],
+    },
   ],
   faq: [
     { q: 'Faut-il parler russe pour commencer ?', a: 'Non, pour la plupart des programmes en russe, l’année préparatoire est consacrée à l’apprentissage de la langue à partir de zéro.' },
@@ -83,7 +95,7 @@ const en: PageContent = {
   description: 'Study in Russia with Intellect: choosing a university, preparatory Russian year, invitation and visa, dormitory housing and on-site support.',
   h1: 'Study in Russia: an accessible path, to prepare with care',
   lead: 'Russia offers varied programmes, often reachable from abroad. We help you choose seriously, enrol and settle in, and we also give you the points to watch.',
-  related: ['germany-or-russia', 'student-life', 'student-support', 'study-germany'],
+  related: ['visa-procedures', 'student-support', 'study-germany', 'german-courses'],
   sections: [
     {
       id: 'why', h2: 'What Russia offers foreign students',
@@ -145,6 +157,18 @@ const en: PageContent = {
         'Intellect supports you before departure for choosing the university, the file and the visa, then on arrival for housing, registration and first formalities. We stay reachable during your first months, when questions are most numerous.',
       ],
     },
+    {
+      id: 'university-questions', h2: 'Questions to ask a university before enrolling',
+      bullets: [
+        'Are the institution and the programme accredited, and by which authority?',
+        'What is the language of instruction, and what does the preparatory year include?',
+        'What are the tuition fees, payment terms and refund conditions?',
+        'Where do students live, in what conditions and at what price?',
+        'Is the diploma recognised in my country, and how can I check?',
+        'Which office supports foreign students on arrival?',
+      ],
+      after: ['Ask for written answers: a written reply protects both parties.'],
+    },
   ],
   faq: [
     { q: 'Do I need to speak Russian to start?', a: 'No. For most programmes in Russian, the preparatory year teaches the language from scratch.' },
@@ -160,7 +184,7 @@ const ar: PageContent = {
   description: 'ادرس في روسيا مع إنتلكت: اختيار الجامعة، والسنة التحضيرية للغة الروسية، والدعوة والتأشيرة، والسكن الجامعي، والمرافقة في عين المكان.',
   h1: 'الدراسة في روسيا: مسار متاح يحتاج إلى تحضير دقيق',
   lead: 'تقدم روسيا برامج متنوعة يمكن التقدم إليها غالبًا من الخارج. نساعدك على الاختيار بجدية والتسجيل والاستقرار، ونذكر لك أيضًا نقاط الحذر.',
-  related: ['germany-or-russia', 'student-life', 'student-support', 'study-germany'],
+  related: ['visa-procedures', 'student-support', 'study-germany', 'german-courses'],
   sections: [
     {
       id: 'why', h2: 'ما الذي تقدمه روسيا للطلبة الأجانب؟',
@@ -221,6 +245,18 @@ const ar: PageContent = {
       paragraphs: [
         'ترافقك إنتلكت قبل السفر في اختيار الجامعة والملف والتأشيرة، ثم عند الوصول في السكن والتسجيل وأولى الإجراءات. ونبقى متاحين خلال أشهرك الأولى حين تكثر الأسئلة، ونتابع معك تفاصيل الإقامة والدراسة حتى تستقر أمورك بالكامل.',
       ],
+    },
+    {
+      id: 'university-questions', h2: 'أسئلة تطرحها على الجامعة قبل التسجيل',
+      bullets: [
+        'هل المؤسسة والتخصص معتمدان، ومن أي جهة؟',
+        'ما لغة التدريس، وماذا تتضمن السنة التحضيرية؟',
+        'ما الرسوم الدراسية وطرق الدفع وشروط الاسترداد؟',
+        'أين يسكن الطلبة، وفي أي ظروف وبأي سعر؟',
+        'هل الشهادة معترف بها في بلدي، وكيف أتحقق؟',
+        'أي مصلحة ترافق الطلبة الأجانب عند الوصول؟',
+      ],
+      after: ['اطلب أجوبة مكتوبة: فالجواب المكتوب يحمي الطرفين ويجنّب أي خلاف لاحق حول ما اتُّفق عليه.'],
     },
   ],
   faq: [

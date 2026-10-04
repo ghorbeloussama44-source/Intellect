@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Cours d’allemand niveau B1 avec Intellect : grammaire, expression orale et écrite, préparation aux examens Goethe-Zertifikat B1, telc Deutsch B1 et ÖSD.',
   h1: 'Cours d’allemand B1 : devenir autonome',
   lead: 'Le B1 est le cap où l’allemand cesse d’être un exercice scolaire et devient un outil de vie. Nous vous aidons à le franchir et à le certifier.',
-  related: ['german-a1-a2', 'german-c1', 'german-courses', 'student-visa-germany'],
+  related: ['german-c1', 'german-a2', 'exam-preparation', 'visa-procedures'],
   sections: [
     {
       id: 'niveau', h2: 'Ce que signifie le niveau B1',
@@ -66,6 +66,16 @@ const fr: PageContent = {
         'Si votre objectif est d’étudier en allemand, le B1 n’est pas la fin du chemin. Le B2 consolide l’autonomie et prépare aux textes plus abstraits, puis le C1 correspond au niveau demandé par de nombreuses universités. Nous vous proposons un parcours continu pour éviter les ruptures de rythme entre les niveaux. Consultez la page consacrée au C1 pour connaître les examens universitaires.',
       ],
     },
+    {
+      id: 'prete', h2: 'Comment savoir que vous êtes prêt pour l’examen B1',
+      bullets: [
+        'Vous tenez une conversation de plusieurs minutes sur un sujet familier sans blocage majeur.',
+        'Vous comprenez les points principaux d’un enregistrement à vitesse normale.',
+        'Vous écrivez une lettre formelle de quelques lignes sans erreur gênante.',
+        'Vous terminez une simulation dans le temps imparti.',
+      ],
+      after: ['Une simulation complète avec correction est le meilleur indicateur. Nous vous la proposons avant de fixer la date.'],
+    },
   ],
   faq: [
     { q: 'Le B1 suffit-il pour entrer à l’université en Allemagne ?', a: 'En général non. La plupart des cursus enseignés en allemand demandent un niveau B2 ou C1. Le B1 peut en revanche suffire pour certaines formations professionnelles ou démarches administratives.' },
@@ -80,7 +90,7 @@ const en: PageContent = {
   description: 'German B1 classes with Intellect: grammar, speaking and writing, and preparation for Goethe-Zertifikat B1, telc Deutsch B1 and ÖSD exams.',
   h1: 'German B1 course: becoming independent',
   lead: 'B1 is the point where German stops being a school exercise and becomes a tool for life. We help you cross it and certify it.',
-  related: ['german-a1-a2', 'german-c1', 'german-courses', 'student-visa-germany'],
+  related: ['german-c1', 'german-a2', 'exam-preparation', 'visa-procedures'],
   sections: [
     {
       id: 'level', h2: 'What level B1 means',
@@ -140,6 +150,16 @@ const en: PageContent = {
         'If your goal is to study in German, B1 is not the end of the road. B2 consolidates independence and prepares you for more abstract texts, then C1 is the level many universities ask for. We offer a continuous path so you avoid breaks in rhythm between levels. See the C1 page for university exams.',
       ],
     },
+    {
+      id: 'ready', h2: 'How to know you are ready for the B1 exam',
+      bullets: [
+        'You hold a conversation of several minutes on a familiar subject with no major block.',
+        'You understand the main points of a recording at normal speed.',
+        'You write a formal letter of a few lines without distracting errors.',
+        'You finish a simulation within the allotted time.',
+      ],
+      after: ['A complete simulation with correction is the best indicator. We offer one before fixing the date.'],
+    },
   ],
   faq: [
     { q: 'Is B1 enough to enter a university in Germany?', a: 'Generally not. Most degrees taught in German require B2 or C1. B1 can however be enough for some vocational programmes or administrative procedures.' },
@@ -154,7 +174,7 @@ const ar: PageContent = {
   description: 'دورات الألمانية مستوى B1 مع إنتلكت: القواعد والتعبير الشفهي والكتابي والتحضير لامتحانات Goethe-Zertifikat B1 وtelc Deutsch B1 وÖSD.',
   h1: 'دورة الألمانية B1: أن تصبح مستقلًا',
   lead: 'المستوى B1 هو النقطة التي تتوقف فيها الألمانية عن كونها تمرينًا مدرسيًا وتصبح أداة للحياة. نساعدك على تجاوزه وإثباته بشهادة.',
-  related: ['german-a1-a2', 'german-c1', 'german-courses', 'student-visa-germany'],
+  related: ['german-c1', 'german-a2', 'exam-preparation', 'visa-procedures'],
   sections: [
     {
       id: 'level', h2: 'ماذا يعني المستوى B1؟',
@@ -213,6 +233,16 @@ const ar: PageContent = {
       paragraphs: [
         'إذا كان هدفك الدراسة بالألمانية فإن B1 ليس نهاية الطريق. فالمستوى B2 يرسّخ الاستقلالية ويحضّرك لنصوص أكثر تجريدًا، ثم يأتي C1 وهو المستوى الذي تطلبه جامعات كثيرة. نقترح عليك مسارًا متصلًا لتفادي انقطاع الإيقاع بين المستويات. راجع صفحة C1 لمعرفة الامتحانات الجامعية.',
       ],
+    },
+    {
+      id: 'ready', h2: 'كيف تعرف أنك جاهز لامتحان B1؟',
+      bullets: [
+        'تجري حديثًا من عدة دقائق حول موضوع مألوف دون تعثر كبير.',
+        'تفهم النقاط الرئيسية في تسجيل بسرعة عادية.',
+        'تكتب رسالة رسمية من بضعة أسطر دون أخطاء مزعجة.',
+        'تنهي محاكاة كاملة في الوقت المحدد.',
+      ],
+      after: ['المحاكاة الكاملة مع التصحيح هي أفضل مؤشر. ونقترحها عليك قبل تحديد موعد الامتحان، حتى لا تجازف بالتسجيل قبل الأوان.'],
     },
   ],
   faq: [

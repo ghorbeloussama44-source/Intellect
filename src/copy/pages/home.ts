@@ -17,7 +17,7 @@ const fr: HomeContent = {
     text: 'De l’apprentissage de la langue à l’intégration dans votre pays d’études, nous vous accompagnons à chaque étape pour faire de votre rêve une réalité.',
     cards: [
       { id: 'german-courses', title: 'Cours d’allemand', sub: 'A1 – B1 – C1', items: ['Cours intensifs et flexibles', 'Préparation aux examens (Goethe, telc, etc.)', 'Suivi pédagogique personnalisé'] },
-      { id: 'medicine-germany', title: 'Préparation médecine', sub: 'en Allemagne', items: ['Conseils et orientation', 'Dossier et inscription université', 'Préparation aux examens d’admission'] },
+      { id: 'medicine-germany', title: 'Médecine en Allemagne', sub: 'pour les médecins diplômés', items: ['Conseils et orientation', 'Dossier de reconnaissance', 'Préparation linguistique et aux examens (FSP, KP)'] },
       { id: 'study-russia', title: 'Étudier en Russie', items: ['Inscription universitaire', 'Logement (dortoirs / appartements)', 'Accompagnement sur place', 'Aide aux démarches administratives'] },
       { id: 'student-support', title: 'Accompagnement complet', items: ['Conseil personnalisé', 'Suivi avant et après l’arrivée', 'Aide au visa et aux documents', 'Intégration et vie étudiante'] },
     ],
@@ -69,6 +69,16 @@ const fr: HomeContent = {
         'Un accompagnement dans votre langue : français, anglais ou arabe.',
       ],
     },
+    {
+      id: 'familles', h2: 'Ce que les familles nous demandent le plus souvent',
+      bullets: [
+        'Quel budget total prévoir, et ce qui est payé à qui ?',
+        'Combien de temps faut-il pour que le projet aboutisse ?',
+        'Que se passe-t-il si l’admission ou le visa est refusé ?',
+        'Comment suivre l’avancement du dossier ?',
+      ],
+      after: ['Nous répondons à ces questions dès le premier échange, avec des éléments concrets.'],
+    },
   ],
 };
 
@@ -89,7 +99,7 @@ const en: HomeContent = {
     text: 'From learning the language to settling into your study country, we support you at every step to make your dream a reality.',
     cards: [
       { id: 'german-courses', title: 'German courses', sub: 'A1 – B1 – C1', items: ['Intensive and flexible classes', 'Exam preparation (Goethe, telc, etc.)', 'Personalised academic follow-up'] },
-      { id: 'medicine-germany', title: 'Medicine preparation', sub: 'in Germany', items: ['Advice and guidance', 'University application and enrolment', 'Admission exam preparation'] },
+      { id: 'medicine-germany', title: 'Medicine in Germany', sub: 'for qualified doctors', items: ['Advice and guidance', 'Recognition file', 'Language and exam preparation (FSP, KP)'] },
       { id: 'study-russia', title: 'Study in Russia', items: ['University enrolment', 'Housing (dorms / apartments)', 'On-site support', 'Help with administrative procedures'] },
       { id: 'student-support', title: 'Full support', items: ['Personalised advice', 'Follow-up before and after arrival', 'Visa and document assistance', 'Integration and student life'] },
     ],
@@ -141,6 +151,16 @@ const en: HomeContent = {
         'Support in your language: French, English or Arabic.',
       ],
     },
+    {
+      id: 'families', h2: 'What families ask us most often',
+      bullets: [
+        'What total budget should we plan, and what is paid to whom?',
+        'How long does it take for the project to come together?',
+        'What happens if admission or the visa is refused?',
+        'How can we follow the progress of the file?',
+      ],
+      after: ['We answer these questions from the first conversation, with concrete elements.'],
+    },
   ],
 };
 
@@ -161,7 +181,7 @@ const ar: HomeContent = {
     text: 'من تعلّم اللغة إلى الاندماج في بلد الدراسة، نرافقك في كل خطوة لنحوّل حلمك إلى واقع.',
     cards: [
       { id: 'german-courses', title: 'دورات اللغة الألمانية', sub: 'A1 – B1 – C1', items: ['دورات مكثفة ومرنة', 'التحضير للامتحانات (Goethe وtelc وغيرها)', 'متابعة بيداغوجية شخصية'] },
-      { id: 'medicine-germany', title: 'التحضير لدراسة الطب', sub: 'في ألمانيا', items: ['نصائح وتوجيه', 'إعداد الملف والتسجيل في الجامعة', 'التحضير لامتحانات القبول'] },
+      { id: 'medicine-germany', title: 'الطب في ألمانيا', sub: 'للأطباء الحاصلين على مؤهلهم', items: ['نصائح وتوجيه', 'ملف الاعتراف بالمؤهل', 'التحضير اللغوي والامتحانات (FSP وKP)'] },
       { id: 'study-russia', title: 'الدراسة في روسيا', items: ['التسجيل الجامعي', 'السكن (سكن جامعي / شقق)', 'مرافقة في عين المكان', 'مساعدة في الإجراءات الإدارية'] },
       { id: 'student-support', title: 'مرافقة شاملة', items: ['استشارة شخصية', 'متابعة قبل الوصول وبعده', 'مساعدة في التأشيرة والوثائق', 'الاندماج والحياة الطلابية'] },
     ],
@@ -212,6 +232,16 @@ const ar: HomeContent = {
         'متابعة قبل الوصول وبعده، وليس فقط حتى التسجيل.',
         'مرافقة بلغتك: الفرنسية أو الإنجليزية أو العربية.',
       ],
+    },
+    {
+      id: 'families', h2: 'ما تسألنا عنه الأسر في أغلب الأحيان',
+      bullets: [
+        'ما الميزانية الإجمالية التي يجب التخطيط لها، وما الذي يُدفع لمن؟',
+        'كم يستغرق المشروع حتى يكتمل؟',
+        'ماذا يحدث إذا رُفض القبول أو التأشيرة؟',
+        'كيف نتابع تقدم الملف؟',
+      ],
+      after: ['نجيب عن هذه الأسئلة منذ اللقاء الأول بعناصر ملموسة، حتى تتخذ الأسرة قرارها وهي مطمئنة وعلى بينة من كل التفاصيل.'],
     },
   ],
 };

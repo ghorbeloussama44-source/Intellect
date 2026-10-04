@@ -16,10 +16,11 @@ export function breadcrumbTrail(page: PageDef, locale: Locale, content: PageCont
   const ui = useUi(locale);
   const trail: Crumb[] = [{ name: ui.breadcrumbHome, path: pagePath(getPage('home') as PageDef, locale) }];
   if (page.id === 'home') return trail;
-  if (page.parent) {
-    const parent = getPage(page.parent);
-    const parentContent = parent ? getContent(parent.id, locale) : undefined;
-    if (parent && parentContent && parent.status === 'published') trail.push({ name: parentContent.nav, path: pagePath(parent, locale) });
+  const chain: PageDef[] = [];
+  for (let cur = page.parent ? getPage(page.parent) : undefined; cur && cur.status === 'published' && chain.length < 4; cur = cur.parent ? getPage(cur.parent) : undefined) chain.unshift(cur);
+  for (const anc of chain) {
+    const ancContent = getContent(anc.id, locale);
+    if (ancContent) trail.push({ name: ancContent.nav, path: pagePath(anc, locale) });
   }
   trail.push({ name: content.nav, path: pagePath(page, locale) });
   return trail;

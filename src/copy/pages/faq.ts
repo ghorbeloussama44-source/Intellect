@@ -25,7 +25,9 @@ const fr: PageContent = {
     { q: 'Quel niveau d’allemand faut-il pour étudier en Allemagne ?', a: 'Pour la plupart des cursus en allemand, un niveau B2 ou C1 prouvé par un examen reconnu. Chaque université précise ses exigences ; nous les vérifions avec vous.' },
     { q: 'Quels examens de langue préparez-vous ?', a: 'Nous préparons les examens reconnus comme les certificats du Goethe-Institut, de telc et de l’ÖSD, ainsi que le TestDaF et la DSH pour l’admission universitaire.' },
     { q: 'Les études en Allemagne sont-elles gratuites ?', a: 'Beaucoup d’universités publiques ne demandent pas de frais de scolarité classiques, mais une contribution semestrielle, et certains Länder appliquent des frais aux étudiants hors Union européenne. Le coût de la vie reste à prévoir.' },
-    { q: 'La médecine en Allemagne est-elle accessible aux étudiants étrangers ?', a: 'Oui, mais l’admission est très sélective et demande un excellent niveau d’allemand. Nous évaluons avec vous le réalisme de votre objectif et nous préparons des alternatives.' },
+    { q: 'Qu’est-ce que la Fachsprachprüfung (FSP) ?', a: 'C’est une épreuve de langue spécialisée dans le domaine médical, destinée aux professionnels de santé qui demandent à exercer en Allemagne. Elle vérifie la capacité à communiquer avec un patient et avec des confrères. Les modalités varient selon le Land.' },
+    { q: 'Qu’est-ce que la Kenntnisprüfung (KP) ?', a: 'C’est une épreuve de connaissances médicales qui peut être demandée à un médecin dans le cadre de la reconnaissance de sa qualification. Toutes les personnes n’ont pas à la passer : cela dépend de la décision de l’autorité.' },
+    { q: 'Un étudiant peut-il entrer en faculté de médecine en Allemagne ?', a: 'Oui, mais l’admission est très sélective et demande un excellent niveau d’allemand. Nous évaluons avec vous le réalisme de votre objectif et nous préparons des alternatives.' },
     { q: 'Faut-il parler russe pour étudier en Russie ?', a: 'Pas au départ. La plupart des programmes en russe commencent par une année préparatoire de langue. Certains programmes sont proposés en anglais.' },
     { q: 'Mon diplôme obtenu à l’étranger sera-t-il reconnu dans mon pays ?', a: 'Cela dépend de votre pays, de la filière et de l’établissement. Vérifiez-le auprès des autorités compétentes avant de vous inscrire, surtout pour la médecine.' },
     { q: 'Combien de temps à l’avance faut-il commencer ?', a: 'Le plus tôt possible. Entre la langue, les documents, l’admission et le visa, comptez plusieurs mois, souvent une année pour les filières sélectives.' },
@@ -37,6 +39,9 @@ const fr: PageContent = {
     { q: 'Que faire si mon visa est refusé ?', a: 'Il faut d’abord comprendre le motif indiqué. Selon les cas, il est possible de corriger le dossier et de déposer une nouvelle demande, ou d’engager un recours dans les délais prévus. Nous vous aidons à analyser la situation.' },
     { q: 'Comment éviter les mauvaises agences ?', a: 'Méfiez-vous de ceux qui garantissent l’admission ou le visa, demandent des paiements sans contrat écrit ou refusent de détailler leurs frais. Exigez un devis clair, lisez le contrat et vérifiez les informations auprès des universités.' },
     { q: 'Puis-je faire appel à vous si je suis déjà inscrit dans une université ?', a: 'Oui. Nous pouvons intervenir sur une partie seulement du parcours : documents, visa, assurance, logement ou installation, sans reprendre ce qui est déjà fait.' },
+    { q: 'Quels documents préparer pour commencer ?', a: 'Un passeport valide, vos diplômes et relevés de notes, vos éventuels certificats de langue et un curriculum vitae. Rien n’est à envoyer pour le premier échange ; nous précisons la liste selon votre projet.' },
+    { q: 'Peut-on être accompagné depuis l’étranger ?', a: 'Oui. Une grande partie du travail se fait à distance : conseil, préparation de la langue, constitution du dossier et suivi des démarches.' },
+    { q: 'Comment contacter Intellect ?', a: 'Par le formulaire de la page Contact. Décrivez votre projet en quelques lignes et nous vous répondons avec un premier avis.' },
   ],
 };
 
@@ -65,7 +70,9 @@ const en: PageContent = {
     { q: 'What level of German is needed to study in Germany?', a: 'For most programmes in German, a B2 or C1 level proven by a recognised exam. Each university states its requirements; we check them with you.' },
     { q: 'Which language exams do you prepare?', a: 'We prepare recognised exams such as the Goethe-Institut, telc and ÖSD certificates, as well as TestDaF and DSH for university admission.' },
     { q: 'Are studies in Germany free?', a: 'Many public universities do not charge conventional tuition, but a semester contribution, and some federal states charge fees to students from outside the European Union. The cost of living must be planned.' },
-    { q: 'Is medicine in Germany open to foreign students?', a: 'Yes, but admission is very selective and requires an excellent level of German. We assess with you how realistic your goal is and prepare alternatives.' },
+    { q: 'What is the Fachsprachprüfung (FSP)?', a: 'It is a specialised language test in the medical field, intended for healthcare professionals applying to practise in Germany. It checks the ability to communicate with a patient and with colleagues. Arrangements vary by state.' },
+    { q: 'What is the Kenntnisprüfung (KP)?', a: 'It is a test of medical knowledge that may be requested from a doctor as part of the recognition of their qualification. Not everyone has to take it: it depends on the authority’s decision.' },
+    { q: 'Can a student enter medical school in Germany?', a: 'Yes, but admission is very selective and requires an excellent level of German. We assess with you how realistic your goal is and prepare alternatives.' },
     { q: 'Do I need to speak Russian to study in Russia?', a: 'Not at the start. Most programmes in Russian begin with a preparatory language year. Some programmes are offered in English.' },
     { q: 'Will my degree earned abroad be recognised in my country?', a: 'It depends on your country, the field and the institution. Check with the competent authorities before enrolling, especially for medicine.' },
     { q: 'How far in advance should I start?', a: 'As early as possible. Between language, documents, admission and visa, allow several months, often a year for selective fields.' },
@@ -77,6 +84,9 @@ const en: PageContent = {
     { q: 'What if my visa is refused?', a: 'First understand the reason given. Depending on the case, it may be possible to correct the file and submit a new application, or to lodge an appeal within the deadlines. We help you analyse the situation.' },
     { q: 'How do I avoid bad agencies?', a: 'Be wary of those who guarantee admission or the visa, ask for payments without a written contract or refuse to detail their fees. Insist on a clear quote, read the contract and check information with the universities.' },
     { q: 'Can I turn to you if I am already enrolled at a university?', a: 'Yes. We can help with only part of the path: documents, visa, insurance, housing or settling in, without redoing what is already done.' },
+    { q: 'Which documents should I prepare to start?', a: 'A valid passport, your diplomas and transcripts, any language certificates and a CV. Nothing needs to be sent for the first conversation; we specify the list according to your project.' },
+    { q: 'Can I be supported from abroad?', a: 'Yes. A large part of the work is done remotely: advice, language preparation, building the file and following the procedures.' },
+    { q: 'How do I contact Intellect?', a: 'Through the form on the Contact page. Describe your project in a few lines and we reply with a first opinion.' },
   ],
 };
 
@@ -105,7 +115,9 @@ const ar: PageContent = {
     { q: 'ما مستوى الألمانية المطلوب للدراسة في ألمانيا؟', a: 'في معظم البرامج بالألمانية يُطلب مستوى B2 أو C1 يثبته امتحان معترف به. وتحدد كل جامعة شروطها، ونتحقق منها معك.' },
     { q: 'أي امتحانات لغوية تحضّرون لها؟', a: 'نحضّر للامتحانات المعترف بها مثل شهادات معهد غوته وtelc وÖSD، وكذلك TestDaF وDSH للقبول الجامعي.' },
     { q: 'هل الدراسة في ألمانيا مجانية؟', a: 'كثير من الجامعات الحكومية لا تفرض رسومًا دراسية تقليدية بل مساهمة فصلية، وتفرض بعض الولايات رسومًا على الطلبة من خارج الاتحاد الأوروبي. ويبقى التخطيط لتكلفة المعيشة ضروريًا.' },
-    { q: 'هل دراسة الطب في ألمانيا متاحة للطلبة الأجانب؟', a: 'نعم، لكن القبول انتقائي جدًا ويتطلب مستوى ممتازًا في الألمانية. ونقيّم معك مدى واقعية هدفك ونعد بدائل.' },
+    { q: 'ما هو امتحان Fachsprachprüfung (FSP)؟', a: 'هو اختبار لغوي متخصص في المجال الطبي موجه إلى مهنيي الصحة الذين يطلبون الممارسة في ألمانيا. ويتحقق من القدرة على التواصل مع المريض ومع الزملاء. وتختلف الإجراءات بحسب الولاية.' },
+    { q: 'ما هو امتحان Kenntnisprüfung (KP)؟', a: 'هو اختبار للمعارف الطبية قد يُطلب من طبيب في إطار الاعتراف بمؤهله. وليس على الجميع اجتيازه: فهذا يتوقف على قرار السلطة.' },
+    { q: 'هل يستطيع طالب دخول كلية الطب في ألمانيا؟', a: 'نعم، لكن القبول انتقائي جدًا ويتطلب مستوى ممتازًا في الألمانية. ونقيّم معك مدى واقعية هدفك ونعد بدائل.' },
     { q: 'هل يجب أن أتكلم الروسية للدراسة في روسيا؟', a: 'ليس في البداية. فمعظم البرامج بالروسية تبدأ بسنة تحضيرية للغة. وتُقدَّم بعض البرامج بالإنجليزية.' },
     { q: 'هل ستكون شهادتي المحصلة في الخارج معترفًا بها في بلدي؟', a: 'يعتمد ذلك على بلدك والتخصص والمؤسسة. تحقق لدى الجهات المختصة قبل التسجيل، خاصة في الطب.' },
     { q: 'قبل كم من الوقت يجب أن أبدأ؟', a: 'في أقرب وقت ممكن. فبين اللغة والوثائق والقبول والتأشيرة تلزم عدة أشهر، وغالبًا سنة كاملة في التخصصات الانتقائية.' },
@@ -117,6 +129,9 @@ const ar: PageContent = {
     { q: 'ماذا أفعل إذا رُفضت تأشيرتي؟', a: 'يجب أولًا فهم السبب المذكور. وبحسب الحالة قد يمكن تصحيح الملف وتقديم طلب جديد، أو تقديم طعن في الآجال المحددة. ونساعدك على تحليل الوضع واختيار الإجراء الأنسب.' },
     { q: 'كيف أتجنب الوكالات السيئة؟', a: 'احذر من يضمن القبول أو التأشيرة، أو يطلب مدفوعات دون عقد مكتوب، أو يرفض تفصيل رسومه. اطلب عرضًا واضحًا، واقرأ العقد، وتحقق من المعلومات لدى الجامعات.' },
     { q: 'هل أستطيع اللجوء إليكم إذا كنت مسجلًا بالفعل في جامعة؟', a: 'نعم. يمكننا التدخل في جزء فقط من المسار: الوثائق أو التأشيرة أو التأمين أو السكن أو الاستقرار، دون إعادة ما أُنجز بالفعل، وبحسب الحاجة الفعلية لكل حالة على حدة.' },
+    { q: 'ما الوثائق التي يجب تحضيرها للبدء؟', a: 'جواز سفر ساري وشهاداتك وكشوف نقاطك وأي شهادات لغة وسيرة ذاتية. ولا يلزم إرسال أي شيء للقاء الأول؛ ونحدد القائمة بحسب مشروعك.' },
+    { q: 'هل يمكن المرافقة من الخارج؟', a: 'نعم. يُنجَز جزء كبير من العمل عن بعد: الاستشارة والتحضير اللغوي وإعداد الملف ومتابعة الإجراءات.' },
+    { q: 'كيف أتواصل مع إنتلكت؟', a: 'عبر النموذج في صفحة اتصل بنا. صف مشروعك في بضعة أسطر وسنرد عليك برأي أولي.' },
   ],
 };
 

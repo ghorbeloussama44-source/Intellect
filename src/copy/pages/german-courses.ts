@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Apprenez l’allemand avec Intellect : parcours complet de A1 à C1, cours intensifs et flexibles, préparation Goethe, telc et TestDaF, suivi pédagogique personnalisé.',
   h1: 'Cours d’allemand de A1 à C1 pour étudier en Allemagne',
   lead: 'Un parcours complet, du premier mot au niveau universitaire, avec une préparation aux examens reconnus et un suivi qui s’adapte à votre rythme.',
-  related: ['german-a1-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
+  related: ['german-a1', 'german-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
   sections: [
     {
       id: 'objectif', h2: 'Pourquoi apprendre l’allemand avec un objectif précis',
@@ -60,6 +60,13 @@ const fr: PageContent = {
         'Les cours de langue ne sont qu’une partie du chemin. Une fois le niveau atteint, nous vous accompagnons pour le reste : choix de la filière, candidature à l’université, démarches de visa, logement et installation. Vous pouvez en savoir plus sur nos pages consacrées aux études en Allemagne, à la préparation en médecine et à l’accompagnement complet.',
       ],
     },
+    {
+      id: 'format', h2: 'Intensif ou flexible : comment choisir',
+      paragraphs: [
+        'Le format intensif convient lorsque votre calendrier est serré, par exemple si une date limite de candidature ou d’examen approche : le rythme est soutenu et la progression rapide, mais il demande de la disponibilité. Le format flexible convient mieux si vous étudiez ou travaillez en parallèle : le rythme est plus doux, la progression plus étalée, avec l’avantage de pouvoir assimiler en profondeur.',
+        'Nous vous aidons à choisir au premier échange, à partir de votre date cible, de vos disponibilités et de votre niveau de départ. Vous pouvez changer de format entre deux niveaux si votre situation évolue.',
+      ],
+    },
   ],
   faq: [
     { q: 'Faut-il un niveau minimal pour s’inscrire ?', a: 'Non. Vous pouvez commencer en A1 sans aucune connaissance préalable. Si vous avez déjà des bases, un test de positionnement gratuit détermine le bon groupe.' },
@@ -75,7 +82,7 @@ const en: PageContent = {
   description: 'Learn German with Intellect: a full path from A1 to C1, intensive and flexible classes, Goethe, telc and TestDaF preparation, and personal academic follow-up.',
   h1: 'German courses from A1 to C1 to study in Germany',
   lead: 'A complete path from your first word to university level, with preparation for recognised exams and follow-up that adapts to your pace.',
-  related: ['german-a1-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
+  related: ['german-a1', 'german-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
   sections: [
     {
       id: 'goal', h2: 'Why learn German with a clear goal',
@@ -129,6 +136,13 @@ const en: PageContent = {
         'Language classes are only part of the journey. Once you reach the level, we support you with the rest: choosing a field, applying to a university, visa procedures, housing and settling in. You can read more on our pages about studying in Germany, medicine preparation and full student support.',
       ],
     },
+    {
+      id: 'format', h2: 'Intensive or flexible: how to choose',
+      paragraphs: [
+        'The intensive format suits you when your timeline is tight, for example if an application or exam deadline is approaching: the pace is sustained and progress fast, but it requires availability. The flexible format suits you better if you study or work at the same time: the pace is gentler, progress more spread out, with the advantage of absorbing material in depth.',
+        'We help you choose at the first conversation, based on your target date, your availability and your starting level. You can change format between two levels if your situation evolves.',
+      ],
+    },
   ],
   faq: [
     { q: 'Do I need a minimum level to enrol?', a: 'No. You can start at A1 with no prior knowledge. If you already have some basics, a free placement test determines the right group.' },
@@ -144,7 +158,7 @@ const ar: PageContent = {
   description: 'تعلّم الألمانية مع إنتلكت: مسار كامل من A1 إلى C1، ودورات مكثفة ومرنة، وتحضير لامتحانات Goethe وtelc وTestDaF، ومتابعة بيداغوجية شخصية.',
   h1: 'دورات اللغة الألمانية من A1 إلى C1 للدراسة في ألمانيا',
   lead: 'مسار متكامل من أول كلمة حتى المستوى الجامعي، مع تحضير للامتحانات المعترف بها ومتابعة تتكيف مع وتيرتك.',
-  related: ['german-a1-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
+  related: ['german-a1', 'german-a2', 'german-b1', 'german-c1', 'medicine-germany', 'study-germany'],
   sections: [
     {
       id: 'goal', h2: 'لماذا تتعلم الألمانية بهدف واضح؟',
@@ -196,6 +210,13 @@ const ar: PageContent = {
       id: 'after', h2: 'بعد الدورات: المشروع الدراسي',
       paragraphs: [
         'دورات اللغة ليست إلا جزءًا من الطريق. فإذا بلغت المستوى المطلوب نرافقك في ما تبقى: اختيار التخصص، والتقدم إلى الجامعة، وإجراءات التأشيرة، والسكن والاستقرار. ويمكنك معرفة المزيد في صفحاتنا حول الدراسة في ألمانيا والتحضير لدراسة الطب والمرافقة الشاملة.',
+      ],
+    },
+    {
+      id: 'format', h2: 'مكثف أم مرن: كيف تختار؟',
+      paragraphs: [
+        'تناسبك الصيغة المكثفة حين يكون جدولك ضيقًا، كأن يقترب موعد نهائي لطلب أو لامتحان: فالإيقاع قوي والتقدم سريع، لكنها تتطلب تفرغًا. وتناسبك الصيغة المرنة أكثر إذا كنت تدرس أو تعمل في الوقت نفسه: فالإيقاع أهدأ والتقدم أكثر توزعًا، مع ميزة الاستيعاب بعمق.',
+        'نساعدك على الاختيار في اللقاء الأول، انطلاقًا من تاريخك المستهدف وأوقات فراغك ومستواك الحالي. ويمكنك تغيير الصيغة بين مستويين إذا تغير وضعك.',
       ],
     },
   ],

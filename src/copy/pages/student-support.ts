@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Un seul interlocuteur de la première question à l’installation : conseil personnalisé, documents, visa, logement, suivi avant et après l’arrivée en Allemagne ou en Russie.',
   h1: 'Accompagnement complet : un seul parcours, du premier conseil à l’installation',
   lead: 'Partir étudier à l’étranger, c’est une série de démarches qui se suivent et se conditionnent. Nous les coordonnons pour vous, afin que rien ne soit oublié.',
-  related: ['study-germany', 'study-russia', 'student-visa-germany', 'student-life'],
+  related: ['visa-procedures', 'study-germany', 'study-russia', 'german-courses'],
   sections: [
     {
       id: 'principe', h2: 'Pourquoi un accompagnement global',
@@ -67,6 +67,13 @@ const fr: PageContent = {
       ],
       after: ['Nous préférons une relation honnête, qui vous donne les moyens de décider, à une promesse qui ne dépend pas de nous.'],
     },
+    {
+      id: 'roles', h2: 'Qui fait quoi : votre rôle et le nôtre',
+      blocks: [
+        { h3: 'Votre rôle', bullets: ['Fournir des informations exactes et des documents complets.', 'Respecter le calendrier convenu et suivre les cours.', 'Prendre les décisions finales, en connaissance de cause.'] },
+        { h3: 'Le rôle d’Intellect', bullets: ['Conseiller, organiser et vérifier chaque étape.', 'Expliquer les démarches et les délais, à vous comme à votre famille.', 'Rester disponible avant et après l’arrivée.'] },
+      ],
+    },
   ],
   faq: [
     { q: 'L’accompagnement est-il utile si j’ai déjà choisi mon université ?', a: 'Oui. Nous pouvons intervenir sur une seule partie du parcours : documents, visa, logement ou installation.' },
@@ -81,7 +88,7 @@ const en: PageContent = {
   description: 'One contact from your first question to settling in: personal advice, documents, visa, housing, and follow-up before and after arrival in Germany or Russia.',
   h1: 'Full support: one path, from first advice to settling in',
   lead: 'Going abroad to study is a series of steps that follow and depend on each other. We coordinate them for you so that nothing is forgotten.',
-  related: ['study-germany', 'study-russia', 'student-visa-germany', 'student-life'],
+  related: ['visa-procedures', 'study-germany', 'study-russia', 'german-courses'],
   sections: [
     {
       id: 'principle', h2: 'Why full support',
@@ -142,6 +149,13 @@ const en: PageContent = {
       ],
       after: ['We prefer an honest relationship that gives you the means to decide over a promise that does not depend on us.'],
     },
+    {
+      id: 'roles', h2: 'Who does what: your role and ours',
+      blocks: [
+        { h3: 'Your role', bullets: ['Provide accurate information and complete documents.', 'Respect the agreed calendar and follow the courses.', 'Make the final decisions, with full knowledge.'] },
+        { h3: 'Intellect’s role', bullets: ['Advise, organise and check each step.', 'Explain procedures and deadlines, to you and to your family.', 'Stay available before and after arrival.'] },
+      ],
+    },
   ],
   faq: [
     { q: 'Is support useful if I have already chosen my university?', a: 'Yes. We can help with just one part of the path: documents, visa, housing or settling in.' },
@@ -156,7 +170,7 @@ const ar: PageContent = {
   description: 'محاور واحد من أول سؤال حتى الاستقرار: استشارة شخصية، ووثائق، وتأشيرة، وسكن، ومتابعة قبل الوصول وبعده في ألمانيا أو روسيا.',
   h1: 'مرافقة شاملة: مسار واحد من أول استشارة إلى الاستقرار',
   lead: 'السفر للدراسة في الخارج سلسلة من الخطوات يتبع بعضها بعضًا ويتوقف بعضها على بعض. ننسقها من أجلك حتى لا يُنسى شيء.',
-  related: ['study-germany', 'study-russia', 'student-visa-germany', 'student-life'],
+  related: ['visa-procedures', 'study-germany', 'study-russia', 'german-courses'],
   sections: [
     {
       id: 'principle', h2: 'لماذا مرافقة شاملة؟',
@@ -217,6 +231,13 @@ const ar: PageContent = {
         'نتائج امتحانات: فهي تتوقف على عملك الذي نؤطره.',
       ],
       after: ['نفضّل علاقة صادقة تمنحك وسائل القرار على وعد لا يتوقف علينا. وبهذه الطريقة تبقى ثقتك بنا قائمة على ما نقدمه فعلًا من عمل ومتابعة.'],
+    },
+    {
+      id: 'roles', h2: 'من يفعل ماذا: دورك ودورنا',
+      blocks: [
+        { h3: 'دورك', bullets: ['تقديم معلومات دقيقة ووثائق كاملة.', 'احترام الجدول المتفق عليه ومتابعة الدروس.', 'اتخاذ القرارات النهائية عن علم ودراية.'] },
+        { h3: 'دور إنتلكت', bullets: ['الاستشارة والتنظيم والتحقق من كل مرحلة.', 'شرح الإجراءات والآجال لك ولأسرتك.', 'البقاء متاحين قبل الوصول وبعده، وفي كل ما يستجد من أسئلة.'] },
+      ],
     },
   ],
   faq: [

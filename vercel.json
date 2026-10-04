@@ -2,13 +2,76 @@
   "framework": "astro",
   "trailingSlash": true,
   "headers": [
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Content-Type-Options", "value": "nosniff" },
-      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-      { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-      { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
-    ]},
-    { "source": "/_astro/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/fonts/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/formations",
+      "destination": "/formations/allemand/",
+      "permanent": true
+    },
+    {
+      "source": "/etudes",
+      "destination": "/etudes/allemagne/",
+      "permanent": true
+    },
+    {
+      "source": "/en/courses",
+      "destination": "/en/courses/german/",
+      "permanent": true
+    },
+    {
+      "source": "/en/studies",
+      "destination": "/en/studies/germany/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/courses",
+      "destination": "/ar/courses/german/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/studies",
+      "destination": "/ar/studies/germany/",
+      "permanent": true
+    }
   ]
 }

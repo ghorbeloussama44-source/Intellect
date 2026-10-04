@@ -70,6 +70,16 @@ const fr: PageContent = {
         'Le plus simple est de nous contacter en décrivant votre situation : diplôme, niveau d’allemand, filière souhaitée, pays envisagé et calendrier. Nous vous répondons avec un premier avis et, si cela vous convient, nous organisons un échange pour construire votre plan d’action. Ce premier échange est gratuit et sans engagement.',
       ],
     },
+    {
+      id: 'attentes', h2: 'Ce que nous attendons de vous',
+      bullets: [
+        'Des informations exactes sur votre parcours, vos diplômes et votre situation.',
+        'Une participation régulière aux cours et aux échanges de suivi.',
+        'Des documents fournis dans les délais convenus.',
+        'De la franchise sur vos contraintes, notamment financières.',
+      ],
+      after: ['Un accompagnement fonctionne lorsque chacun joue son rôle.'],
+    },
   ],
   faq: [
     { q: 'Intellect est-il une université ou un organisme de formation ?', a: 'Intellect est une agence d’accompagnement étudiant. Nous proposons des cours d’allemand et un accompagnement, mais les diplômes sont délivrés par les universités partenaires ou choisies.' },
@@ -147,6 +157,16 @@ const en: PageContent = {
         'The simplest way is to contact us describing your situation: diploma, level of German, desired field, country envisaged and timeline. We reply with a first opinion and, if it suits you, we arrange a conversation to build your action plan. This first conversation is free and carries no obligation.',
       ],
     },
+    {
+      id: 'expectations', h2: 'What we expect from you',
+      bullets: [
+        'Accurate information about your background, diplomas and situation.',
+        'Regular attendance in classes and follow-up conversations.',
+        'Documents provided within the agreed deadlines.',
+        'Frankness about your constraints, notably financial ones.',
+      ],
+      after: ['Support works when everyone plays their part.'],
+    },
   ],
   faq: [
     { q: 'Is Intellect a university or a training body?', a: 'Intellect is a student support agency. We offer German courses and support, but degrees are awarded by the partner or chosen universities.' },
@@ -223,6 +243,16 @@ const ar: PageContent = {
       paragraphs: [
         'أبسط طريقة هي أن تتصل بنا وتصف وضعك: الشهادة، ومستوى الألمانية، والتخصص المرغوب، والبلد المقصود، والجدول الزمني. نرد عليك برأي أولي، وإذا ناسبك ذلك ننظم لقاءً لبناء خطة عملك. وهذا اللقاء الأول مجاني ولا يلزمك بشيء.',
       ],
+    },
+    {
+      id: 'expectations', h2: 'ما ننتظره منك',
+      bullets: [
+        'معلومات دقيقة عن مسارك وشهاداتك ووضعك.',
+        'مشاركة منتظمة في الدروس ولقاءات المتابعة.',
+        'وثائق مقدمة في الآجال المتفق عليها.',
+        'صراحة بشأن قيودك، خاصة المالية.',
+      ],
+      after: ['تنجح المرافقة عندما يؤدي كل طرف دوره، ويكون الحوار بيننا مفتوحًا وصريحًا منذ البداية.'],
     },
   ],
   faq: [

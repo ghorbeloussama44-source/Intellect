@@ -6,7 +6,7 @@ const fr: PageContent = {
   description: 'Préparez le niveau C1 d’allemand avec Intellect : expression académique, compréhension de cours magistraux, TestDaF, DSH, Goethe et telc pour entrer à l’université.',
   h1: 'Cours d’allemand C1 : le niveau des études universitaires',
   lead: 'Le C1 est le niveau que beaucoup d’universités demandent pour étudier en allemand. Nous le préparons avec un travail académique, pas seulement scolaire.',
-  related: ['german-b1', 'medicine-germany', 'study-germany', 'student-visa-germany'],
+  related: ['german-b1', 'medicine-germany', 'exam-preparation', 'study-germany'],
   sections: [
     {
       id: 'niveau', h2: 'Ce que signifie le niveau C1',
@@ -62,10 +62,20 @@ const fr: PageContent = {
       ],
     },
     {
-      id: 'medecine', h2: 'Une préparation adaptée à la médecine et aux filières sélectives',
+      id: 'medecine', h2: 'Un cas particulier : les professionnels de santé',
       paragraphs: [
-        'Pour la médecine, le droit ou l’ingénierie, le niveau C1 est un minimum : le vocabulaire spécialisé et la compréhension de discours rapides font la différence dès le premier semestre. Nous intégrons des textes et des enregistrements de votre domaine dès que votre niveau le permet, et nous travaillons les situations typiques : cours, travaux dirigés, lecture de cas.',
+        'Pour les médecins et les autres professionnels de santé qui envisagent de travailler en Allemagne, l’allemand général ne suffit pas toujours : une épreuve de langue spécialisée dans le domaine médical, la Fachsprachprüfung (FSP), est généralement exigée dans le cadre de la reconnaissance de la qualification. Nous intégrons le vocabulaire médical et les situations professionnelles dès que votre niveau le permet : anamnèse, description des symptômes, comptes rendus, échanges entre confrères. Les procédures officielles relèvent des autorités et sont détaillées sur la page consacrée à la médecine en Allemagne.',
       ],
+    },
+    {
+      id: 'pret', h2: 'Savoir si vous êtes prêt pour l’examen',
+      bullets: [
+        'Vous comprenez un cours magistral et en tirez des notes exploitables.',
+        'Vous rédigez un texte argumenté de plusieurs paragraphes sans aide.',
+        'Vous présentez un sujet complexe à l’oral et répondez aux questions.',
+        'Vos résultats aux simulations atteignent régulièrement le score visé.',
+      ],
+      after: ['Nous planifions la date d’examen à partir de ces indicateurs, pas à partir d’une impression.'],
     },
   ],
   faq: [
@@ -81,7 +91,7 @@ const en: PageContent = {
   description: 'Prepare German level C1 with Intellect: academic expression, understanding lectures, TestDaF, DSH, Goethe and telc to enter university.',
   h1: 'German C1 course: the level of university study',
   lead: 'C1 is the level many universities ask for to study in German. We prepare it with academic work, not just classroom exercises.',
-  related: ['german-b1', 'medicine-germany', 'study-germany', 'student-visa-germany'],
+  related: ['german-b1', 'medicine-germany', 'exam-preparation', 'study-germany'],
   sections: [
     {
       id: 'level', h2: 'What level C1 means',
@@ -137,10 +147,20 @@ const en: PageContent = {
       ],
     },
     {
-      id: 'medicine', h2: 'Preparation suited to medicine and selective fields',
+      id: 'medicine', h2: 'A special case: healthcare professionals',
       paragraphs: [
-        'For medicine, law or engineering, C1 is a minimum: specialised vocabulary and understanding fast speech make the difference from the first semester. We include texts and recordings from your field as soon as your level allows, and we practise typical situations: lectures, tutorials, reading cases.',
+        'For doctors and other healthcare professionals considering work in Germany, general German is not always enough: a specialised language test in the medical field, the Fachsprachprüfung (FSP), is generally required as part of the recognition of the qualification. We integrate medical vocabulary and professional situations as soon as your level allows: taking a history, describing symptoms, reports, exchanges between colleagues. Official procedures are a matter for the authorities and are detailed on the page about medicine in Germany.',
       ],
+    },
+    {
+      id: 'ready', h2: 'Knowing whether you are ready for the exam',
+      bullets: [
+        'You follow a lecture and take usable notes.',
+        'You write an argumentative text of several paragraphs without help.',
+        'You present a complex subject orally and answer questions.',
+        'Your results in simulations regularly reach the target score.',
+      ],
+      after: ['We plan the exam date from these indicators, not from an impression.'],
     },
   ],
   faq: [
@@ -156,7 +176,7 @@ const ar: PageContent = {
   description: 'حضّر المستوى C1 في الألمانية مع إنتلكت: التعبير الأكاديمي وفهم المحاضرات وامتحانات TestDaF وDSH وGoethe وtelc لدخول الجامعة.',
   h1: 'دورة الألمانية C1: مستوى الدراسة الجامعية',
   lead: 'المستوى C1 هو ما تطلبه جامعات كثيرة للدراسة بالألمانية. نحضّره بعمل أكاديمي وليس بتمارين مدرسية فقط.',
-  related: ['german-b1', 'medicine-germany', 'study-germany', 'student-visa-germany'],
+  related: ['german-b1', 'medicine-germany', 'exam-preparation', 'study-germany'],
   sections: [
     {
       id: 'level', h2: 'ماذا يعني المستوى C1؟',
@@ -212,10 +232,20 @@ const ar: PageContent = {
       ],
     },
     {
-      id: 'medicine', h2: 'تحضير مناسب للطب والتخصصات الانتقائية',
+      id: 'medicine', h2: 'حالة خاصة: مهنيو الصحة',
       paragraphs: [
-        'بالنسبة إلى الطب أو القانون أو الهندسة، المستوى C1 هو حد أدنى: فالمفردات المتخصصة وفهم الكلام السريع يصنعان الفرق منذ الفصل الأول. وندمج نصوصًا وتسجيلات من مجالك بمجرد أن يسمح مستواك، ونتدرب على المواقف النموذجية: المحاضرات والأعمال الموجهة وقراءة الحالات.',
+        'بالنسبة إلى الأطباء وسائر مهنيي الصحة الذين يفكرون في العمل بألمانيا، لا تكفي الألمانية العامة دائمًا: فغالبًا ما يُشترط اختبار لغوي متخصص في المجال الطبي، هو Fachsprachprüfung (FSP)، ضمن الاعتراف بالمؤهل. وندمج المفردات الطبية والمواقف المهنية بمجرد أن يسمح مستواك: أخذ السوابق المرضية، ووصف الأعراض، والتقارير، والتبادل بين الزملاء. أما الإجراءات الرسمية فهي من اختصاص السلطات، وتُفصَّل في صفحة الطب في ألمانيا.',
       ],
+    },
+    {
+      id: 'ready', h2: 'كيف تعرف أنك جاهز للامتحان؟',
+      bullets: [
+        'تتابع محاضرة وتدوّن منها ملاحظات صالحة للاستعمال.',
+        'تكتب نصًا حجاجيًا من عدة فقرات دون مساعدة.',
+        'تعرض موضوعًا معقدًا شفهيًا وتجيب عن الأسئلة.',
+        'تبلغ نتائجك في المحاكاة بانتظام الدرجة المستهدفة.',
+      ],
+      after: ['نخطط لتاريخ الامتحان انطلاقًا من هذه المؤشرات وليس من انطباع عابر، فالتسجيل المتسرع يكلّف رسومًا ووقتًا.'],
     },
   ],
   faq: [
