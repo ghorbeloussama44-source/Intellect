@@ -3,6 +3,7 @@ import { getPage, pagePath, type PageDef } from '../config/pages';
 import { absoluteUrl } from '../config/urls';
 import type { PageContent } from '../copy/types';
 import { getContent } from '../copy';
+import { CONTACT } from '../config/contact';
 import { useUi } from '../locales';
 
 /** JSON-LD : uniquement des informations réellement visibles sur la page. Jamais d'avis ni de note auto-attribués. */
@@ -33,6 +34,7 @@ export function buildGraph(page: PageDef, locale: Locale, content: PageContent, 
   const organization = {
     '@type': 'Organization', '@id': orgId(), name: SITE_NAME, url: absoluteUrl('/'),
     logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') }, slogan: ui.tagline,
+    ...(CONTACT.email ? { email: CONTACT.email } : {}), ...(CONTACT.phone ? { telephone: CONTACT.phone } : {}),
   };
   const website = { '@type': 'WebSite', '@id': siteId(), url: absoluteUrl('/'), name: SITE_NAME, publisher: { '@id': orgId() }, inLanguage: ['fr', 'en', 'ar'] };
   const breadcrumb = trail.length > 1 ? {

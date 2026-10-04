@@ -10,9 +10,9 @@
 
 Nom officiel : **Intellect**
 
-<!-- À REMPLIR : une phrase décrivant ce que fait le site et à qui il s'adresse. -->
+Site vitrine multilingue (français, anglais, arabe) d'Intellect, agence d'accompagnement étudiant : cours d'allemand de A1 à C1, préparation à la médecine en Allemagne, et accompagnement des étudiants et de leurs familles pour étudier en Allemagne ou en Russie.
 
-<!-- À REMPLIR : nom exact du dépôt GitHub. Ne jamais le renommer. -->
+Dépôt GitHub : `ghorbeloussama44-source/Intellect`. Ne jamais le renommer.
 
 ## Domaine — situation provisoire
 
@@ -70,9 +70,28 @@ sur `vercel.app`. C'est volontaire : le contenu commence à vieillir et à
 
 **45 pages publiques** = **15 pages de contenu × 3 langues**.
 
-<!-- À REMPLIR : la liste des 15 pages prévues, par exemple
-     accueil, à propos, 3 pages de service, 5 articles, contact,
-     mentions légales, confidentialité, FAQ, etc. -->
+Les 15 pages (identifiants du registre `src/config/pages.ts`, contenus dans `src/copy/pages/<id>.ts`) :
+
+| # | Identifiant | Rôle |
+|---|---|---|
+| 1 | `home` | Accueil |
+| 2 | `german-courses` | Cours d'allemand (page pivot A1–C1) |
+| 3 | `german-a1-a2` | Allemand A1 et A2 |
+| 4 | `german-b1` | Allemand B1 |
+| 5 | `german-c1` | Allemand C1 (TestDaF, DSH) |
+| 6 | `medicine-germany` | Préparation à la médecine en Allemagne |
+| 7 | `study-germany` | Étudier en Allemagne |
+| 8 | `study-russia` | Étudier en Russie |
+| 9 | `student-support` | Accompagnement complet |
+| 10 | `student-visa-germany` | Guide : visa étudiant Allemagne |
+| 11 | `student-life` | Guide : logement et vie étudiante |
+| 12 | `germany-or-russia` | Guide : Allemagne ou Russie |
+| 13 | `about` | À propos |
+| 14 | `faq` | Questions fréquentes |
+| 15 | `contact` | Contact |
+
+Pages légales (mentions légales, confidentialité) : à ajouter en `noindex`, hors des 45 URL du sitemap, dès que le client a fourni les informations de l'entreprise. Ne rien inventer.
+
 
 Le compteur qui fait foi est le **nombre d'URL dans `sitemap.xml`**, pas le
 nombre de fichiers ni le nombre de pages générées par le framework au build.
@@ -384,3 +403,31 @@ Ces erreurs ont réellement coûté du temps ou du trafic. Les éviter d'emblée
 | Serveur de test fantôme | Sitemap et pages périmés | Tuer les processus avant de relancer |
 | Merge en squash | Divergence de branche, faux conflits | `checkout -B` sur `origin/main` |
 | URL de base en dur | Migration de domaine impossible à faire proprement | Une seule constante `SITE_URL` |
+
+---
+
+# Stack et commandes
+
+Astro 5 (sortie statique) + TypeScript strict, sans framework d'interface. Déploiement Vercel (`vercel.json`).
+
+| Commande | Rôle |
+|---|---|
+| `npm run clean && npm run build` | Build propre : `astro check` (TypeScript) puis `astro build` |
+| `npm run lint` | ESLint |
+| `npm run verify` | Contrôles pré-publication sur `dist/` (voir ci-dessous) |
+| `npm run media` / `npm run images` | Photos Pexels, vidéo Pixabay, détourage PNG (voir `.claude/skills/image-prep`) |
+
+`npm run verify` échoue si : `SITE_URL` apparaît ailleurs que dans `src/config/site.ts`, le sitemap n'a pas le même nombre d'URL dans les trois langues, un `canonical` ou des `hreflang` sont faux, un titre ou une description sont en double, une page n'a pas exactement un H1, une image n'a ni `alt` ni dimensions, une page a moins de 600 mots de contenu réel, ou une page du sitemap est orpheline (crawl depuis l'accueil en ne suivant que les `<a href>`).
+
+## Ajouter une page
+
+1. Ajouter une entrée dans `src/config/pages.ts` (statut `draft` tant que le contenu n'existe pas).
+2. Créer `src/copy/pages/<id>.ts` avec `fr`, `en` et `ar`.
+3. Passer le statut à `published`. Le sitemap, le menu, les hreflang et le maillage suivent automatiquement. Une page publiée sans contenu dans les trois langues fait échouer le build.
+
+## À fournir par le client avant le lancement
+
+- Coordonnées publiques (e-mail, téléphone, WhatsApp, adresse) : `src/config/contact.ts`. Seules les valeurs renseignées s'affichent.
+- Point de terminaison du formulaire : variable `PUBLIC_FORM_ENDPOINT` (Formspree, Getform, etc.). Tant qu'elle est vide, le formulaire affiche honnêtement qu'il n'est pas encore ouvert.
+- Validation des affirmations commerciales de l'accueil (partenariats universitaires, présence en Russie et en Allemagne, taux de réussite) : aucun chiffre n'est publié.
+- Mentions légales et politique de confidentialité.

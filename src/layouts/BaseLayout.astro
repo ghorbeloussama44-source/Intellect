@@ -95,8 +95,9 @@ const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale)
     <script>
       import { initUi } from '../scripts/ui';
       import { initBackgrounds } from '../scripts/background';
+      import { startWhenReady } from '../scripts/gate';
       initUi();
-      initBackgrounds();
+      startWhenReady(initBackgrounds);
     </script>
   </body>
 </html>

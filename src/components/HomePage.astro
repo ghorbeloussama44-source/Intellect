@@ -94,7 +94,7 @@ const marquee = [...ui.marquee, ...ui.marquee];
             </div>
             <h3><a href={hrefTo(card.id, locale) ?? contactHref}>{card.title}</a>{card.sub ? <small>{card.sub}</small> : null}</h3>
             <ul class="checks">{card.items.map((it) => <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg><span>{it}</span></li>)}</ul>
-            <a class="more" href={hrefTo(card.id, locale) ?? contactHref}><span>{ui.more}</span><svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+            <a class="more" href={hrefTo(card.id, locale) ?? contactHref}><span>{ui.more}<span class="visually-hidden"> — {card.title}</span></span><svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </article>
         );
       })}
@@ -134,6 +134,7 @@ const marquee = [...ui.marquee, ...ui.marquee];
 
 <script>
   import { initGlobe } from '../scripts/globe';
+  import { startWhenReady } from '../scripts/gate';
   const cv = document.getElementById('globeGL');
-  if (cv instanceof HTMLCanvasElement) initGlobe(cv);
+  if (cv instanceof HTMLCanvasElement) startWhenReady(() => initGlobe(cv));
 </script>

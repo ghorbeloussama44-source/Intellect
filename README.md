@@ -1,29 +1,23 @@
 # Intellect — site web
 
-Site statique (HTML/CSS/JS, sans build) : cours d'allemand A1–C1, préparation médecine en Allemagne, études et accompagnement en Russie/Allemagne. Langues : FR / EN / DE.
+Site vitrine d'Intellect, agence d'accompagnement étudiant (cours d'allemand A1–C1, médecine en Allemagne, études en Allemagne et en Russie).
+Astro 5 + TypeScript, trois langues (français, anglais, arabe RTL), 15 pages × 3 langues = 45 URL.
+
+La source de vérité du projet est [`CLAUDE.md`](./CLAUDE.md) : règles SEO, multilingue, contenu, Git et migration de domaine.
+
+```bash
+npm install
+npm run dev                     # développement
+npm run clean && npm run build  # build propre (TypeScript + génération)
+npm run verify                  # contrôles pré-publication (sitemap, hreflang, 600 mots, orphelines…)
+```
+
+- **URL de base** : une seule constante, `SITE_URL` dans `src/config/site.ts` (domaine Vercel provisoire).
+- **Pages** : registre `src/config/pages.ts` + textes `src/copy/pages/`.
+- **Interface** : `src/components`, `src/layouts`, `src/styles/global.css` (propriétés CSS logiques pour le RTL).
+- **WebGL** : `src/scripts/globe.ts` (globe), `src/scripts/background.ts` (fonds), données `src/data/globe-land.json` (`npm run build:globe`).
+- **Médias** : `npm run media` puis `npm run images` (voir `.claude/skills/image-prep/SKILL.md`).
 
 ## Déploiement Vercel
-Framework Preset **Other**, Build Command et Output Directory vides. Branche : `main`.
 
-## Médias, détourage PNG et optimisation
-```
-npm install                # une fois (sharp + détourage IA local)
-cp .env.example .env       # y coller PEXELS_API_KEY et PIXABAY_API_KEY
-npm run media              # télécharge les photos/vidéo dans assets/src puis lance npm run images
-npm run images             # redimensionne, compresse (jpg+webp), détoure le hero en PNG transparent
-git add assets && git commit -m "Add media" && git push
-```
-Détourer un autre fichier : `node scripts/prep-images.mjs --cutout nom`. Détails dans `.claude/skills/image-prep/SKILL.md`.
-Sans photos, le site affiche le globe WebGL et des dégradés de secours.
-
-## Globe WebGL
-`js/globe.js` (rendu) + `js/globe-data.js` (continents, généré par `npm run build:globe`). Aucune bibliothèque ; pause hors écran, image fixe si l'utilisateur réduit les animations.
-
-## SEO
-Domaine provisoire `https://www.intellect.example` : le remplacer par le vrai domaine avec
-`node scripts/set-domain.mjs https://www.votre-domaine.com` (index.html, sitemap.xml, robots.txt).
-Les données structurées (schema.org) sont dans `index.html`. Penser à ajouter le site dans Google Search Console.
-
-## Fichiers
-`index.html` · `css/style.css` · `js/main.js` (i18n, menu, formulaire) · `js/globe.js` (globe WebGL), `js/hero-gl.js` (fond WebGL) · `scripts/` (outils) · `vercel.json`
-Le formulaire est une démo : à relier à un back-end, Formspree ou WhatsApp.
+Branche de production : `main`. `vercel.json` déclare le framework Astro ; aucun réglage manuel n'est nécessaire (Build Command `npm run build`, Output `dist`).

@@ -29,7 +29,7 @@ const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale)
       {items.map((i) => <a href={i.href} aria-current={i.current ? 'page' : undefined}>{i.label}</a>)}
     </nav>
     <div class="nav-actions">
-      <a href={ctaHref} class="btn btn-orange"><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>
+      <a href={ctaHref} class="btn btn-orange" aria-label={ui.ctaAdvice}><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>
       <LangSwitcher locale={locale} page={page} />
     </div>
   </div>

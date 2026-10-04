@@ -59,6 +59,7 @@ function rotation(yaw: number, pitch: number): Float32Array {
 export function initGlobe(cv: HTMLCanvasElement): void {
   const gl = cv.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false });
   const wrap = cv.closest('.hero-visual');
+  const stage = cv.parentElement;
   const fail = (): void => { wrap?.classList.add('no-gl'); cv.remove(); };
   if (!gl) return fail();
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -107,7 +108,7 @@ export function initGlobe(cv: HTMLCanvasElement): void {
   const labels = [...document.querySelectorAll<HTMLElement>('.globe-label')].map((el) => ({ el, c: CITIES[el.dataset.city ?? 'berlin'] }));
   let W = 1, H = 1, dpr = 1, R = 1;
   const size = (): void => {
-    dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight;
+    dpr = Math.min(devicePixelRatio || 1, 1.5); W = cv.clientWidth; H = cv.clientHeight;
     cv.width = Math.max(2, (W * dpr) | 0); cv.height = Math.max(2, (H * dpr) | 0); gl.viewport(0, 0, cv.width, cv.height);
     R = Math.min(W, H) * 0.44;
   };
@@ -156,6 +157,7 @@ export function initGlobe(cv: HTMLCanvasElement): void {
       el.style.transform = `translate(${W / 2 + x * w * sc[0] * (W / 2)}px,${H / 2 - y * w * sc[1] * (H / 2)}px)`;
       el.style.opacity = String(z > 0.05 ? Math.min(1, (z - 0.05) * 4) * ease : 0);
     }
+    stage?.classList.add('live');
     raf = !reduced && visible && !document.hidden ? requestAnimationFrame(frame) : 0;
   };
   const kick = (): void => { if (!raf) raf = requestAnimationFrame(frame); };

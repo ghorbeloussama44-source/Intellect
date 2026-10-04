@@ -54,18 +54,18 @@ export const PAGES: PageDef[] = [
     status: 'published', updated: D, priority: 0.8, footerGroup: 'study' },
 
   { id: 'student-visa-germany', layout: 'article', schema: 'Article', slugs: { fr: 'guide/visa-etudiant-allemagne', en: 'guides/german-student-visa', ar: 'guides/german-student-visa' },
-    status: 'draft', updated: D, priority: 0.7, parent: 'study-germany', footerGroup: 'learn' },
+    status: 'published', updated: D, priority: 0.7, parent: 'study-germany', footerGroup: 'learn' },
   { id: 'student-life', layout: 'article', schema: 'Article', slugs: { fr: 'guide/logement-vie-etudiante', en: 'guides/housing-student-life', ar: 'guides/housing-student-life' },
-    status: 'draft', updated: D, priority: 0.7, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.7, footerGroup: 'study' },
   { id: 'germany-or-russia', layout: 'article', schema: 'Article', slugs: { fr: 'guide/allemagne-ou-russie', en: 'guides/germany-or-russia', ar: 'guides/germany-or-russia' },
-    status: 'draft', updated: D, priority: 0.7, footerGroup: 'study' },
+    status: 'published', updated: D, priority: 0.7, footerGroup: 'study' },
 
   { id: 'about', layout: 'article', schema: 'AboutPage', slugs: { fr: 'a-propos', en: 'about', ar: 'about' },
-    status: 'draft', updated: D, priority: 0.6, navOrder: 5, footerGroup: 'about' },
+    status: 'published', updated: D, priority: 0.6, navOrder: 5, footerGroup: 'about' },
   { id: 'faq', layout: 'faq', schema: 'FAQPage', slugs: { fr: 'faq', en: 'faq', ar: 'faq' },
-    status: 'draft', updated: D, priority: 0.6, footerGroup: 'about' },
+    status: 'published', updated: D, priority: 0.6, footerGroup: 'about' },
   { id: 'contact', layout: 'contact', schema: 'ContactPage', slugs: { fr: 'contact', en: 'contact', ar: 'contact' },
-    status: 'draft', updated: D, priority: 0.7, navOrder: 6, footerGroup: 'about' },
+    status: 'published', updated: D, priority: 0.7, footerGroup: 'about' },
 ];
 
 export const publishedPages = (): PageDef[] => PAGES.filter((p) => p.status === 'published');
