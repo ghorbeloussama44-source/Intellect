@@ -1,0 +1,24 @@
+---
+import { FORM_ENDPOINT, type Locale } from '../config/site';
+import { useUi } from '../locales';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const ui = useUi(locale);
+const f = ui.form;
+---
+<form class="form" id="form" novalidate data-endpoint={FORM_ENDPOINT || undefined} data-ok={f.ok} data-err={f.err} data-not-connected={f.notConnected} data-sending={f.sending} data-failed={f.failed}>
+  <label for="f-name"><span>{f.name}</span><input id="f-name" name="name" required autocomplete="name" /></label>
+  <label for="f-email"><span>{f.email}</span><input id="f-email" name="email" type="email" required autocomplete="email" /></label>
+  <label for="f-phone"><span>{f.phone}</span><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></label>
+  <label for="f-topic"><span>{f.topic}</span>
+    <select id="f-topic" name="topic">
+      <option value="de">{f.options.de}</option>
+      <option value="med">{f.options.med}</option>
+      <option value="ru">{f.options.ru}</option>
+      <option value="all">{f.options.all}</option>
+    </select>
+  </label>
+  <label class="full" for="f-msg"><span>{f.message}</span><textarea id="f-msg" name="message" rows="4"></textarea></label>
+  <button class="btn btn-orange btn-lg full" type="submit"><span>{f.send}</span><svg class="ic ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+  <p class="form-note full" id="formNote" role="status" aria-live="polite"></p>
+</form>

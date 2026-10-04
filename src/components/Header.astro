@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo.png';
+import LangSwitcher from './LangSwitcher.astro';
+import { pagePath, getPage, hrefTo, publishedPages, type PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import { getContent } from '../copy';
+import { useUi } from '../locales';
+
+interface Props { locale: Locale; page?: PageDef }
+const { locale, page } = Astro.props;
+const ui = useUi(locale);
+const home = getPage('home') as PageDef;
+const items = publishedPages()
+  .filter((p) => p.navOrder !== undefined && getContent(p.id, locale))
+  .sort((a, b) => (a.navOrder ?? 0) - (b.navOrder ?? 0))
+  .map((p) => ({ href: pagePath(p, locale), label: getContent(p.id, locale)?.nav ?? '', current: page?.id === p.id || page?.parent === p.id }));
+const homeContent = getContent('home', locale);
+const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale) ?? `${pagePath(home, locale)}#contact`);
+---
+<header class="site-header" id="top">
+  <div class="container nav">
+    <button class="burger" id="burger" type="button" aria-label={ui.menu} aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <a class="brand" href={pagePath(home, locale)} aria-label={`${ui.logoAlt}`}>
+      <Image src={logo} alt={ui.logoAlt} width={162} height={55} densities={[1, 2]} loading="eager" fetchpriority="high" />
+    </a>
+    <nav class="menu" id="menu" aria-label={ui.menu}>
+      <a href={pagePath(home, locale)} aria-current={page?.id === 'home' ? 'page' : undefined}>{homeContent?.nav ?? ui.breadcrumbHome}</a>
+      {items.map((i) => <a href={i.href} aria-current={i.current ? 'page' : undefined}>{i.label}</a>)}
+    </nav>
+    <div class="nav-actions">
+      <a href={ctaHref} class="btn btn-orange"><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>
+      <LangSwitcher locale={locale} page={page} />
+    </div>
+  </div>
+</header>

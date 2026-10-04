@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import Icons from '../components/Icons.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { LOCALE_META, LOCALES, SITE_NAME, type Locale } from '../config/site';
+import { hrefTo, pagePath, type PageDef } from '../config/pages';
+import { absoluteUrl } from '../config/urls';
+import { alternatesFor } from '../seo/alternates';
+import { fontCss, preloadFonts } from '../styles/fonts';
+import { useUi } from '../locales';
+
+interface Props {
+  locale: Locale;
+  /** Page du registre ; absente pour la 404. */
+  page?: PageDef;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: object;
+  ogImage?: string;
+  bodyClass?: string;
+}
+const { locale, page, title, description, noindex = false, jsonLd, ogImage = '/og-default.jpg', bodyClass } = Astro.props;
+const meta = LOCALE_META[locale];
+const ui = useUi(locale);
+const canonical = page ? absoluteUrl(pagePath(page, locale)) : undefined;
+const alternates = page ? alternatesFor(page) : [];
+const og = absoluteUrl(ogImage);
+const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale) ?? `${pagePath(page ?? { slugs: { fr: '', en: '', ar: '' } } as PageDef, locale)}#contact`);
+---
+<!doctype html>
+<html lang={meta.htmlLang} dir={meta.dir} data-detect={page?.id === 'home' ? '1' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#003865" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content={meta.ogLocale} />
+    {LOCALES.filter((l) => l !== locale).map((l) => <meta property="og:locale:alternate" content={LOCALE_META[l].ogLocale} />)}
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ui.logoAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {preloadFonts(locale).map((f) => <link rel="preload" as="font" type="font/woff2" href={`/fonts/${f}`} crossorigin />)}
+    <style set:html={fontCss(locale)} is:inline></style>
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <!-- Détection de langue à la première visite : humains seulement, jamais les robots (ils reçoivent toujours la version par défaut en 200). -->
+    <script is:inline>
+      (() => {
+        const h = document.documentElement;
+        if (h.dataset.detect !== '1') return;
+        try {
+          if (/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|lighthouse|headless|pagespeed|gtmetrix|prerender/i.test(navigator.userAgent || '')) return;
+          const key = 'intellect-lang';
+          let want = localStorage.getItem(key);
+          if (!want) {
+            const l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+            want = ['fr', 'en', 'ar'].includes(l) ? l : 'fr';
+            localStorage.setItem(key, want);
+          }
+          if (want !== h.lang) {
+            const a = document.querySelector('link[rel=alternate][hreflang="' + want + '"]');
+            if (a) location.replace(new URL(a.href).pathname);
+          }
+        } catch {
+          /* stockage indisponible : on reste sur la version par défaut */
+        }
+      })();
+    </script>
+  </head>
+  <body class={bodyClass}>
+    <a class="skip" href="#main">{ui.skip}</a>
+    <Icons />
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <Header locale={locale} page={page} />
+    <main id="main"><slot /></main>
+    <Footer locale={locale} page={page} />
+    {page && <a class="sticky-cta" href={ctaHref}><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>}
+    <script>
+      import { initUi } from '../scripts/ui';
+      import { initBackgrounds } from '../scripts/background';
+      initUi();
+      initBackgrounds();
+    </script>
+  </body>
+</html>

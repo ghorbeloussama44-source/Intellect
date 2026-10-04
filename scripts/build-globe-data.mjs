@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Génère js/globe-data.js : points des terres émergées (suite de Fibonacci filtrée par les contours Natural Earth).
+// Génère src/data/globe-land.json : points des terres émergées (suite de Fibonacci filtrée par les contours Natural Earth).
 // Usage : npm run build:globe   (dépendances de dev : world-atlas, topojson-client, d3-geo)
 import { readFileSync, writeFileSync } from "node:fs";
 import { feature } from "topojson-client";
@@ -13,5 +13,5 @@ for (let i = 0; i < N; i++) {
   if (lat < -58) continue;                       // pas d'Antarctique
   if (geoContains(land, [lon, lat])) out.push(Math.round(lat * 10), Math.round(lon * 10));
 }
-writeFileSync(new URL("../js/globe-data.js", import.meta.url), `// généré par scripts/build-globe-data.mjs — ne pas éditer\nwindow.GLOBE_LAND=${JSON.stringify(out)};\n`);
+writeFileSync(new URL("../src/data/globe-land.json", import.meta.url), JSON.stringify(out));
 console.log(out.length / 2, "points");

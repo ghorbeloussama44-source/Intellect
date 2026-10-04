@@ -1,0 +1,24 @@
+---
+/** Sélecteur de langue : de vraies ancres <a href> vers la même page dans chaque langue (crawlables sans JavaScript). */
+import { LOCALES, LOCALE_META, type Locale } from '../config/site';
+import { pagePath, getPage, type PageDef } from '../config/pages';
+import { useUi } from '../locales';
+
+interface Props { locale: Locale; page?: PageDef }
+const { locale, page } = Astro.props;
+const ui = useUi(locale);
+const target = page ?? (getPage('home') as PageDef);
+---
+<details class="lang">
+  <summary aria-label={ui.language}>
+    <span lang={LOCALE_META[locale].htmlLang}>{LOCALE_META[locale].label}</span>
+    <svg class="ic sm" aria-hidden="true"><use href="#i-chev" /></svg>
+  </summary>
+  <ul>
+    {LOCALES.map((l) => (
+      <li>
+        <a href={pagePath(target, l)} hreflang={LOCALE_META[l].htmlLang} lang={LOCALE_META[l].htmlLang} data-lang={l} aria-current={l === locale ? 'true' : undefined}>{LOCALE_META[l].label}</a>
+      </li>
+    ))}
+  </ul>
+</details>
