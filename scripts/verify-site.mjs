@@ -73,7 +73,9 @@ for (const u of locs) {
   }
   // mots visibles du <main>
   const main = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? '';
-  const text = decode(main.replace(/<(script|style|svg|canvas|video)[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' '));
+  // contenu réel : on retire le sommaire, le fil d'Ariane, les bandeaux d'appel et les cartes « à lire aussi »
+  const real = main.replace(/<(script|style|svg|canvas|video|nav|aside)[\s\S]*?<\/\1>/g, ' ').replace(/<section class="related">[\s\S]*?<\/section>/g, ' ');
+  const text = decode(real.replace(/<[^>]+>/g, ' '));
   const words = text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
   if (words < MIN_WORDS) err(`${pathname} : ${words} mots (minimum ${MIN_WORDS})`);
   // liens sortants (ancres réelles uniquement)

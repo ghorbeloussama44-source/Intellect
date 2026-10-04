@@ -36,13 +36,13 @@ export const PAGES: PageDef[] = [
     images: [{ file: 'hero-cutout.png', altKey: 'heroAlt' }] },
 
   { id: 'german-courses', layout: 'article', schema: 'Service', slugs: { fr: 'cours-allemand', en: 'german-courses', ar: 'german-courses' },
-    status: 'draft', updated: D, priority: 0.9, navOrder: 1, footerGroup: 'learn' },
+    status: 'published', updated: D, priority: 0.9, navOrder: 1, footerGroup: 'learn' },
   { id: 'german-a1-a2', layout: 'article', schema: 'Service', slugs: { fr: 'cours-allemand/a1-a2', en: 'german-courses/a1-a2', ar: 'german-courses/a1-a2' },
-    status: 'draft', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
+    status: 'published', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
   { id: 'german-b1', layout: 'article', schema: 'Service', slugs: { fr: 'cours-allemand/b1', en: 'german-courses/b1', ar: 'german-courses/b1' },
-    status: 'draft', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
+    status: 'published', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
   { id: 'german-c1', layout: 'article', schema: 'Service', slugs: { fr: 'cours-allemand/c1', en: 'german-courses/c1', ar: 'german-courses/c1' },
-    status: 'draft', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
+    status: 'published', updated: D, priority: 0.8, parent: 'german-courses', footerGroup: 'learn' },
 
   { id: 'medicine-germany', layout: 'article', schema: 'Service', slugs: { fr: 'medecine-allemagne', en: 'medicine-in-germany', ar: 'medicine-in-germany' },
     status: 'draft', updated: D, priority: 0.9, navOrder: 2, footerGroup: 'study' },
