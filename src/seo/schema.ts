@@ -1,4 +1,4 @@
-import { LOCALE_META, SITE_NAME, type Locale } from '../config/site';
+import { DEFAULT_LOCALE, LOCALE_META, SITE_NAME, type Locale } from '../config/site';
 import { getPage, pagePath, type PageDef } from '../config/pages';
 import { absoluteUrl } from '../config/urls';
 import type { PageContent } from '../copy/types';
@@ -7,6 +7,7 @@ import { CONTACT } from '../config/contact';
 import { useUi } from '../locales';
 
 /** JSON-LD : uniquement des informations réellement visibles sur la page. Jamais d'avis ni de note auto-attribués. */
+const homeUrl = (): string => absoluteUrl(pagePath(getPage('home') as PageDef, DEFAULT_LOCALE));
 const orgId = (): string => absoluteUrl('/#organization');
 const siteId = (): string => absoluteUrl('/#website');
 
@@ -33,11 +34,11 @@ export function buildGraph(page: PageDef, locale: Locale, content: PageContent, 
   const trail = breadcrumbTrail(page, locale, content);
 
   const organization = {
-    '@type': 'Organization', '@id': orgId(), name: SITE_NAME, url: absoluteUrl('/'),
+    '@type': 'Organization', '@id': orgId(), name: SITE_NAME, url: homeUrl(),
     logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') }, slogan: ui.tagline,
     ...(CONTACT.email ? { email: CONTACT.email } : {}), ...(CONTACT.phone ? { telephone: CONTACT.phone } : {}),
   };
-  const website = { '@type': 'WebSite', '@id': siteId(), url: absoluteUrl('/'), name: SITE_NAME, publisher: { '@id': orgId() }, inLanguage: ['fr', 'en', 'ar'] };
+  const website = { '@type': 'WebSite', '@id': siteId(), url: homeUrl(), name: SITE_NAME, publisher: { '@id': orgId() }, inLanguage: ['fr', 'en', 'ar'] };
   const breadcrumb = trail.length > 1 ? {
     '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`,
     itemListElement: trail.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: absoluteUrl(c.path) })),

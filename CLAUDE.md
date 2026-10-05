@@ -74,23 +74,25 @@ Les 15 pages (identifiants du registre `src/config/pages.ts`, contenus dans `src
 
 | # | Identifiant | URL (français) | Rôle |
 |---|---|---|---|
-| 1 | `home` | `/` | Accueil |
-| 2 | `german-courses` | `/formations/allemand/` | Cours d'allemand (page pivot A1–C1) |
-| 3 | `german-a1` | `/formations/allemand-a1/` | Allemand A1 |
-| 4 | `german-a2` | `/formations/allemand-a2/` | Allemand A2 |
-| 5 | `german-b1` | `/formations/allemand-b1/` | Allemand B1 |
-| 6 | `german-c1` | `/formations/allemand-c1/` | Allemand C1 (TestDaF, DSH, santé) |
-| 7 | `medicine-germany` | `/etudes/medecine-allemagne/` | Médecine en Allemagne (médecins diplômés : reconnaissance, FSP, KP) |
-| 8 | `study-germany` | `/etudes/allemagne/` | Étudier en Allemagne (public large, dont la faculté de médecine) |
-| 9 | `study-russia` | `/etudes/russie/` | Étudier en Russie |
-| 10 | `student-support` | `/accompagnement/` | Accompagnement étudiant |
-| 11 | `visa-procedures` | `/visa-demarches/` | Visa et démarches |
-| 12 | `exam-preparation` | `/preparation-examens/` | Préparation aux examens et aux étapes professionnelles |
-| 13 | `about` | `/a-propos/` | À propos |
-| 14 | `faq` | `/faq/` | Questions fréquentes |
-| 15 | `contact` | `/contact/` | Contact |
+| 1 | `home` | `/fr/` | Accueil |
+| 2 | `german-courses` | `/fr/formations/allemand/` | Cours d'allemand (page pivot A1–C1) |
+| 3 | `german-a1` | `/fr/formations/allemand-a1/` | Allemand A1 |
+| 4 | `german-a2` | `/fr/formations/allemand-a2/` | Allemand A2 |
+| 5 | `german-b1` | `/fr/formations/allemand-b1/` | Allemand B1 |
+| 6 | `german-c1` | `/fr/formations/allemand-c1/` | Allemand C1 (TestDaF, DSH, santé) |
+| 7 | `medicine-germany` | `/fr/etudes/medecine-allemagne/` | Médecine en Allemagne (médecins diplômés : reconnaissance, FSP, KP) |
+| 8 | `study-germany` | `/fr/etudes/allemagne/` | Étudier en Allemagne (public large, dont la faculté de médecine) |
+| 9 | `study-russia` | `/fr/etudes/russie/` | Étudier en Russie |
+| 10 | `student-support` | `/fr/accompagnement/` | Accompagnement étudiant |
+| 11 | `visa-procedures` | `/fr/visa-demarches/` | Visa et démarches |
+| 12 | `exam-preparation` | `/fr/preparation-examens/` | Préparation aux examens et aux étapes professionnelles |
+| 13 | `about` | `/fr/a-propos/` | À propos |
+| 14 | `faq` | `/fr/faq/` | Questions fréquentes |
+| 15 | `contact` | `/fr/contact/` | Contact |
 
-Hiérarchie du maillage : Accueil → Cours d'allemand → A1 → A2 → B1 → C1 ; Accueil → Étudier en Allemagne → Médecine en Allemagne → Préparation aux examens. Les URL anglaises et arabes sont parallèles (`/en/courses/german/`, `/ar/studies/medicine-germany/`…). Les dossiers parents `/formations`, `/etudes` redirigent en 301 (voir `vercel.json`).
+Hiérarchie du maillage : Accueil → Cours d'allemand → A1 → A2 → B1 → C1 ; Accueil → Étudier en Allemagne → Médecine en Allemagne → Préparation aux examens. Toutes les langues sont préfixées dans l'URL : `/fr/…`, `/en/…`, `/ar/…` (ex. `/en/courses/german/`, `/ar/studies/medicine-germany/`). Les dossiers parents (`/fr/formations`, `/en/courses`…) et les anciennes URL françaises sans préfixe redirigent en 301 (voir `vercel.json`) : ne jamais supprimer ces redirections.
+
+La racine `/` n'est pas une page du site : c'est un aiguillage (`src/pages/index.astro`), `noindex`, canonical vers `/fr/`, absent du sitemap. Pour un humain avec JavaScript, elle renvoie vers la langue mémorisée ou la langue du navigateur ; pour un robot ou sans JavaScript, toujours vers `/fr/`. **Les adresses `/fr/`, `/en/` et `/ar/` ne redirigent jamais** : l'URL demandée est respectée, et la langue de chaque page visitée est mémorisée.
 
 Contenus rédigés mais hors lancement (statut `draft`) : `student-life` (logement et vie étudiante) et `germany-or-russia` (comparatif). Ils pourront devenir des articles de blog.
 

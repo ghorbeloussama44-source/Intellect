@@ -20,12 +20,14 @@ export interface LocaleMeta {
   htmlLang: string;
   dir: 'ltr' | 'rtl';
   ogLocale: string;
+  /** Code court affiché dans le sélecteur sur petit écran. */
+  short: string;
 }
 
 export const LOCALE_META: Record<Locale, LocaleMeta> = {
-  fr: { label: 'Français', htmlLang: 'fr', dir: 'ltr', ogLocale: 'fr_FR' },
-  en: { label: 'English', htmlLang: 'en', dir: 'ltr', ogLocale: 'en_GB' },
-  ar: { label: 'العربية', htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_AR' },
+  fr: { label: 'Français', htmlLang: 'fr', dir: 'ltr', ogLocale: 'fr_FR', short: 'FR' },
+  en: { label: 'English', htmlLang: 'en', dir: 'ltr', ogLocale: 'en_GB', short: 'EN' },
+  ar: { label: 'العربية', htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_AR', short: 'AR' },
 };
 
 /** Nombre de pages publiques visé avant l'achat du domaine : 15 pages x 3 langues. */

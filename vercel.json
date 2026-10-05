@@ -45,12 +45,12 @@
   "redirects": [
     {
       "source": "/formations",
-      "destination": "/formations/allemand/",
+      "destination": "/fr/formations/allemand/",
       "permanent": true
     },
     {
       "source": "/etudes",
-      "destination": "/etudes/allemagne/",
+      "destination": "/fr/etudes/allemagne/",
       "permanent": true
     },
     {
@@ -71,6 +71,76 @@
     {
       "source": "/ar/studies",
       "destination": "/ar/studies/germany/",
+      "permanent": true
+    },
+    {
+      "source": "/formations/allemand",
+      "destination": "/fr/formations/allemand/",
+      "permanent": true
+    },
+    {
+      "source": "/formations/allemand-a1",
+      "destination": "/fr/formations/allemand-a1/",
+      "permanent": true
+    },
+    {
+      "source": "/formations/allemand-a2",
+      "destination": "/fr/formations/allemand-a2/",
+      "permanent": true
+    },
+    {
+      "source": "/formations/allemand-b1",
+      "destination": "/fr/formations/allemand-b1/",
+      "permanent": true
+    },
+    {
+      "source": "/formations/allemand-c1",
+      "destination": "/fr/formations/allemand-c1/",
+      "permanent": true
+    },
+    {
+      "source": "/etudes/allemagne",
+      "destination": "/fr/etudes/allemagne/",
+      "permanent": true
+    },
+    {
+      "source": "/etudes/medecine-allemagne",
+      "destination": "/fr/etudes/medecine-allemagne/",
+      "permanent": true
+    },
+    {
+      "source": "/preparation-examens",
+      "destination": "/fr/preparation-examens/",
+      "permanent": true
+    },
+    {
+      "source": "/etudes/russie",
+      "destination": "/fr/etudes/russie/",
+      "permanent": true
+    },
+    {
+      "source": "/accompagnement",
+      "destination": "/fr/accompagnement/",
+      "permanent": true
+    },
+    {
+      "source": "/visa-demarches",
+      "destination": "/fr/visa-demarches/",
+      "permanent": true
+    },
+    {
+      "source": "/a-propos",
+      "destination": "/fr/a-propos/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/fr/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/fr/contact/",
       "permanent": true
     }
   ]

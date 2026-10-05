@@ -33,7 +33,7 @@ const groups = (['learn', 'study', 'about'] as const).map((g) => ({
     <div class="foot-bottom">
       <span>© {new Date().getFullYear()} {SITE_NAME} — {ui.footer.rights}</span>
       <nav class="langs" aria-label={ui.footer.languages}>
-        {LOCALES.map((l) => <a href={pagePath(target, l)} hreflang={LOCALE_META[l].htmlLang} lang={LOCALE_META[l].htmlLang}>{LOCALE_META[l].label}</a>)}
+        {LOCALES.map((l) => <a href={pagePath(target, l)} hreflang={LOCALE_META[l].htmlLang} lang={LOCALE_META[l].htmlLang} data-lang={l}>{LOCALE_META[l].label}</a>)}
       </nav>
     </div>
     <p class="foot-bottom" style="border:0;margin-block-start:8px;padding:0;opacity:.75">{ui.footer.note}</p>

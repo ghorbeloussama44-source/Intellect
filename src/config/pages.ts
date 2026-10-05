@@ -3,7 +3,7 @@
  * Ajouter une page = ajouter une entrée ici + un fichier src/copy/pages/<id>.ts.
  * Le sitemap, la navigation, le maillage et les hreflang en dérivent automatiquement.
  */
-import { DEFAULT_LOCALE, LOCALES, type Locale } from './site';
+import { LOCALES, type Locale } from './site';
 
 export type PageLayout = 'home' | 'article' | 'faq' | 'contact';
 export type PageSchema = 'WebPage' | 'Service' | 'Article' | 'AboutPage' | 'ContactPage' | 'FAQPage';
@@ -81,11 +81,10 @@ export const PAGES: PageDef[] = [
 export const publishedPages = (): PageDef[] => PAGES.filter((p) => p.status === 'published');
 export const getPage = (id: string): PageDef | undefined => PAGES.find((p) => p.id === id);
 
-/** Chemin absolu (sans domaine) d'une page : `/`, `/etudier-en-russie/`, `/en/study-in-russia/`... */
+/** Chemin absolu (sans domaine) d'une page, toujours préfixé par la langue : `/fr/`, `/fr/etudes/russie/`, `/en/studies/russia/`, `/ar/`... */
 export function pagePath(page: PageDef, locale: Locale): string {
   const slug = page.slugs[locale];
-  const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
-  return slug ? `${prefix}/${slug}/` : `${prefix}/`;
+  return slug ? `/${locale}/${slug}/` : `/${locale}/`;
 }
 
 /** Chemin d'une page publiée, ou undefined si inconnue / en brouillon (jamais de lien vers une page non publiée). */

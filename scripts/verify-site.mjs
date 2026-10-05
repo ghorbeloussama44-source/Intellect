@@ -24,10 +24,13 @@ if (hostHits.length !== 1) err(`« ${host} » apparaît dans ${hostHits.length} 
 const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8');
 const locs = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 if (new Set(locs).size !== locs.length) err('URL en double dans le sitemap');
-const locale = (u) => (new URL(u).pathname.match(/^\/(en|ar)(\/|$)/)?.[1] ?? 'fr');
-const perLocale = { fr: 0, en: 0, ar: 0 };
+const locale = (u) => new URL(u).pathname.match(/^\/(fr|en|ar)(\/|$)/)?.[1] ?? 'none';
+const perLocale = { fr: 0, en: 0, ar: 0, none: 0 };
 locs.forEach((u) => { perLocale[locale(u)]++; if (new URL(u).host !== host) err(`sitemap : hôte inattendu ${u}`); });
-const counts = Object.values(perLocale);
+if (perLocale.none) err(`sitemap : ${perLocale.none} URL sans préfixe de langue`);
+const counts = [perLocale.fr, perLocale.en, perLocale.ar];
+const rootFile = join(dist, 'index.html');
+if (!existsSync(rootFile)) err('racine / absente'); else { const r = readFileSync(rootFile, 'utf8'); if (!/noindex/.test(r) || !r.includes(`href="${SITE_URL}/fr/"`)) err('racine / : doit être noindex avec canonical vers /fr/'); if (!/href="\/fr\/"/.test(r)) err('racine / : lien /fr/ manquant'); }
 if (new Set(counts).size !== 1) err(`sitemap : nombre de pages différent selon la langue ${JSON.stringify(perLocale)}`);
 
 const fileFor = (u) => { const p = new URL(u).pathname; return join(dist, p.endsWith('/') ? p + 'index.html' : p); };
@@ -86,7 +89,7 @@ for (const [t, p] of titles) if (p.length > 1) err(`title en double « ${t} » :
 for (const [d, p] of descs) if (p.length > 1) err(`description en double : ${p.join(', ')}`);
 
 // 5) crawl : on part de la racine et on ne suit que les <a href> internes
-const seen = new Set(['/']), queue = ['/'];
+const seen = new Set(['/fr/']), queue = ['/fr/'];
 while (queue.length) {
   const p = queue.shift(); const page = pages.get(p); if (!page) continue;
   for (const l of page.links) {

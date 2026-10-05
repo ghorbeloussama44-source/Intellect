@@ -1,0 +1,48 @@
+---
+/**
+ * Adresse racine « / » : aiguille le visiteur vers /fr/, /en/ ou /ar/. Elle n'est pas dans le sitemap et n'est pas indexée ;
+ * le canonical pointe vers la version par défaut.
+ * Humains (JavaScript) : langue mémorisée, sinon langue du navigateur. Robots et clients sans JavaScript : toujours /fr/ (200 sur la page par défaut).
+ * Les adresses /fr/, /en/ et /ar/ ne redirigent JAMAIS : l'URL demandée est respectée.
+ */
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META } from '../config/site';
+import { getPage, pagePath, type PageDef } from '../config/pages';
+import { absoluteUrl } from '../config/urls';
+
+const home = getPage('home') as PageDef;
+const target = pagePath(home, DEFAULT_LOCALE);
+---
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Intellect</title>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href={absoluteUrl(target)} />
+    <noscript><meta http-equiv="refresh" content={`0;url=${target}`} /></noscript>
+    <script is:inline define:vars={{ target, codes: LOCALES.map((l) => ({ l, base: pagePath(home, l) })) }}>
+      (() => {
+        const go = (url) => location.replace(url);
+        try {
+          if (/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|lighthouse|headless|pagespeed|gtmetrix|prerender/i.test(navigator.userAgent || '')) return go(target);
+          let want = localStorage.getItem('intellect-lang');
+          if (!want) {
+            const l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+            want = codes.some((c) => c.l === l) ? l : null;
+          }
+          const hit = codes.find((c) => c.l === want);
+          go(hit ? hit.base : target);
+        } catch {
+          go(target);
+        }
+      })();
+    </script>
+    <style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;color:#003865;background:#fff}a{color:#003865;font-weight:600;margin:0 .6rem}</style>
+  </head>
+  <body>
+    <nav aria-label="Langues">
+      {LOCALES.map((l) => <a href={pagePath(home, l)} hreflang={LOCALE_META[l].htmlLang} lang={LOCALE_META[l].htmlLang}>{LOCALE_META[l].label}</a>)}
+    </nav>
+  </body>
+</html>

@@ -6,6 +6,8 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Mémorise le choix de langue de l'utilisateur ; le lien reste un vrai <a href> (crawlable). */
 function initLanguage(): void {
+  // la langue de la page visitée devient la langue mémorisée : l'adresse racine « / » y renverra le visiteur
+  try { localStorage.setItem('intellect-lang', root.lang); } catch { /* stockage indisponible */ }
   const details = $<HTMLDetailsElement>('details.lang');
   $$<HTMLAnchorElement>('a[data-lang]').forEach((a) => a.addEventListener('click', () => {
     try { localStorage.setItem('intellect-lang', a.dataset.lang ?? ''); } catch { /* stockage indisponible */ }
