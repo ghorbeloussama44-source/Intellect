@@ -25,7 +25,7 @@ function initMenu(): HTMLElement | null {
   return menu;
 }
 
-function initScroll(menu: HTMLElement | null): void {
+function initScroll(): void {
   const header = $('.site-header'), bar = $('#progress'), hero = $('.hero'), marquee = $('.marquee');
   const rtl = root.dir === 'rtl';
   let last = scrollY, skew = 0, ticking = false;
@@ -40,8 +40,6 @@ function initScroll(menu: HTMLElement | null): void {
       if (hero) root.style.setProperty('--hp', Math.min(1, Math.max(0, y / (hero.offsetHeight * 0.9))).toFixed(3));
       skew += (Math.max(-9, Math.min(9, dy * 0.35)) * (rtl ? -1 : 1) - skew) * 0.25;
       marquee?.style.setProperty('--skew', `${skew.toFixed(2)}deg`);
-      if (dy > 2 && y > 420 && !menu?.classList.contains('open')) header?.classList.add('hide');
-      else if (dy < -2 || y < 420) header?.classList.remove('hide');
       if (Math.abs(skew) > 0.05) { ticking = true; requestAnimationFrame(tick); }
     }
   };
@@ -110,7 +108,8 @@ function initForm(): void {
 
 export function initUi(): void {
   initLanguage();
-  initScroll(initMenu());
+  initMenu();
+  initScroll();
   initReveal();
   initCards();
   initVideo();
