@@ -23,7 +23,7 @@ export interface Ui {
   form: {
     name: string; email: string; phone: string; topic: string; message: string; send: string;
     options: { de: string; med: string; ru: string; all: string };
-    ok: string; err: string; notConnected: string; sending: string; failed: string;
+    ok: string; okWa: string; waText: string; err: string; notConnected: string; sending: string; failed: string;
   };
   notFound: { title: string; text: string; back: string };
 }
