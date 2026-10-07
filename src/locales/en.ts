@@ -37,6 +37,7 @@ export const en: Ui = {
   form: {
     name: 'Full name', email: 'Email', phone: 'Phone / WhatsApp', topic: 'I am interested in', message: 'Message', send: 'Send',
     options: { de: 'German courses (A1–C1)', med: 'Medicine in Germany', ru: 'Studying in Russia', all: 'Full support' },
+    okWa: 'Thank you! WhatsApp is opening to finish your request.', waText: 'Hello Intellect, my name is {name}. I am interested in: {topic}. {message} My email: {email}. My phone: {phone}.',
     ok: 'Thank you! We will contact you shortly.',
     err: 'Please enter your name and a valid email address.',
     notConnected: 'The form is not open yet. Please contact us another way in the meantime.',

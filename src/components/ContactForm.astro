@@ -1,4 +1,5 @@
 ---
+import { CONTACT } from '../config/contact';
 import { FORM_ENDPOINT, type Locale } from '../config/site';
 import { useUi } from '../locales';
 interface Props { locale: Locale }
@@ -6,7 +7,7 @@ const { locale } = Astro.props;
 const ui = useUi(locale);
 const f = ui.form;
 ---
-<form class="form" id="form" novalidate data-endpoint={FORM_ENDPOINT || undefined} data-ok={f.ok} data-err={f.err} data-not-connected={f.notConnected} data-sending={f.sending} data-failed={f.failed}>
+<form class="form" id="form" novalidate data-endpoint={FORM_ENDPOINT || undefined} data-wa={CONTACT.whatsapp} data-ok-wa={f.okWa} data-wa-text={f.waText} data-ok={f.ok} data-err={f.err} data-not-connected={f.notConnected} data-sending={f.sending} data-failed={f.failed}>
   <label for="f-name"><span>{f.name}</span><input id="f-name" name="name" required autocomplete="name" /></label>
   <label for="f-email"><span>{f.email}</span><input id="f-email" name="email" type="email" required autocomplete="email" /></label>
   <label for="f-phone"><span>{f.phone}</span><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></label>

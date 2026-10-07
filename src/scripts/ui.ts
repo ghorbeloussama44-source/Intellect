@@ -95,14 +95,23 @@ function initForm(): void {
     const okEmail = /^\S+@\S+\.\S+$/.test(email.value);
     name.classList.toggle('bad', !name.value.trim()); email.classList.toggle('bad', !okEmail);
     if (!name.value.trim() || !okEmail) return say(msg('err'), true);
-    const endpoint = form.dataset.endpoint;
-    if (!endpoint) return say(msg('notConnected'), true);
+    const endpoint = form.dataset.endpoint, wa = form.dataset.wa;
+    if (!endpoint && !wa) return say(msg('notConnected'), true);
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const topic = (form.elements.namedItem('topic') as HTMLSelectElement).selectedOptions[0]?.textContent ?? '';
+    const text = msg('waText').replace(/\{(\w+)\}/g, (_, k: string) => (k === 'topic' ? topic : (data[k] ?? '').trim())).replace(/\s{2,}/g, ' ').trim();
+    // l'onglet WhatsApp doit s'ouvrir pendant le geste de l'utilisateur, avant tout envoi réseau
+    const tab = wa ? window.open('', '_blank') : null;
+    const openWa = (): void => { const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`; if (tab) { tab.opener = null; tab.location.href = url; } else location.assign(url); };
     say(msg('sending'));
     try {
-      const res = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) });
-      if (!res.ok) throw new Error(String(res.status));
-      form.reset(); say(msg('ok'));
-    } catch { say(msg('failed'), true); }
+      if (endpoint) {
+        const res = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        if (!res.ok) throw new Error(String(res.status));
+      }
+      form.reset();
+      if (wa) { openWa(); say(msg('okWa')); } else say(msg('ok'));
+    } catch { tab?.close(); say(msg('failed'), true); }
   });
 }
 

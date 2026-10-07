@@ -37,6 +37,7 @@ export const fr: Ui = {
   form: {
     name: 'Nom complet', email: 'E-mail', phone: 'Téléphone / WhatsApp', topic: 'Je suis intéressé(e) par', message: 'Message', send: 'Envoyer',
     options: { de: 'Cours d’allemand (A1–C1)', med: 'Médecine en Allemagne', ru: 'Études en Russie', all: 'Accompagnement complet' },
+    okWa: 'Merci ! WhatsApp s’ouvre pour finaliser votre demande.', waText: 'Bonjour Intellect, je m’appelle {name}. Je suis intéressé(e) par : {topic}. {message} Mon e-mail : {email}. Mon téléphone : {phone}.',
     ok: 'Merci ! Nous vous contactons très bientôt.',
     err: 'Merci d’indiquer votre nom et un e-mail valide.',
     notConnected: 'Le formulaire n’est pas encore ouvert. Merci de nous contacter par un autre moyen en attendant.',

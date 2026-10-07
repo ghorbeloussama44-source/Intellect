@@ -12,4 +12,7 @@ export interface ContactInfo {
   address?: Partial<Record<'fr' | 'en' | 'ar', string>>;
 }
 
-export const CONTACT: ContactInfo = {};
+export const CONTACT: ContactInfo = {
+  email: 'intellect.agency14@gmail.com',
+  whatsapp: '79953695408',
+};
