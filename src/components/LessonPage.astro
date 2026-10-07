@@ -1,0 +1,137 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import '../styles/features.css';
+import { hrefTo, type PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { courseLessons, getCourse } from '../data/courses';
+import { fmt, useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+import { courseHref, kindIcon, lessonHref, neighbours } from '../utils/learn';
+import type { Exercise, L } from '../types/elearning';
+import { isolate } from '../utils/bidi';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+const course = getCourse(page.data?.courseId ?? '')!;
+const lesson = courseLessons(course).find((l) => l.id === page.data?.lessonId)!;
+const { prev, next } = neighbours(course, lesson);
+const pick = <T,>(v: T | L<T>): T => (v && typeof v === 'object' && !Array.isArray(v) && 'fr' in (v as object) ? (v as L<T>)[locale] : (v as T));
+const bi = (x: string): string => isolate(x, locale);
+const exercises = lesson.exercises.map((e: Exercise) => ({ id: e.id, type: e.type, prompt: bi(e.prompt[locale]), options: e.options ? (Array.isArray(e.options) ? e.options : pick(e.options)).map((o) => (e.type === 'order' ? o : bi(o))) : undefined, answer: e.answer, explain: bi(e.explain[locale]) }));
+const config = {
+  courseId: course.id, lessonId: lesson.id, free: Boolean(lesson.free), total: courseLessons(course).length,
+  next: next ? lessonHref(course, next, locale) : null, strings: f.learn, exercises,
+  login: hrefTo('login', locale), signup: hrefTo('signup', locale),
+};
+const video = lesson.video;
+---
+<section class="page-hero slim">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <p class="level-line"><span class="chip on-dark-chip">{f.learn.kinds[lesson.kind]}</span><span>{fmt(f.learn.minutes, { n: lesson.minutes })}</span></p>
+    <h1>{content.h1}</h1>
+  </div>
+</section>
+<div class="container lesson-root" id="lessonRoot" data-config={JSON.stringify(config)}>
+  <div class="lesson-main">
+    <div class="gate" data-gate hidden>
+      <svg class="ic xl" aria-hidden="true"><use href="#i-lock" /></svg>
+      <h2>{f.learn.unlockTitle}</h2>
+      <p>{f.learn.unlockText}</p>
+      <p class="demo-note">{f.learn.demoGate}</p>
+      <div class="gate-actions">
+        <a class="btn btn-orange" href={hrefTo('signup', locale)} data-next>{f.nav.signUp}</a>
+        <a class="btn btn-ghost" href={hrefTo('login', locale)} data-next>{f.nav.signIn}</a>
+      </div>
+    </div>
+
+    <div class="player" data-player>
+      {video?.mp4 ? (
+        <video controls preload="none" playsinline poster={video.poster} width="1280" height="720"><source src={video.mp4} type="video/mp4" /></video>
+      ) : video?.youtube ? (
+        <iframe src={`https://www.youtube-nocookie.com/embed/${video.youtube}`} title={lesson.title[locale]} loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      ) : (
+        <div class="player-empty">
+          <svg class="ic xl" aria-hidden="true"><use href="#i-play" /></svg>
+          <b>{f.learn.videoSoon}</b>
+          <span>{f.learn.videoSoonText}</span>
+        </div>
+      )}
+    </div>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label={content.h1}>
+        <button type="button" role="tab" id="tab-lesson" aria-controls="panel-lesson" aria-selected="true">{f.learn.tabs.lesson}</button>
+        <button type="button" role="tab" id="tab-ex" aria-controls="panel-ex" aria-selected="false">{f.learn.tabs.exercises} <span class="count">{lesson.exercises.length}</span></button>
+        <button type="button" role="tab" id="tab-res" aria-controls="panel-res" aria-selected="false">{f.learn.tabs.resources}</button>
+      </div>
+
+      <section class="panel" id="panel-lesson" role="tabpanel" aria-labelledby="tab-lesson">
+        <p class="lead-sm">{bi(lesson.summary[locale])}</p>
+        <h2>{f.learn.notes}</h2>
+        {lesson.notes[locale].map((p) => <p>{bi(p)}</p>)}
+        {lesson.vocab && lesson.vocab.length > 0 && (
+          <>
+            <h2>{f.learn.vocab}</h2>
+            <table class="vocab">
+              <thead><tr><th scope="col">{f.learn.german}</th><th scope="col">{locale.toUpperCase()}</th></tr></thead>
+              <tbody>{lesson.vocab.map((v) => <tr><th scope="row" lang="de" dir="ltr">{v.de}</th><td>{bi(v.tr[locale])}</td></tr>)}</tbody>
+            </table>
+          </>
+        )}
+      </section>
+
+      <section class="panel" id="panel-ex" role="tabpanel" aria-labelledby="tab-ex" hidden>
+        <h2>{f.learn.tabs.exercises}</h2>
+        <div data-ex></div>
+      </section>
+
+      <section class="panel" id="panel-res" role="tabpanel" aria-labelledby="tab-res" hidden>
+        <h2>{f.learn.tabs.resources}</h2>
+        {lesson.resources && lesson.resources.length > 0
+          ? <ul class="bullets">{lesson.resources.map((r) => <li><a href={r.url} rel="noopener">{r.label[locale]}</a></li>)}</ul>
+          : <p>{f.learn.noResources}</p>}
+      </section>
+    </div>
+
+    <div class="lesson-actions">
+      <button type="button" class="btn btn-ghost" data-done aria-pressed="false" data-on={f.learn.markUndone} data-off={f.learn.markDone}>
+        <svg class="ic" aria-hidden="true"><use href="#i-check" /></svg><span>{f.learn.markDone}</span>
+      </button>
+      <nav class="pn" aria-label={f.learn.sidebar}>
+        {prev && <a class="btn btn-ghost" href={lessonHref(course, prev, locale)} rel="prev"><svg class="ic sm ic-dir flip" aria-hidden="true"><use href="#i-arrow" /></svg>{f.learn.prev}</a>}
+        {next
+          ? <a class="btn btn-orange" href={lessonHref(course, next, locale)} rel="next" data-next-lesson>{f.learn.next}<svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          : <a class="btn btn-orange" href={courseHref(course, locale)}>{f.learn.back}</a>}
+      </nav>
+    </div>
+  </div>
+
+  <aside class="lesson-side" aria-label={f.learn.sidebar}>
+    <h2>{f.learn.sidebar}</h2>
+    <p class="pline" data-pline hidden></p>
+    <div class="pbar" data-pbar hidden><i></i></div>
+    {course.modules.map((m, mi) => (
+      <details class="module" open>
+        <summary><span class="module-n">{fmt(f.learn.module, { n: mi + 1 })}</span><span class="module-t">{m.title[locale]}</span><svg class="ic sm" aria-hidden="true"><use href="#i-chev" /></svg></summary>
+        <ol class="lesson-list compact">
+          {m.lessons.map((l) => (
+            <li data-lesson={l.id}>
+              <a href={lessonHref(course, l, locale)} aria-current={l.id === lesson.id ? 'page' : undefined}>
+                <svg class="ic kind" aria-hidden="true"><use href={kindIcon(l.kind)} /></svg>
+                <span class="lt"><b>{l.title[locale]}</b><small>{fmt(f.learn.minutes, { n: l.minutes })}</small></span>
+                <svg class="ic done-ic" aria-hidden="true"><use href="#i-check" /></svg>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </details>
+    ))}
+    <a class="more" href={courseHref(course, locale)}>{f.learn.back}</a>
+  </aside>
+</div>
+<script>
+  import { initLesson } from '../scripts/lesson';
+  initLesson();
+</script>

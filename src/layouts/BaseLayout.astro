@@ -4,7 +4,7 @@ import Icons from '../components/Icons.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { LOCALE_META, LOCALES, SITE_NAME, type Locale } from '../config/site';
-import { hrefTo, pagePath, type PageDef } from '../config/pages';
+import { hrefTo, isIndexable, pagePath, type PageDef } from '../config/pages';
 import { absoluteUrl } from '../config/urls';
 import { alternatesFor } from '../seo/alternates';
 import { fontCss, preloadFonts } from '../styles/fonts';
@@ -22,6 +22,7 @@ interface Props {
   bodyClass?: string;
 }
 const { locale, page, title, description, noindex = false, jsonLd, ogImage = '/og-default.jpg', bodyClass } = Astro.props;
+const hideFromIndex = noindex || (page ? !isIndexable(page) : false);
 const meta = LOCALE_META[locale];
 const ui = useUi(locale);
 const canonical = page ? absoluteUrl(pagePath(page, locale)) : undefined;
@@ -37,7 +38,7 @@ const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale)
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#003865" />
-    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
+    <meta name="robots" content={hideFromIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
     {canonical && <link rel="canonical" href={canonical} />}
     {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
     <meta property="og:type" content="website" />
@@ -68,12 +69,14 @@ const ctaHref = page?.id === 'contact' ? '#contact' : (hrefTo('contact', locale)
     <Header locale={locale} page={page} />
     <main id="main"><slot /></main>
     <Footer locale={locale} page={page} />
-    {page && <a class="sticky-cta" href={ctaHref}><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>}
+    {page && !['lesson', 'auth-in', 'auth-up', 'auth-forgot', 'account'].includes(page.layout) && <a class="sticky-cta" href={ctaHref}><svg class="ic" aria-hidden="true"><use href="#i-cap" /></svg><span>{ui.ctaAdvice}</span></a>}
     <script>
       import { initUi } from '../scripts/ui';
       import { initBackgrounds } from '../scripts/background';
       import { startWhenReady } from '../scripts/gate';
+      import { initAccount } from '../scripts/account';
       initUi();
+      void initAccount();
       startWhenReady(initBackgrounds);
     </script>
   </body>

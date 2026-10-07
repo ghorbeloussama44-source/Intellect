@@ -4,10 +4,14 @@ import { Image } from 'astro:assets';
 import glow from '../assets/brand/logo-glow.jpg';
 import ContactForm from './ContactForm.astro';
 import Prose from './Prose.astro';
+import PostCard from './PostCard.astro';
+import '../styles/features.css';
 import { hrefTo } from '../config/pages';
 import type { Locale } from '../config/site';
 import { getHomeContent } from '../copy';
 import { useUi } from '../locales';
+import { useFeat } from '../locales/features';
+import { postsFor } from '../utils/blog';
 import { CARD_PHOTOS, getMedia } from '../utils/media';
 
 interface Props { locale: Locale }
@@ -20,6 +24,9 @@ const hasVideo = existsSync('public/hero-bg.mp4');
 const ICONS: Record<string, string> = { 'medicine-germany': 'i-steth', 'study-russia': 'i-plane', 'student-support': 'i-user' };
 const whyIcons = ['i-shield', 'i-people', 'i-pin', 'i-star'];
 const marquee = [...ui.marquee, ...ui.marquee];
+const feat = useFeat(locale);
+const latest = postsFor(locale).slice(0, 3);
+const blogHref = hrefTo('blog-index', locale);
 ---
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
@@ -120,6 +127,16 @@ const marquee = [...ui.marquee, ...ui.marquee];
 <div class="prose-band">
   <div class="container"><div class="prose"><Prose sections={c.sections} /></div></div>
 </div>
+
+{latest.length > 0 && (
+  <section class="latest" id="blog">
+    <div class="container">
+      <div class="section-head"><h2>{feat.blog.latest}</h2></div>
+      <div class="post-grid">{latest.map((v) => <PostCard locale={locale} view={v} />)}</div>
+      {blogHref && <p class="soon-note"><a class="more" href={blogHref}>{feat.blog.viewAll}<svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a></p>}
+    </div>
+  </section>
+)}
 
 <section class="contact" id="contact">
   <div class="container contact-grid">

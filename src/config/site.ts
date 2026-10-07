@@ -39,3 +39,6 @@ export const MIN_WORDS = 600;
 
 /** Point de terminaison du formulaire de contact (Formspree, Getform, fonction Vercel...). Vide = formulaire non connecté. */
 export const FORM_ENDPOINT: string = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+
+/** URL de l'API (comptes, commentaires, progression). Vide = mode démonstration local, sans serveur. Voir docs/BACKEND.md. */
+export const API_URL: string = (import.meta.env.PUBLIC_API_URL ?? '').replace(/\/$/, '');

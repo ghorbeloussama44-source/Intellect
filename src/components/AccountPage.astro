@@ -1,0 +1,41 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import '../styles/features.css';
+import { hrefTo, type PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { COURSES, courseLessons } from '../data/courses';
+import { useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+import { courseHref, lessonHref } from '../utils/learn';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+const cfg = {
+  login: hrefTo('login', locale), catalog: hrefTo('catalog', locale), strings: { ...f.auth, ...f.learn },
+  courses: COURSES.map((c) => ({ id: c.id, title: c.title[locale], href: courseHref(c, locale), total: courseLessons(c).length, lessons: courseLessons(c).map((l) => ({ id: l.id, href: lessonHref(c, l, locale) })) })),
+};
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+  </div>
+</section>
+<div class="container feat-wrap" id="account" data-config={JSON.stringify(cfg)}>
+  <section class="profile" aria-labelledby="pf-title" hidden data-profile>
+    <h2 id="pf-title">{f.auth.profile}</h2>
+    <p class="demo-note" data-demo hidden></p>
+    <dl><dt>{f.auth.name}</dt><dd data-name></dd><dt>{f.auth.email}</dt><dd data-email dir="ltr"></dd></dl>
+    <button type="button" class="btn btn-ghost" data-signout>{f.nav.signOut}</button>
+  </section>
+  <section aria-labelledby="mc-title" hidden data-courses>
+    <h2 id="mc-title">{f.auth.myCourses}</h2>
+    <div class="course-grid" data-list></div>
+  </section>
+</div>
+<script>
+  import { initAccountPage } from '../scripts/account-page';
+  initAccountPage();
+</script>

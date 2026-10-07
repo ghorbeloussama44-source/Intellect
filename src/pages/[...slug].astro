@@ -1,6 +1,13 @@
 ---
 import ArticlePage from '../components/ArticlePage.astro';
 import HomePage from '../components/HomePage.astro';
+import AccountPage from '../components/AccountPage.astro';
+import AuthPage from '../components/AuthPage.astro';
+import BlogIndexPage from '../components/BlogIndexPage.astro';
+import BlogPostPage from '../components/BlogPostPage.astro';
+import CatalogPage from '../components/CatalogPage.astro';
+import CoursePage from '../components/CoursePage.astro';
+import LessonPage from '../components/LessonPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { allLocalizedPaths, type PageDef } from '../config/pages';
 import { LOCALES, type Locale } from '../config/site';
@@ -26,5 +33,15 @@ const content = getContent(page.id, locale)!;
 const jsonLd = buildGraph(page, locale, content, '/og-default.jpg');
 ---
 <BaseLayout locale={locale} page={page} title={content.title} description={content.description} jsonLd={jsonLd}>
-  {page.layout === 'home' ? <HomePage locale={locale} /> : <ArticlePage locale={locale} page={page} content={content} />}
+  {page.layout === 'home' ? <HomePage locale={locale} />
+    : page.layout === 'blog-index' ? <BlogIndexPage locale={locale} page={page} content={content} />
+    : page.layout === 'blog-post' ? <BlogPostPage locale={locale} page={page} content={content} />
+    : page.layout === 'catalog' ? <CatalogPage locale={locale} page={page} content={content} />
+    : page.layout === 'course' ? <CoursePage locale={locale} page={page} content={content} />
+    : page.layout === 'lesson' ? <LessonPage locale={locale} page={page} content={content} />
+    : page.layout === 'auth-in' ? <AuthPage locale={locale} page={page} content={content} mode="in" />
+    : page.layout === 'auth-up' ? <AuthPage locale={locale} page={page} content={content} mode="up" />
+    : page.layout === 'auth-forgot' ? <AuthPage locale={locale} page={page} content={content} mode="forgot" />
+    : page.layout === 'account' ? <AccountPage locale={locale} page={page} content={content} />
+    : <ArticlePage locale={locale} page={page} content={content} />}
 </BaseLayout>

@@ -5,6 +5,7 @@ import type { PageContent } from '../copy/types';
 import { getContent } from '../copy';
 import { CONTACT } from '../config/contact';
 import { useUi } from '../locales';
+import { getPost } from '../data/blog';
 
 /** JSON-LD : uniquement des informations réellement visibles sur la page. Jamais d'avis ni de note auto-attribués. */
 const homeUrl = (): string => absoluteUrl(pagePath(getPage('home') as PageDef, DEFAULT_LOCALE));
@@ -50,7 +51,7 @@ export function buildGraph(page: PageDef, locale: Locale, content: PageContent, 
     case 'Service':
       main = { '@type': ['WebPage', 'Service'], ...common, serviceType: content.nav, provider: { '@id': orgId() } }; break;
     case 'Article':
-      main = { '@type': 'Article', ...common, headline: content.h1, datePublished: page.updated, dateModified: page.updated,
+      main = { '@type': 'Article', ...common, headline: content.h1, datePublished: getPost(page.data?.postId ?? '')?.published ?? page.updated, dateModified: page.updated,
         author: { '@id': orgId() }, publisher: { '@id': orgId() }, mainEntityOfPage: url, image: absoluteUrl(ogImagePath) }; break;
     case 'AboutPage': main = { '@type': 'AboutPage', ...common, about: { '@id': orgId() } }; break;
     case 'ContactPage': main = { '@type': 'ContactPage', ...common }; break;

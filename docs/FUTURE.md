@@ -1,3 +1,5 @@
+> Mise à jour : le blog, les comptes, les commentaires et l'interface e-learning existent désormais (voir CLAUDE.md et docs/BACKEND.md). Reste à brancher la base de données.
+
 # Évolutions prévues (après février 2027)
 
 Le site est aujourd'hui un **site vitrine statique** : 15 pages × 3 langues. Il n'y a ni backend, ni base de données,

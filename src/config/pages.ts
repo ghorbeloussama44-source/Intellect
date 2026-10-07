@@ -4,8 +4,9 @@
  * Le sitemap, la navigation, le maillage et les hreflang en dérivent automatiquement.
  */
 import { LOCALES, type Locale } from './site';
+import { dynamicPages } from './dynamic';
 
-export type PageLayout = 'home' | 'article' | 'faq' | 'contact';
+export type PageLayout = 'home' | 'article' | 'faq' | 'contact' | 'blog-index' | 'blog-post' | 'catalog' | 'course' | 'lesson' | 'auth-in' | 'auth-up' | 'auth-forgot' | 'account';
 export type PageSchema = 'WebPage' | 'Service' | 'Article' | 'AboutPage' | 'ContactPage' | 'FAQPage';
 
 export interface PageDef {
@@ -25,13 +26,19 @@ export interface PageDef {
   navOrder?: number;
   /** Groupe du pied de page. */
   footerGroup?: 'learn' | 'study' | 'about';
+  /** false = page routée mais noindex et hors sitemap (par défaut : indexée). */
+  index?: boolean;
+  /** Espace privé (comptes) : noindex, hors sitemap, interdit dans robots.txt. */
+  private?: boolean;
+  /** Références vers les données (article, cours, leçon) pour les pages générées. */
+  data?: { postId?: string; courseId?: string; lessonId?: string };
   /** Images de contenu déclarées dans le sitemap images. */
   images?: { file: string; altKey: string }[];
 }
 
 const D = '2026-10-04';
 
-export const PAGES: PageDef[] = [
+const STATIC_PAGES: PageDef[] = [
   { id: 'home', layout: 'home', schema: 'WebPage', slugs: { fr: '', en: '', ar: '' }, status: 'published', updated: D, priority: 1.0,
     images: [{ file: 'hero-cutout.png', altKey: 'heroAlt' }] },
 
@@ -65,18 +72,15 @@ export const PAGES: PageDef[] = [
 
   // --- Institutionnel
   { id: 'about', layout: 'article', schema: 'AboutPage', slugs: { fr: 'a-propos', en: 'about', ar: 'about' },
-    status: 'published', updated: D, priority: 0.6, navOrder: 5, footerGroup: 'about' },
+    status: 'published', updated: D, priority: 0.6, footerGroup: 'about' },
   { id: 'faq', layout: 'faq', schema: 'FAQPage', slugs: { fr: 'faq', en: 'faq', ar: 'faq' },
     status: 'published', updated: D, priority: 0.6, footerGroup: 'about' },
   { id: 'contact', layout: 'contact', schema: 'ContactPage', slugs: { fr: 'contact', en: 'contact', ar: 'contact' },
     status: 'published', updated: D, priority: 0.7, footerGroup: 'about' },
 
-  // --- Brouillons : contenus déjà rédigés, hors des 15 pages du lancement (futurs articles de blog / guides)
-  { id: 'student-life', layout: 'article', schema: 'Article', slugs: { fr: 'guide/logement-vie-etudiante', en: 'guides/housing-student-life', ar: 'guides/housing-student-life' },
-    status: 'draft', updated: D, priority: 0.5 },
-  { id: 'germany-or-russia', layout: 'article', schema: 'Article', slugs: { fr: 'guide/allemagne-ou-russie', en: 'guides/germany-or-russia', ar: 'guides/germany-or-russia' },
-    status: 'draft', updated: D, priority: 0.5 },
 ];
+
+export const PAGES: PageDef[] = [...STATIC_PAGES, ...dynamicPages()];
 
 export const publishedPages = (): PageDef[] => PAGES.filter((p) => p.status === 'published');
 export const getPage = (id: string): PageDef | undefined => PAGES.find((p) => p.id === id);
@@ -93,5 +97,8 @@ export function hrefTo(id: string, locale: Locale): string | undefined {
   return page && page.status === 'published' ? pagePath(page, locale) : undefined;
 }
 
-export const allLocalizedPaths = (): { page: PageDef; locale: Locale; path: string }[] =>
-  publishedPages().flatMap((page) => LOCALES.map((locale) => ({ page, locale, path: pagePath(page, locale) })));
+export const isIndexable = (p: PageDef): boolean => p.status === 'published' && p.index !== false && !p.private;
+
+/** Toutes les pages routées (`indexableOnly: false`) ou seulement celles du sitemap. */
+export const allLocalizedPaths = (indexableOnly = false): { page: PageDef; locale: Locale; path: string }[] =>
+  (indexableOnly ? PAGES.filter(isIndexable) : publishedPages()).flatMap((page) => LOCALES.map((locale) => ({ page, locale, path: pagePath(page, locale) })));
