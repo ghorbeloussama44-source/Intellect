@@ -10,7 +10,7 @@ const esc = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;'
 
 /** Sitemap dynamique : toute page publiée dans le registre y entre toute seule, avec hreflang et images. */
 export const GET: APIRoute = async () => {
-  const urls = await Promise.all(allLocalizedPaths().map(async ({ page, locale, path }) => {
+  const urls = await Promise.all(allLocalizedPaths(true).map(async ({ page, locale, path }) => {
     const ui = useUi(locale);
     const alts = alternatesFor(page).map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}"/>`).join('\n');
     const images = (await Promise.all((page.images ?? []).map(async (img) => {

@@ -1,0 +1,59 @@
+---
+/** Connexion, inscription et mot de passe oublié : un seul gabarit, trois modes. Logique dans scripts/auth.ts. */
+import Breadcrumb from './Breadcrumb.astro';
+import '../styles/features.css';
+import { hrefTo, type PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+interface Props { locale: Locale; page: PageDef; content: PageContent; mode: 'in' | 'up' | 'forgot' }
+const { locale, page, content, mode } = Astro.props;
+const f = useFeat(locale);
+const cfg = { mode, strings: { ...f.auth, welcome: f.auth.welcome }, home: hrefTo('account', locale), next: hrefTo('account', locale) };
+const submit = mode === 'in' ? f.auth.submitIn : mode === 'up' ? f.auth.submitUp : f.auth.submitForgot;
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+  </div>
+</section>
+<div class="container auth-wrap">
+  <form class="auth-card" id="authForm" novalidate data-config={JSON.stringify(cfg)} data-mode={mode}>
+    <p class="demo-note" data-demo hidden></p>
+    {mode === 'up' && (
+      <div class="field"><label for="f-name">{f.auth.name}</label><input id="f-name" name="name" autocomplete="nickname" required maxlength="60" /><p class="field-err" data-err="name" hidden></p></div>
+    )}
+    <div class="field"><label for="f-email">{f.auth.email}</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required dir="ltr" /><p class="field-err" data-err="email" hidden></p></div>
+    {mode !== 'forgot' && (
+      <div class="field">
+        <label for="f-pass">{f.auth.password}</label>
+        <div class="pw">
+          <input id="f-pass" name="password" type="password" autocomplete={mode === 'in' ? 'current-password' : 'new-password'} required minlength="8" dir="ltr" />
+          <button type="button" class="pw-toggle" data-toggle aria-label={f.auth.show} aria-pressed="false" data-show={f.auth.show} data-hide={f.auth.hide}>
+            <svg class="ic" aria-hidden="true"><use href="#i-eye" /></svg>
+          </button>
+        </div>
+        {mode === 'up' && (
+          <div class="strength" data-strength aria-live="polite"><span class="bar"><i></i></span><small>{f.auth.strength} : <b data-label>—</b></small></div>
+        )}
+        {mode === 'up' && <p class="hint">{f.auth.hint}</p>}
+        <p class="field-err" data-err="password" hidden></p>
+      </div>
+    )}
+    <p class="form-error" data-form-err role="alert" hidden></p>
+    <p class="form-ok" data-form-ok role="status" hidden></p>
+    <button class="btn btn-orange btn-lg" type="submit" data-submit>{submit}</button>
+    {mode === 'in' && <p class="auth-links"><a href={hrefTo('forgot', locale)}>{f.auth.forgot}</a></p>}
+    {mode === 'in' && <p class="auth-links">{f.auth.noAccount} <a href={hrefTo('signup', locale)}><b>{f.nav.signUp}</b></a></p>}
+    {mode === 'up' && <p class="auth-links">{f.auth.haveAccount} <a href={hrefTo('login', locale)}><b>{f.nav.signIn}</b></a></p>}
+    {mode === 'forgot' && <p class="auth-links"><a href={hrefTo('login', locale)}>{f.auth.back}</a></p>}
+    {mode === 'up' && <p class="cm-note">{f.auth.consent}</p>}
+  </form>
+</div>
+<script>
+  import { initAuthForm } from '../scripts/auth';
+  initAuthForm();
+</script>

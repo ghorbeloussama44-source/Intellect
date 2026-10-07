@@ -319,3 +319,24 @@ h1,h2,h3,p,li,summary,.toc a{overflow-wrap:break-word}
   .cta-band .btn,.hero-copy .btn{width:100%}
   .form .btn{width:100%}
 }
+
+/* compte (en-tête) */
+.btn-ghost{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.btn-ghost:hover{background:var(--soft)}
+.acct{position:relative}
+.acct-btn,.acct-menu summary{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--blue);color:var(--blue);background:#fff;cursor:pointer;list-style:none}
+.acct-menu summary::-webkit-details-marker{display:none}
+.acct-btn:hover{background:var(--soft)}
+.avatar{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:600;font-size:.95rem}
+.avatar.sm{width:32px;height:32px;font-size:.85rem;flex:none}
+.acct-menu ul{position:absolute;inset-inline-end:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:210px;overflow:hidden;z-index:6}
+.acct-menu li a,.acct-menu li button{display:block;width:100%;text-align:start;padding:12px 16px;font-size:.92rem;background:none;border:0;font-family:inherit;color:inherit;cursor:pointer;min-height:44px}
+.acct-menu li a:hover,.acct-menu li button:hover{background:var(--soft);color:var(--blue)}
+.acct-name{padding:12px 16px;font-weight:600;color:var(--blue);border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.flip{transform:scaleX(-1)}
+html[dir=rtl] .ic-dir.flip{transform:none}
+@media (max-width:480px){.nav-actions{gap:8px}.acct-btn,.acct-menu summary{width:40px;height:40px}}
+[hidden]{display:none!important}
+@media (min-width:1200px) and (max-width:1599px){.nav{gap:16px}.menu{gap:14px}.nav-actions .btn span{display:none}.nav-actions .btn{padding:12px}}
+@media (min-width:1200px) and (max-width:1299px){.nav{gap:10px}.menu{gap:10px;font-size:.82rem}.brand img{height:50px}}
+@media (max-width:380px){.nav{gap:4px}.nav.container{width:calc(100% - 16px)}.nav-actions{gap:6px}.lang summary{padding:8px 8px}.acct-btn,.acct-menu summary{width:38px;height:38px}.nav-actions .btn{width:40px;height:40px}.burger{min-width:36px;padding:4px}}

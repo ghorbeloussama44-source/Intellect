@@ -1,0 +1,72 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import Prose from './Prose.astro';
+import FaqList from './FaqList.astro';
+import CtaBand from './CtaBand.astro';
+import Comments from './Comments.astro';
+import PostCard from './PostCard.astro';
+import '../styles/features.css';
+import type { PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { getPost } from '../data/blog';
+import { fmt, useFeat } from '../locales/features';
+import { useUi } from '../locales';
+import { breadcrumbTrail } from '../seo/schema';
+import { formatDate, postsFor, readingMinutes } from '../utils/blog';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+const ui = useUi(locale);
+const post = getPost(page.data?.postId ?? '')!;
+const more = postsFor(locale, post.id).slice(0, 3);
+const toc = content.sections.length >= 3;
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <p class="post-meta on-dark"><span class="chip">{f.blog.categories[post.category]}</span><time datetime={post.published}>{formatDate(post.published, locale)}</time><span>{fmt(f.blog.minRead, { n: readingMinutes(content) })}</span></p>
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+    <p class="byline">{f.blog.by} <b>{f.blog.author}</b></p>
+  </div>
+</section>
+
+<div class="container article-wrap">
+  {toc ? (
+    <nav class="toc" aria-label={ui.toc}>
+      <b>{ui.toc}</b>
+      <ol>
+        {content.sections.map((s) => <li><a href={`#${s.id}`}>{s.h2}</a></li>)}
+        {content.faq && content.faq.length > 0 && <li><a href="#faq">{ui.faqTitle}</a></li>}
+        <li><a href="#comments">{f.comments.title}</a></li>
+      </ol>
+    </nav>
+  ) : <div></div>}
+  <article class="prose" style="margin:0;max-width:760px">
+    <p class="meta">{ui.updatedOn} <time datetime={post.updated}>{formatDate(post.updated, locale)}</time></p>
+    <Prose sections={content.sections} />
+    {content.faq && content.faq.length > 0 && <FaqList items={content.faq} title={ui.faqTitle} />}
+    <div class="share" data-share>
+      <b>{f.blog.share}</b>
+      <button type="button" class="btn btn-ghost" data-copy data-done={f.blog.copied}>{f.blog.copyLink}</button>
+    </div>
+    <Comments locale={locale} postId={post.id} />
+    <CtaBand locale={locale} />
+  </article>
+</div>
+
+{more.length > 0 && (
+  <section class="related">
+    <div class="container">
+      <h2>{f.blog.related}</h2>
+      <div class="post-grid">{more.map((v) => <PostCard locale={locale} view={v} />)}</div>
+    </div>
+  </section>
+)}
+<script>
+  document.querySelector<HTMLButtonElement>('[data-copy]')?.addEventListener('click', async (e) => {
+    const b = e.currentTarget as HTMLButtonElement, old = b.textContent;
+    try { await navigator.clipboard.writeText(location.href.split('#')[0] ?? location.href); b.textContent = b.dataset.done ?? old; setTimeout(() => { b.textContent = old; }, 2000); } catch { /* presse-papiers indisponible */ }
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import '../styles/features.css';
+import type { PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { COURSES, courseLessons, courseMinutes } from '../data/courses';
+import { fmt, useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+import { courseHref } from '../utils/learn';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+  </div>
+</section>
+<div class="container feat-wrap">
+  <div class="course-grid">
+    {COURSES.map((c) => (
+      <article class="course-card" data-course={c.id} data-total={courseLessons(c).length}>
+        <div class="course-top cat-study"><span class="level-badge">{c.level}</span><svg class="ic xl" aria-hidden="true"><use href="#i-book" /></svg></div>
+        <div class="course-body">
+          <h2><a href={courseHref(c, locale)}>{c.title[locale]}</a></h2>
+          <p>{c.summary[locale]}</p>
+          <ul class="facts">
+            <li>{fmt(f.learn.modules, { n: c.modules.length })}</li>
+            <li>{fmt(f.learn.lessons, { n: courseLessons(c).length })}</li>
+            <li>{fmt(f.learn.minutes, { n: courseMinutes(c) })}</li>
+          </ul>
+          <div class="pbar" data-pbar hidden><i></i></div>
+          <p class="pline" data-pline hidden></p>
+          <a class="btn btn-orange" href={courseHref(c, locale)} data-cta>{f.learn.start}</a>
+        </div>
+      </article>
+    ))}
+  </div>
+  <p class="soon-note">{f.learn.more}</p>
+</div>
+<script>
+  import { initCourseProgress } from '../scripts/course';
+  initCourseProgress();
+</script>

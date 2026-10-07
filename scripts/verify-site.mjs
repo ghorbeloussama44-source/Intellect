@@ -88,23 +88,33 @@ for (const u of locs) {
 for (const [t, p] of titles) if (p.length > 1) err(`title en double « ${t} » : ${p.join(', ')}`);
 for (const [d, p] of descs) if (p.length > 1) err(`description en double : ${p.join(', ')}`);
 
+// pages construites hors sitemap (comptes, e-learning, index du blog) : elles doivent être noindex, mais leurs liens comptent pour le crawl
+const extra = new Map();
+for (const f of walk(dist).filter((x) => x.endsWith('index.html'))) {
+  const path = f.slice(dist.length).replace(/index\.html$/, '') || '/';
+  if (pages.has(path) || path === '/') continue;
+  const html = readFileSync(f, 'utf8');
+  if (!/<meta name="robots" content="noindex/.test(html)) err(`${path} : hors sitemap mais sans noindex`);
+  extra.set(path, { links: [...html.matchAll(/<a\b[^>]*\bhref="([^"#][^"]*)"/g)].map((m) => m[1]) });
+}
+
 // 5) crawl : on part de la racine et on ne suit que les <a href> internes
 const seen = new Set(['/fr/']), queue = ['/fr/'];
 while (queue.length) {
-  const p = queue.shift(); const page = pages.get(p); if (!page) continue;
+  const p = queue.shift(); const page = pages.get(p) ?? extra.get(p); if (!page) continue;
   for (const l of page.links) {
     if (/^(mailto:|tel:|javascript:)/.test(l)) continue;
     let path; try { const u = new URL(l, SITE_URL + p); if (u.host !== host) continue; path = u.pathname; } catch { continue; }
-    if (!seen.has(path) && pages.has(path)) { seen.add(path); queue.push(path); }
+    if (!seen.has(path) && (pages.has(path) || extra.has(path))) { seen.add(path); queue.push(path); }
   }
 }
-const orphans = [...pages.keys()].filter((p) => !seen.has(p));
+const orphans = [...pages.keys(), ...extra.keys()].filter((p) => !seen.has(p));
 orphans.forEach((o) => err(`page orpheline (non atteignable par ancres <a href>) : ${o}`));
 
 // rapport
 const target = PER_LOCALE * 3;
 console.log(`\nSitemap : ${locs.length} URL (fr ${perLocale.fr} · en ${perLocale.en} · ar ${perLocale.ar}) — objectif ${target} avant l'achat du domaine`);
-console.log(`Pages atteignables par crawl d'ancres : ${seen.size}/${pages.size} · orphelines : ${orphans.length}`);
+console.log(`Pages atteignables par crawl d'ancres : ${seen.size}/${pages.size + extra.size} (dont ${extra.size} hors sitemap, en noindex) · orphelines : ${orphans.length}`);
 const w = [...pages.entries()].map(([p, v]) => v.words); console.log(`Mots visibles : min ${Math.min(...w)} · max ${Math.max(...w)}`);
 warns.forEach((m) => console.log('⚠', m));
 if (errors.length) { console.log(`\n✘ ${errors.length} problème(s) :`); errors.forEach((m) => console.log('  -', m)); process.exit(1); }

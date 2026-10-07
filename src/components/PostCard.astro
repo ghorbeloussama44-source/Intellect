@@ -1,0 +1,20 @@
+---
+import type { Locale } from '../config/site';
+import { fmt, useFeat } from '../locales/features';
+import { formatDate, type PostView } from '../utils/blog';
+interface Props { locale: Locale; view: PostView }
+const { locale, view } = Astro.props;
+const f = useFeat(locale);
+const { post, content, href, minutes } = view;
+---
+<article class="post-card" data-category={post.category}>
+  <a class={`post-cover cat-${post.category}`} href={href} tabindex="-1" aria-hidden="true">
+    <svg class="ic xl" aria-hidden="true"><use href={post.category === 'study' ? '#i-cap' : '#i-people'} /></svg>
+  </a>
+  <div class="post-body">
+    <p class="post-meta"><span class="chip">{f.blog.categories[post.category]}</span><time datetime={post.published}>{formatDate(post.published, locale)}</time><span>{fmt(f.blog.minRead, { n: minutes })}</span></p>
+    <h3><a href={href}>{content.nav}</a></h3>
+    <p>{content.description}</p>
+    <a class="more" href={href} aria-label={`${f.blog.read} : ${content.nav}`}>{f.blog.read}<svg class="ic sm ic-dir" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+  </div>
+</article>

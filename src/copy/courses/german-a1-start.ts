@@ -1,0 +1,203 @@
+import type { Course, Exercise, L } from '../../types/elearning';
+
+const t = <T = string>(fr: T, en: T, ar: T): L<T> => ({ fr, en, ar });
+const ex = (id: string, type: Exercise['type'], prompt: L, answer: Exercise['answer'], explain: L, options?: Exercise['options']): Exercise => ({ id, type, prompt, answer, explain, options });
+
+/** Cours de démonstration : allemand A1, premiers pas. Contenu pédagogique réel ; les vidéos seront ajoutées par l'équipe. */
+const course: Course = {
+  id: 'german-a1-start',
+  level: 'A1',
+  published: '2026-10-07',
+  title: t('Allemand A1 : premiers pas', 'German A1: first steps', 'الألمانية A1: الخطوات الأولى'),
+  summary: t(
+    'Prononciation, salutations, nombres, articles et verbes essentiels : tout pour démarrer l’allemand, en petites leçons.',
+    'Pronunciation, greetings, numbers, articles and essential verbs: everything to start German, in short lessons.',
+    'النطق والتحيات والأعداد وأدوات التعريف والأفعال الأساسية: كل ما تحتاجه لبدء الألمانية في دروس قصيرة.'),
+  description: t(
+    'Un parcours d’initiation en deux modules et six leçons courtes. Chaque leçon associe une vidéo brève, des notes à relire, du vocabulaire et des exercices corrigés immédiatement.',
+    'An introductory path in two modules and six short lessons. Each lesson combines a short video, notes to review, vocabulary and exercises with instant feedback.',
+    'مسار تمهيدي من وحدتين وست دروس قصيرة. يجمع كل درس بين فيديو قصير وملاحظات للمراجعة ومفردات وتمارين تُصحَّح فورًا.'),
+  outcomes: t(
+    ['Lire et prononcer correctement les sons de base de l’allemand', 'Saluer, se présenter et demander un prénom', 'Compter de 0 à 20', 'Utiliser der, die, das et ein, eine', 'Conjuguer sein et haben au présent'],
+    ['Read and pronounce the basic sounds of German correctly', 'Greet people, introduce yourself and ask a name', 'Count from 0 to 20', 'Use der, die, das and ein, eine', 'Conjugate sein and haben in the present tense'],
+    ['قراءة أصوات الألمانية الأساسية ونطقها بشكل صحيح', 'إلقاء التحية والتعريف بالنفس وسؤال الاسم', 'العدّ من 0 إلى 20', 'استعمال der وdie وdas وein وeine', 'تصريف الفعلين sein وhaben في المضارع']),
+  modules: [
+    {
+      id: 'premiers-mots',
+      title: t('Premiers mots', 'First words', 'الكلمات الأولى'),
+      lessons: [
+        {
+          id: 'alphabet-prononciation', kind: 'video', minutes: 8, free: true,
+          title: t('L’alphabet et la prononciation', 'The alphabet and pronunciation', 'الأبجدية والنطق'),
+          summary: t('Les 26 lettres, ä ö ü ß et les sons qui piègent les francophones.', 'The 26 letters, ä ö ü ß and the sounds that trip up learners.', 'الحروف الـ26 وä ö ü ß والأصوات التي تُربك المتعلمين.'),
+          notes: t(
+            ['L’alphabet allemand compte les 26 lettres latines, auxquelles s’ajoutent trois voyelles à tréma (ä, ö, ü) et le « ß » (eszett), qui se prononce comme un « s » sourd.',
+              'Quelques règles suffisent pour bien démarrer : « w » se prononce comme le « v » français, « z » se prononce « ts », « sch » donne le son « ch », « ie » est un « i » long et « ei » se prononce « aï ». Le « ch » est doux après e et i (ich), plus rauque après a, o et u (ach).'],
+            ['The German alphabet has the 26 Latin letters plus three umlaut vowels (ä, ö, ü) and the “ß” (eszett), pronounced like a sharp “s”.',
+              'A few rules are enough to start well: “w” sounds like English “v”, “z” sounds like “ts”, “sch” gives the “sh” sound, “ie” is a long “ee” and “ei” sounds like “eye”. “ch” is soft after e and i (ich) and rougher after a, o and u (ach).'],
+            ['يضم الأبجدية الألمانية 26 حرفًا لاتينيًا، تُضاف إليها ثلاثة حروف علة بنقطتين (ä وö وü) والحرف «ß» (إسست) الذي يُنطق كسين مهموسة.',
+              'تكفي بضع قواعد لتبدأ جيدًا: يُنطق «w» مثل «v»، ويُنطق «z» مثل «تس»، ويعطي «sch» صوت «ش»، و«ie» ياء طويلة، و«ei» تُنطق «آي». ويكون «ch» ناعمًا بعد e وi (ich) وأخشن بعد a وo وu (ach).']),
+          vocab: [
+            { de: 'das Haus', tr: t('la maison', 'the house', 'البيت') },
+            { de: 'die Schule', tr: t('l’école', 'the school', 'المدرسة') },
+            { de: 'der Freund', tr: t('l’ami', 'the friend', 'الصديق') },
+            { de: 'die Zeit', tr: t('le temps', 'the time', 'الوقت') },
+          ],
+          exercises: [
+            ex('w', 'choice', t('Comment se prononce la lettre « w » en allemand ?', 'How is the letter “w” pronounced in German?', 'كيف يُنطق الحرف «w» في الألمانية؟'), 0,
+              t('Le « w » allemand se prononce comme le « v » français : Wasser se dit « vasseur ».', 'German “w” sounds like English “v”: Wasser is pronounced “vasser”.', 'يُنطق الحرف w الألماني مثل v: تُنطق Wasser «فاسر».'),
+              t(['Comme « v »', 'Comme « ou »', 'Comme le « w » anglais'], ['Like “v”', 'Like “oo”', 'Like English “w”'], ['مثل «v»', 'مثل «و»', 'مثل w الإنجليزية'])),
+            ex('z', 'choice', t('Comment se prononce « z » dans Zeit ?', 'How is “z” pronounced in Zeit?', 'كيف يُنطق الحرف «z» في كلمة Zeit؟'), 1,
+              t('Le « z » allemand est toujours « ts » : Zeit se dit « tsaït ».', 'German “z” is always “ts”: Zeit is pronounced “tsite”.', 'يُنطق z دائمًا «تس»: تُنطق Zeit «تسايت».'),
+              ['s', 'ts', 'z']),
+            ex('eszett', 'choice', t('Quel signe n’existe qu’en allemand ?', 'Which sign exists only in German?', 'أي رمز لا يوجد إلا في الألمانية؟'), 0,
+              t('Le « ß » (eszett) est propre à l’allemand ; ä, ö et ü sont les voyelles à tréma.', 'The “ß” (eszett) is specific to German; ä, ö and ü are the umlaut vowels.', 'الحرف «ß» خاص بالألمانية؛ أما ä وö وü فهي حروف العلة المنقوطة.'),
+              ['ß', 'ñ', 'ç']),
+            ex('schule', 'fill', t('Écrivez « l’école » en allemand, avec l’article.', 'Write “the school” in German, with the article.', 'اكتب «المدرسة» بالألمانية مع أداة التعريف.'), ['die Schule'],
+              t('Schule est féminin : die Schule.', 'Schule is feminine: die Schule.', 'كلمة Schule مؤنثة: die Schule.')),
+          ],
+        },
+        {
+          id: 'salutations', kind: 'video', minutes: 9,
+          title: t('Saluer et se présenter', 'Greeting and introducing yourself', 'التحية والتعريف بالنفس'),
+          summary: t('Guten Tag, Ich heiße…, Ich komme aus… : les phrases du premier contact.', 'Guten Tag, Ich heiße…, Ich komme aus…: the phrases for a first meeting.', 'Guten Tag وIch heiße… وIch komme aus…: عبارات اللقاء الأول.'),
+          notes: t(
+            ['On dit « Guten Morgen » le matin, « Guten Tag » dans la journée et « Guten Abend » le soir. « Hallo » convient entre amis, « Tschüss » pour partir, « Auf Wiedersehen » dans un cadre plus formel.',
+              'Pour se présenter : « Ich heiße … » (je m’appelle), « Ich komme aus … » (je viens de), « Wie heißt du? » (comment t’appelles-tu ?). Dans la phrase déclarative, le verbe conjugué occupe la deuxième place.'],
+            ['Say “Guten Morgen” in the morning, “Guten Tag” during the day and “Guten Abend” in the evening. “Hallo” suits friends, “Tschüss” is for leaving and “Auf Wiedersehen” is more formal.',
+              'To introduce yourself: “Ich heiße …” (my name is), “Ich komme aus …” (I come from), “Wie heißt du?” (what is your name?). In a statement, the conjugated verb takes the second position.'],
+            ['نقول «Guten Morgen» صباحًا و«Guten Tag» خلال النهار و«Guten Abend» مساءً. تناسب «Hallo» الأصدقاء، و«Tschüss» للوداع، و«Auf Wiedersehen» للمواقف الأكثر رسمية.',
+              'للتعريف بالنفس: «Ich heiße …» (اسمي)، و«Ich komme aus …» (أنا من)، و«Wie heißt du?» (ما اسمك؟). في الجملة الخبرية يحتل الفعل المصرَّف المرتبة الثانية.']),
+          vocab: [
+            { de: 'Guten Morgen', tr: t('Bonjour (matin)', 'Good morning', 'صباح الخير') },
+            { de: 'Guten Abend', tr: t('Bonsoir', 'Good evening', 'مساء الخير') },
+            { de: 'Auf Wiedersehen', tr: t('Au revoir', 'Goodbye', 'إلى اللقاء') },
+            { de: 'Danke / Bitte', tr: t('Merci / S’il vous plaît, de rien', 'Thank you / Please, you’re welcome', 'شكرًا / من فضلك، عفوًا') },
+          ],
+          exercises: [
+            ex('morgen', 'choice', t('Que signifie « Guten Morgen » ?', 'What does “Guten Morgen” mean?', 'ماذا تعني «Guten Morgen»؟'), 1,
+              t('« Morgen » veut dire « matin » : on salue le matin.', '“Morgen” means “morning”.', 'تعني Morgen «صباح».'),
+              t(['Bonne nuit', 'Bonjour (le matin)', 'Au revoir'], ['Good night', 'Good morning', 'Goodbye'], ['تصبح على خير', 'صباح الخير', 'إلى اللقاء'])),
+            ex('heisse', 'choice', t('Comment dire « Je m’appelle Sara » ?', 'How do you say “My name is Sara”?', 'كيف تقول «اسمي سارة»؟'), 0,
+              t('Ich heiße Sara : sujet « ich » + verbe heißen conjugué.', 'Ich heiße Sara: subject “ich” + the verb heißen conjugated.', 'Ich heiße Sara: الفاعل ich + الفعل heißen مصرَّفًا.'),
+              ['Ich heiße Sara.', 'Du heißt Sara.', 'Ich komme Sara.']),
+            ex('wie-heisst', 'fill', t('Complétez : « Wie ___ du? » (comment t’appelles-tu ?)', 'Complete: “Wie ___ du?” (what is your name?)', 'أكمل: «Wie ___ du?» (ما اسمك؟)'), ['heißt', 'heisst'],
+              t('Avec « du », le verbe prend la terminaison -st : du heißt.', 'With “du”, the verb takes the ending -st: du heißt.', 'مع du يأخذ الفعل النهاية -st: du heißt.')),
+            ex('aus', 'order', t('Remettez les mots dans l’ordre.', 'Put the words in the right order.', 'رتّب الكلمات.'), ['Ich', 'komme', 'aus', 'Tunesien'],
+              t('Le verbe conjugué est en deuxième position : Ich komme aus Tunesien.', 'The conjugated verb comes second: Ich komme aus Tunesien.', 'الفعل المصرَّف في المرتبة الثانية: Ich komme aus Tunesien.'),
+              ['aus', 'Ich', 'Tunesien', 'komme']),
+          ],
+        },
+        {
+          id: 'nombres-0-20', kind: 'reading', minutes: 7,
+          title: t('Les nombres de 0 à 20', 'Numbers from 0 to 20', 'الأعداد من 0 إلى 20'),
+          summary: t('Compter, donner son âge et lire un numéro.', 'Count, give your age and read a number.', 'العدّ وذكر العمر وقراءة الأرقام.'),
+          notes: t(
+            ['0 null · 1 eins · 2 zwei · 3 drei · 4 vier · 5 fünf · 6 sechs · 7 sieben · 8 acht · 9 neun · 10 zehn · 11 elf · 12 zwölf · 13 dreizehn · 14 vierzehn · 15 fünfzehn · 16 sechzehn · 17 siebzehn · 18 achtzehn · 19 neunzehn · 20 zwanzig.',
+              'De 13 à 19, on ajoute -zehn au chiffre. Attention aux deux irrégularités : sechs devient sech-zehn (16) et sieben devient sieb-zehn (17).'],
+            ['0 null · 1 eins · 2 zwei · 3 drei · 4 vier · 5 fünf · 6 sechs · 7 sieben · 8 acht · 9 neun · 10 zehn · 11 elf · 12 zwölf · 13 dreizehn · 14 vierzehn · 15 fünfzehn · 16 sechzehn · 17 siebzehn · 18 achtzehn · 19 neunzehn · 20 zwanzig.',
+              'From 13 to 19, add -zehn to the digit. Watch the two irregular forms: sechs becomes sech-zehn (16) and sieben becomes sieb-zehn (17).'],
+            ['0 null · 1 eins · 2 zwei · 3 drei · 4 vier · 5 fünf · 6 sechs · 7 sieben · 8 acht · 9 neun · 10 zehn · 11 elf · 12 zwölf · 13 dreizehn · 14 vierzehn · 15 fünfzehn · 16 sechzehn · 17 siebzehn · 18 achtzehn · 19 neunzehn · 20 zwanzig.',
+              'من 13 إلى 19 نضيف -zehn إلى الرقم. انتبه إلى صيغتين شاذتين: sechs تصبح sechzehn (16) وsieben تصبح siebzehn (17).']),
+          exercises: [
+            ex('sieben', 'choice', t('Que vaut « sieben » ?', 'What is “sieben”?', 'ما قيمة «sieben»؟'), 1,
+              t('sieben = 7.', 'sieben = 7.', 'sieben = 7.'), ['6', '7', '9']),
+            ex('zwoelf', 'fill', t('Écrivez 12 en allemand.', 'Write 12 in German.', 'اكتب 12 بالألمانية.'), ['zwölf', 'zwoelf'],
+              t('12 = zwölf (ou zwoelf sans le tréma).', '12 = zwölf (or zwoelf without the umlaut).', '12 = zwölf (أو zwoelf بدون النقطتين).')),
+            ex('sechzehn', 'choice', t('Quelle est la bonne écriture de 16 ?', 'Which is the correct spelling of 16?', 'ما الكتابة الصحيحة للعدد 16؟'), 0,
+              t('On perd le « s » final de sechs : sechzehn.', 'The final “s” of sechs disappears: sechzehn.', 'يسقط حرف s الأخير من sechs: sechzehn.'),
+              ['sechzehn', 'sechszehn', 'sechzig']),
+            ex('calcul', 'fill', t('Combien font drei + vier ? Répondez en lettres, en allemand.', 'What is drei + vier? Answer in words, in German.', 'كم يساوي drei + vier؟ أجب بالحروف بالألمانية.'), ['sieben'],
+              t('3 + 4 = 7 : sieben.', '3 + 4 = 7: sieben.', '3 + 4 = 7: sieben.')),
+          ],
+        },
+      ],
+    },
+    {
+      id: 'bases-de-la-phrase',
+      title: t('Les bases de la phrase', 'Sentence basics', 'أساسيات الجملة'),
+      lessons: [
+        {
+          id: 'articles-der-die-das', kind: 'video', minutes: 10,
+          title: t('Les articles : der, die, das', 'Articles: der, die, das', 'أدوات التعريف: der وdie وdas'),
+          summary: t('Masculin, féminin, neutre : pourquoi on apprend chaque nom avec son article.', 'Masculine, feminine, neuter: why each noun is learned with its article.', 'مذكر ومؤنث ومحايد: لماذا نتعلم كل اسم مع أداته.'),
+          notes: t(
+            ['Les noms allemands ont un genre : masculin (der), féminin (die) ou neutre (das). Au pluriel, l’article défini est toujours « die ». Le genre ne se devine pas toujours : apprenez chaque nom avec son article, par exemple der Tisch (la table), die Lampe (la lampe), das Buch (le livre).',
+              'L’article indéfini est « ein » pour le masculin et le neutre, « eine » pour le féminin : ein Mann, eine Frau, ein Kind. Tous les noms prennent une majuscule.'],
+            ['German nouns have a gender: masculine (der), feminine (die) or neuter (das). In the plural, the definite article is always “die”. Gender cannot always be guessed: learn each noun with its article, for example der Tisch (the table), die Lampe (the lamp), das Buch (the book).',
+              'The indefinite article is “ein” for masculine and neuter, “eine” for feminine: ein Mann, eine Frau, ein Kind. All nouns are capitalised.'],
+            ['للأسماء الألمانية جنس: مذكر (der) أو مؤنث (die) أو محايد (das). وفي الجمع تكون أداة التعريف دائمًا «die». لا يمكن دائمًا تخمين الجنس، لذا تعلّم كل اسم مع أداته، مثل der Tisch (الطاولة) وdie Lampe (المصباح) وdas Buch (الكتاب).',
+              'أداة النكرة هي «ein» للمذكر والمحايد و«eine» للمؤنث: ein Mann وeine Frau وein Kind. وتُكتب كل الأسماء بحرف كبير.']),
+          vocab: [
+            { de: 'der Tisch', tr: t('la table', 'the table', 'الطاولة') },
+            { de: 'die Lampe', tr: t('la lampe', 'the lamp', 'المصباح') },
+            { de: 'das Buch', tr: t('le livre', 'the book', 'الكتاب') },
+            { de: 'das Kind', tr: t('l’enfant', 'the child', 'الطفل') },
+          ],
+          exercises: [
+            ex('buch', 'choice', t('Quel est l’article de « Buch » (le livre) ?', 'What is the article of “Buch” (the book)?', 'ما أداة التعريف لكلمة «Buch» (الكتاب)؟'), 2,
+              t('Das Buch est neutre.', 'Das Buch is neuter.', 'كلمة das Buch محايدة.'), ['der', 'die', 'das']),
+            ex('frau', 'choice', t('Quel est l’article de « Frau » (la femme) ?', 'What is the article of “Frau” (the woman)?', 'ما أداة التعريف لكلمة «Frau» (المرأة)؟'), 1,
+              t('Die Frau est féminin.', 'Die Frau is feminine.', 'كلمة die Frau مؤنثة.'), ['der', 'die', 'das']),
+            ex('tisch', 'fill', t('Complétez : « ___ Tisch » (la table).', 'Complete: “___ Tisch” (the table).', 'أكمل: «___ Tisch» (الطاولة).'), ['der'],
+              t('Der Tisch est masculin.', 'Der Tisch is masculine.', 'كلمة der Tisch مذكرة.')),
+            ex('pluriel', 'choice', t('Quel est l’article défini au pluriel ?', 'What is the definite article in the plural?', 'ما أداة التعريف في الجمع؟'), 1,
+              t('Au pluriel, c’est toujours « die ».', 'In the plural it is always “die”.', 'في الجمع تكون دائمًا «die».'), ['der', 'die', 'das']),
+            ex('eine', 'choice', t('Complétez : « ___ Lampe » (une lampe).', 'Complete: “___ Lampe” (a lamp).', 'أكمل: «___ Lampe» (مصباح).'), 1,
+              t('Lampe est féminin : eine Lampe.', 'Lampe is feminine: eine Lampe.', 'Lampe مؤنثة: eine Lampe.'), ['ein', 'eine', 'einen']),
+          ],
+        },
+        {
+          id: 'sein-haben', kind: 'video', minutes: 10,
+          title: t('Les verbes sein et haben', 'The verbs sein and haben', 'الفعلان sein وhaben'),
+          summary: t('Être et avoir au présent : les deux verbes les plus utilisés.', 'To be and to have in the present: the two most used verbs.', 'الكينونة والامتلاك في المضارع: أكثر فعلين استعمالًا.'),
+          notes: t(
+            ['Sein (être) : ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind. Haben (avoir) : ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie/Sie haben.',
+              'Ces deux verbes sont irréguliers et servent aussi à former le passé. Ils méritent d’être appris par cœur dès le début. Dans une phrase simple, ils occupent toujours la deuxième position : Ich bin Student. Sie hat eine Schwester.'],
+            ['Sein (to be): ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind. Haben (to have): ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie/Sie haben.',
+              'Both verbs are irregular and also build the past tense, so learn them by heart early. In a simple sentence they take the second position: Ich bin Student. Sie hat eine Schwester.'],
+            ['Sein (يكون): ich bin وdu bist وer/sie/es ist وwir sind وihr seid وsie/Sie sind. Haben (يملك): ich habe وdu hast وer/sie/es hat وwir haben وihr habt وsie/Sie haben.',
+              'الفعلان شاذان ويُستعملان أيضًا لتكوين الماضي، فمن الجيد حفظهما مبكرًا. وفي الجملة البسيطة يأتيان في المرتبة الثانية: Ich bin Student. Sie hat eine Schwester.']),
+          exercises: [
+            ex('bin', 'fill', t('Complétez avec « sein » : « Ich ___ Student. »', 'Complete with “sein”: “Ich ___ Student.”', 'أكمل بالفعل sein: «Ich ___ Student».'), ['bin'],
+              t('ich bin.', 'ich bin.', 'ich bin.')),
+            ex('hast', 'fill', t('Complétez avec « haben » : « Du ___ ein Buch. »', 'Complete with “haben”: “Du ___ ein Buch.”', 'أكمل بالفعل haben: «Du ___ ein Buch».'), ['hast'],
+              t('du hast.', 'du hast.', 'du hast.')),
+            ex('sind', 'choice', t('Complétez : « Wir ___ in Berlin. »', 'Complete: “Wir ___ in Berlin.”', 'أكمل: «Wir ___ in Berlin».'), 0,
+              t('wir sind.', 'wir sind.', 'wir sind.'), ['sind', 'seid', 'ist']),
+            ex('schwester', 'order', t('Remettez les mots dans l’ordre.', 'Put the words in the right order.', 'رتّب الكلمات.'), ['Sie', 'hat', 'eine', 'Schwester'],
+              t('Sujet, verbe en deuxième position, puis le complément.', 'Subject, verb in second position, then the object.', 'الفاعل ثم الفعل في المرتبة الثانية ثم المفعول.'),
+              ['eine', 'hat', 'Sie', 'Schwester']),
+          ],
+        },
+        {
+          id: 'bilan', kind: 'quiz', minutes: 8,
+          title: t('Bilan du parcours', 'Course review', 'مراجعة المسار'),
+          summary: t('Six questions pour vérifier ce que vous avez retenu.', 'Six questions to check what you remember.', 'ست أسئلة للتحقق مما تذكرته.'),
+          notes: t(
+            ['Ce quiz reprend l’essentiel des cinq leçons précédentes : salutations, nombres, articles, sein/haben et ordre des mots. Prenez votre temps ; vous pouvez recommencer autant de fois que nécessaire, votre meilleur score est conservé.'],
+            ['This quiz covers the essentials of the five previous lessons: greetings, numbers, articles, sein/haben and word order. Take your time; you can retry as often as you like and your best score is kept.'],
+            ['يعيد هذا الاختبار أهم ما ورد في الدروس الخمسة السابقة: التحيات والأعداد وأدوات التعريف وsein/haben وترتيب الكلمات. خذ وقتك؛ يمكنك الإعادة كما تشاء ويُحفظ أفضل نتيجة.']),
+          exercises: [
+            ex('wiedersehen', 'choice', t('Que signifie « Auf Wiedersehen » ?', 'What does “Auf Wiedersehen” mean?', 'ماذا تعني «Auf Wiedersehen»؟'), 2,
+              t('C’est la formule d’au revoir courante.', 'It is the standard way to say goodbye.', 'هي العبارة المعتادة للوداع.'),
+              t(['Bonne journée', 'Merci', 'Au revoir'], ['Have a nice day', 'Thank you', 'Goodbye'], ['يومًا سعيدًا', 'شكرًا', 'إلى اللقاء'])),
+            ex('fuenfzehn', 'fill', t('Écrivez 15 en allemand.', 'Write 15 in German.', 'اكتب 15 بالألمانية.'), ['fünfzehn', 'fuenfzehn'],
+              t('15 = fünf + zehn.', '15 = fünf + zehn.', '15 = fünf + zehn.')),
+            ex('kind', 'choice', t('Quel est l’article de « Kind » (l’enfant) ?', 'What is the article of “Kind” (the child)?', 'ما أداة التعريف لكلمة «Kind» (الطفل)؟'), 2,
+              t('Das Kind est neutre.', 'Das Kind is neuter.', 'كلمة das Kind محايدة.'), ['der', 'die', 'das']),
+            ex('hat', 'fill', t('Complétez avec « haben » : « Er ___ Hunger. »', 'Complete with “haben”: “Er ___ Hunger.”', 'أكمل بالفعل haben: «Er ___ Hunger».'), ['hat'],
+              t('er hat.', 'er hat.', 'er hat.')),
+            ex('wie-heisst-du', 'order', t('Remettez les mots dans l’ordre.', 'Put the words in the right order.', 'رتّب الكلمات.'), ['Wie', 'heißt', 'du'],
+              t('Question ouverte : mot interrogatif, verbe, sujet.', 'Open question: question word, verb, subject.', 'سؤال مفتوح: أداة الاستفهام ثم الفعل ثم الفاعل.'),
+              ['du', 'heißt', 'Wie']),
+            ex('komme', 'choice', t('Complétez : « Ich ___ aus Marokko. »', 'Complete: “Ich ___ aus Marokko.”', 'أكمل: «Ich ___ aus Marokko».'), 0,
+              t('Avec « ich », la terminaison est -e : ich komme.', 'With “ich”, the ending is -e: ich komme.', 'مع ich تكون النهاية -e: ich komme.'), ['komme', 'kommst', 'kommt']),
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export default course;

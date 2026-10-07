@@ -1,0 +1,21 @@
+---
+/** Bouton de compte de l'en-tête : « Connexion » par défaut ; remplacé par un menu d'avatar si une session existe (voir scripts/account.ts). */
+import { hrefTo } from '../config/pages';
+import type { Locale } from '../config/site';
+import { useFeat } from '../locales/features';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const f = useFeat(locale);
+---
+<div class="acct" data-acct>
+  <a class="acct-btn" href={hrefTo('login', locale)} data-out aria-label={f.nav.signIn} title={f.nav.signIn}><svg class="ic" aria-hidden="true"><use href="#i-user" /></svg></a>
+  <details class="acct-menu" data-in hidden>
+    <summary aria-label={f.nav.account}><span class="avatar" data-initial>?</span></summary>
+    <ul>
+      <li class="acct-name" data-name></li>
+      <li><a href={hrefTo('account', locale)}>{f.nav.account}</a></li>
+      <li><a href={hrefTo('catalog', locale)}>{f.nav.elearning}</a></li>
+      <li><button type="button" data-signout>{f.nav.signOut}</button></li>
+    </ul>
+  </details>
+</div>

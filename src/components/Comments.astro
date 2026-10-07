@@ -1,0 +1,30 @@
+---
+/** Zone de commentaires d'un article. Rendu côté navigateur par scripts/comments.ts, via le service de commentaires (démo ou API). */
+import { hrefTo } from '../config/pages';
+import type { Locale } from '../config/site';
+import { useFeat } from '../locales/features';
+interface Props { locale: Locale; postId: string }
+const { locale, postId } = Astro.props;
+const f = useFeat(locale);
+const cfg = { locale, strings: { ...f.comments, signIn: f.nav.signIn, signUp: f.nav.signUp }, login: hrefTo('login', locale), signup: hrefTo('signup', locale), demo: f.auth.demo };
+---
+<section class="comments" id="comments" data-post={postId} data-config={JSON.stringify(cfg)} aria-labelledby="cm-title">
+  <h2 id="cm-title">{f.comments.title}</h2>
+  <p class="demo-note" data-demo hidden></p>
+  <div data-compose></div>
+  <div class="cm-tools">
+    <span class="cm-count" data-count aria-live="polite"></span>
+    <label>{f.comments.sort}
+      <select data-sort>
+        <option value="newest">{f.comments.newest}</option>
+        <option value="oldest">{f.comments.oldest}</option>
+        <option value="popular">{f.comments.popular}</option>
+      </select>
+    </label>
+  </div>
+  <ol class="cm-list" data-list><li class="cm-empty">{f.comments.loading}</li></ol>
+</section>
+<script>
+  import { initComments } from '../scripts/comments';
+  initComments();
+</script>

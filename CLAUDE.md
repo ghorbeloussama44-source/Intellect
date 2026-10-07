@@ -94,9 +94,15 @@ Hiérarchie du maillage : Accueil → Cours d'allemand → A1 → A2 → B1 → 
 
 La racine `/` n'est pas une page du site : c'est un aiguillage (`src/pages/index.astro`), `noindex`, canonical vers `/fr/`, absent du sitemap. Pour un humain avec JavaScript, elle renvoie vers la langue mémorisée ou la langue du navigateur ; pour un robot ou sans JavaScript, toujours vers `/fr/`. **Les adresses `/fr/`, `/en/` et `/ar/` ne redirigent jamais** : l'URL demandée est respectée, et la langue de chaque page visitée est mémorisée.
 
-Contenus rédigés mais hors lancement (statut `draft`) : `student-life` (logement et vie étudiante) et `germany-or-russia` (comparatif). Ils pourront devenir des articles de blog.
+## Blog, comptes et e-learning
 
-Évolutions futures (blog, e-learning, espace étudiant) : voir `docs/FUTURE.md`. Aucune route ni lien visible aujourd'hui.
+Les 45 URL ci-dessus sont le socle. S'y ajoutent :
+
+- **Blog** (`/fr/blog/`, `/en/blog/`, `/ar/blog/`) : articles dans `src/data/blog.ts` (contenu : `src/copy/pages/<id>.ts`). Chaque article est indexé et entre dans le sitemap (2 articles aujourd'hui : le sitemap compte donc 51 URL). L'index du blog reste `noindex` tant qu'il y a moins de `BLOG_INDEX_MIN_POSTS` articles. Commentaires sous chaque article.
+- **Comptes** (connexion, inscription, mot de passe oublié, espace étudiant) : `private` dans le registre → `noindex`, hors sitemap, `Disallow` dans robots.txt.
+- **E-learning** (`/fr/e-learning/…`) : catalogue, cours, leçons (vidéo courte, notes, vocabulaire, exercices). `noindex` tant que les cours ne sont pas assez nombreux.
+- Les services (auth, commentaires, progression) sont derrière des interfaces ; sans `PUBLIC_API_URL`, mode **démonstration** (navigateur seul, aucune sécurité). Voir `docs/BACKEND.md`. Ne jamais présenter le mode démo comme une vraie authentification.
+- Une page de `PAGES` peut avoir `index: false` ou `private: true` ; `npm run verify` exige `noindex` sur toute page construite hors sitemap et crawle aussi ces pages.
 
 Pages légales (mentions légales, confidentialité) : à ajouter en `noindex`, hors des 45 URL du sitemap, dès que le client a fourni les informations de l'entreprise. Ne rien inventer.
 

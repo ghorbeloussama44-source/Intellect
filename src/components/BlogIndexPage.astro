@@ -1,0 +1,45 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import PostCard from './PostCard.astro';
+import CtaBand from './CtaBand.astro';
+import '../styles/features.css';
+import type { PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+import { postsFor } from '../utils/blog';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+const posts = postsFor(locale);
+const categories = [...new Set(posts.map((p) => p.post.category))];
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <h1>{content.h1}</h1>
+    <p class="lead">{content.lead}</p>
+  </div>
+</section>
+<div class="container feat-wrap">
+  {categories.length > 1 && (
+    <div class="chips" role="group" aria-label={f.blog.filter} id="blogFilter">
+      <button type="button" class="chip-btn" aria-pressed="true" data-cat="all">{f.blog.all}</button>
+      {categories.map((c) => <button type="button" class="chip-btn" aria-pressed="false" data-cat={c}>{f.blog.categories[c]}</button>)}
+    </div>
+  )}
+  <div class="post-grid" id="postGrid">
+    {posts.map((v) => <PostCard locale={locale} view={v} />)}
+  </div>
+</div>
+<div class="container"><CtaBand locale={locale} /></div>
+<script>
+  const box = document.getElementById('blogFilter');
+  box?.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>('button[data-cat]');
+    if (!btn) return;
+    box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    document.querySelectorAll<HTMLElement>('#postGrid .post-card').forEach((c) => { c.hidden = btn.dataset.cat !== 'all' && c.dataset.category !== btn.dataset.cat; });
+  });
+</script>

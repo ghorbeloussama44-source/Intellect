@@ -1,0 +1,73 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import '../styles/features.css';
+import type { PageDef } from '../config/pages';
+import type { Locale } from '../config/site';
+import type { PageContent } from '../copy/types';
+import { courseLessons, courseMinutes, getCourse } from '../data/courses';
+import { fmt, useFeat } from '../locales/features';
+import { breadcrumbTrail } from '../seo/schema';
+import { kindIcon, lessonHref } from '../utils/learn';
+interface Props { locale: Locale; page: PageDef; content: PageContent }
+const { locale, page, content } = Astro.props;
+const f = useFeat(locale);
+const course = getCourse(page.data?.courseId ?? '')!;
+const lessons = courseLessons(course);
+const first = lessons[0]!;
+const data = { id: course.id, lessons: lessons.map((l) => ({ id: l.id, href: lessonHref(course, l, locale) })) };
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumb locale={locale} trail={breadcrumbTrail(page, locale, content)} />
+    <p class="level-line"><span class="level-badge">{course.level}</span></p>
+    <h1>{content.h1}</h1>
+    <p class="lead">{course.description[locale]}</p>
+    <ul class="facts on-dark">
+      <li>{fmt(f.learn.modules, { n: course.modules.length })}</li>
+      <li>{fmt(f.learn.lessons, { n: lessons.length })}</li>
+      <li>{fmt(f.learn.minutes, { n: courseMinutes(course) })}</li>
+    </ul>
+    <div class="hero-cta">
+      <a class="btn btn-orange btn-lg" href={lessonHref(course, first, locale)} data-cta>{f.learn.start}</a>
+    </div>
+  </div>
+</section>
+<div class="container course-wrap" data-course-page data-config={JSON.stringify(data)} data-progress-label={f.learn.progress} data-resume={f.learn.resume} data-again={f.learn.again}>
+  <div class="course-main">
+    <div class="pbar big" data-pbar hidden><i></i></div>
+    <p class="pline" data-pline hidden></p>
+    <h2>{f.learn.curriculum}</h2>
+    {course.modules.map((m, mi) => (
+      <details class="module" open={mi === 0}>
+        <summary>
+          <span class="module-n">{fmt(f.learn.module, { n: mi + 1 })}</span>
+          <span class="module-t">{m.title[locale]}</span>
+          <span class="module-c">{fmt(f.learn.lessons, { n: m.lessons.length })}</span>
+          <svg class="ic sm" aria-hidden="true"><use href="#i-chev" /></svg>
+        </summary>
+        <ol class="lesson-list">
+          {m.lessons.map((l) => (
+            <li data-lesson={l.id}>
+              <a href={lessonHref(course, l, locale)}>
+                <svg class="ic kind" aria-hidden="true"><use href={kindIcon(l.kind)} /></svg>
+                <span class="lt"><b>{l.title[locale]}</b><small>{f.learn.kinds[l.kind]} · {fmt(f.learn.minutes, { n: l.minutes })}</small></span>
+                {l.free ? <span class="chip free">{f.learn.preview}</span> : <span class="chip lock" data-lock><svg class="ic sm" aria-hidden="true"><use href="#i-lock" /></svg>{f.learn.locked}</span>}
+                <svg class="ic done-ic" aria-hidden="true"><use href="#i-check" /></svg>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </details>
+    ))}
+  </div>
+  <aside class="course-side">
+    <h2>{f.learn.outcomes}</h2>
+    <ul class="bullets">{course.outcomes[locale].map((o) => <li>{o}</li>)}</ul>
+    <h2>{f.learn.includes}</h2>
+    <ul class="bullets">{f.learn.includesList.map((o) => <li>{o}</li>)}</ul>
+  </aside>
+</div>
+<script>
+  import { initCoursePage } from '../scripts/course';
+  initCoursePage();
+</script>

@@ -1,40 +1,48 @@
-/**
- * Modèle conceptuel du futur e-learning. Rien ici ne suppose de backend aujourd'hui : ces types décrivent
- * le contenu statique d'un cours. La progression, les quiz notés et les comptes viendront avec un backend,
- * à décider après février 2027.
- */
 import type { Locale } from '../config/site';
 
-export type CourseLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'medical';
+/** Texte localisé : les trois langues sont obligatoires (pas de contenu à moitié traduit). */
+export type L<T = string> = Record<Locale, T>;
 
-export interface Lesson {
-  id: string;
-  title: Record<Locale, string>;
-  /** Vidéo hébergée ailleurs ; le site ne stocke pas de média lourd. */
-  videoUrl?: string;
-  documents?: { label: Record<Locale, string>; url: string }[];
-  exercises?: Exercise[];
-}
-
+export type ExerciseType = 'choice' | 'fill' | 'order';
 export interface Exercise {
   id: string;
-  prompt: Record<Locale, string>;
-  /** Corrigé affiché côté client ; pas de notation serveur à ce stade. */
-  answer?: Record<Locale, string>;
+  type: ExerciseType;
+  prompt: L;
+  /** choice : propositions ; order : mots dans le désordre. */
+  options?: string[] | L<string[]>;
+  /** choice : index de la bonne proposition ; fill : réponses acceptées ; order : mots dans le bon ordre. */
+  answer: number | string[];
+  explain: L;
 }
 
-export interface CourseModule {
+export type LessonKind = 'video' | 'reading' | 'quiz';
+export interface VocabItem { de: string; tr: L }
+export interface Lesson {
   id: string;
-  title: Record<Locale, string>;
-  lessons: Lesson[];
+  kind: LessonKind;
+  /** Durée estimée de la leçon (visionnage + exercices), en minutes. */
+  minutes: number;
+  /** Accessible sans compte. */
+  free?: boolean;
+  title: L;
+  summary: L;
+  /** Vidéo courte : à renseigner quand elle existe. Absente = emplacement « bientôt disponible ». */
+  video?: { mp4?: string; youtube?: string; poster?: string };
+  notes: L<string[]>;
+  vocab?: VocabItem[];
+  exercises: Exercise[];
+  /** Documents à télécharger : { label, url }. */
+  resources?: { label: L; url: string }[];
 }
-
+export interface Module { id: string; title: L; lessons: Lesson[] }
 export interface Course {
   id: string;
-  level: CourseLevel;
-  slugs: Record<Locale, string>;
-  title: Record<Locale, string>;
-  description: Record<Locale, string>;
-  image: string;
-  modules: CourseModule[];
+  /** Slugs par langue (identiques ou non). */
+  level: string;
+  published: string;
+  title: L;
+  summary: L;
+  description: L;
+  outcomes: L<string[]>;
+  modules: Module[];
 }
